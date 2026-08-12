@@ -1,0 +1,14 @@
+README.md
+  h_fe03d8619f57ba 1-2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "3031ea3fcc719631a367dc08d1f85314dd804585",
+  "prompts": {},
+  "humans": {
+    "h_fe03d8619f57ba": {
+      "author": "vallit0 <evallecyt@gmail.com>"
+    }
+  }
+}
