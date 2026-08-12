@@ -1,0 +1,19 @@
+AUDITORIA-COLECTORES.md
+  s_3badf2e66e128d::t_f4ffce1cf56987 1-436
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "5304b8a0daddfdcd7f409838ae1cbca41eb009c3",
+  "prompts": {},
+  "sessions": {
+    "s_3badf2e66e128d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "60d781e3-3a53-4456-bc5f-62d864b941d8",
+        "model": "claude-opus-5"
+      },
+      "human_author": "vallit0 <evallecyt@gmail.com>"
+    }
+  }
+}
