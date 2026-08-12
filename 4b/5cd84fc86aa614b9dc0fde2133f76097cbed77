@@ -1,0 +1,46 @@
+L1-01_Hardware-Inventory.ps1
+  h_fe03d8619f57ba 1-208
+L2-01_OS-Baseline.ps1
+  h_fe03d8619f57ba 1-201
+L2-02_Patch-Level.ps1
+  h_fe03d8619f57ba 1-191
+L2-03_Security-Config.ps1
+  h_fe03d8619f57ba 1-308
+L3-01_Runtimes-Middleware.ps1
+  h_fe03d8619f57ba 1-272
+L4-01_Installed-Software.ps1
+  h_fe03d8619f57ba 1-291
+L4-02_Package-Managers.ps1
+  h_fe03d8619f57ba 1-240
+L4-03_Unmanaged-Binaries.ps1
+  h_fe03d8619f57ba 1-214
+L4-04_Software-Integrity.ps1
+  h_fe03d8619f57ba 1-179
+L4-05_Software-Lifecycle.ps1
+  h_fe03d8619f57ba 1-164
+L4-06_EA-Baseline.ps1
+  h_fe03d8619f57ba 1-345
+L5-01_Services.ps1
+  h_fe03d8619f57ba 1-156
+L5-02_Autoruns-Tasks.ps1
+  h_fe03d8619f57ba 1-196
+L6-01_Identity-Access.ps1
+  h_fe03d8619f57ba 1-270
+L7-01_Network-Exposure.ps1
+  h_fe03d8619f57ba 1-257
+L8-01_Logging-Backup.ps1
+  h_fe03d8619f57ba 1-239
+L9-01_Server-Stats.ps1
+  h_fe03d8619f57ba 1-266
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "4b5cd84fc86aa614b9dc0fde2133f76097cbed77",
+  "prompts": {},
+  "humans": {
+    "h_fe03d8619f57ba": {
+      "author": "vallit0 <evallecyt@gmail.com>"
+    }
+  }
+}
