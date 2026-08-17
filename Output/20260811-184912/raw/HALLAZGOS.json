@@ -1,0 +1,952 @@
+﻿[
+    {
+        "FindingId":  "L2-02-9EBC371A",
+        "CollectorId":  "L2-02",
+        "Layer":  "L2",
+        "Severity":  "Critical",
+        "SeverityRank":  5,
+        "Category":  "Parcheo",
+        "Title":  "Latencia de parcheo fuera del umbral definido",
+        "Asset":  "SRV-SAP",
+        "Detail":  "La ultima actualizacion registrada es del 2026-04-30 (103 dias). El umbral establecido para este servidor es de 45 dias.",
+        "Evidence":  "UltimoHotFix=KB5082142",
+        "ISO27001":  [
+                         "A.8.8"
+                     ],
+        "ISO27001Text":  "A.8.8",
+        "Recommendation":  "Ejecutar el ciclo de actualizacion pendiente y verificar la conectividad del servidor con WSUS o el servicio de actualizacion corporativo.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:49:18"
+    },
+    {
+        "FindingId":  "L2-02-3E41D643",
+        "CollectorId":  "L2-02",
+        "Layer":  "L2",
+        "Severity":  "Critical",
+        "SeverityRank":  5,
+        "Category":  "Parcheo",
+        "Title":  "Actualizaciones de seguridad criticas pendientes de instalacion",
+        "Asset":  "SRV-SAP",
+        "Detail":  "Hay 3 actualizaciones pendientes, de las cuales 1 estan clasificadas por MSRC como Critical o Important.",
+        "Evidence":  "",
+        "ISO27001":  [
+                         "A.8.8"
+                     ],
+        "ISO27001Text":  "A.8.8",
+        "Recommendation":  "Priorizar la instalacion de las actualizaciones criticas en la proxima ventana y registrar el cambio en el proceso formal de gestion de cambios.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:49:23"
+    },
+    {
+        "FindingId":  "L2-03-6C669C80",
+        "CollectorId":  "L2-03",
+        "Layer":  "L2",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "Red",
+        "Title":  "Perfiles de firewall de Windows deshabilitados",
+        "Asset":  "Domain, Private, Public",
+        "Detail":  "Los siguientes perfiles estan desactivados: Domain, Private, Public. El servidor queda sin filtrado de host en esos contextos de red.",
+        "Evidence":  "",
+        "ISO27001":  [
+                         "A.8.20",
+                         "A.8.21"
+                     ],
+        "ISO27001Text":  "A.8.20; A.8.21",
+        "Recommendation":  "Habilitar todos los perfiles con accion entrante predeterminada Block y definir reglas explicitas solo para los servicios requeridos.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:49:25"
+    },
+    {
+        "FindingId":  "L3-01-8FB44C50",
+        "CollectorId":  "L3-01",
+        "Layer":  "L3",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "CicloDeVida",
+        "Title":  "Componente de plataforma fuera de soporte: Windows PowerShell 2.0 Engine",
+        "Asset":  "Windows PowerShell 2.0 Engine ",
+        "Detail":  "PSv2 sin registro de bloques de script. Deshabilitar la caracteristica.. Fin de soporte: 2017-01-01. Un componente sin soporte no recibe correcciones de seguridad.",
+        "Evidence":  "Ruta: PowerShell-V2 | Origen: Get-WindowsFeature",
+        "ISO27001":  [
+                         "A.8.8",
+                         "A.5.9"
+                     ],
+        "ISO27001Text":  "A.8.8; A.5.9",
+        "Recommendation":  "Planificar la migracion a una version soportada o formalizar un plan de tratamiento del riesgo con controles compensatorios y fecha limite.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:49:27"
+    },
+    {
+        "FindingId":  "L4-03-676B9C0B",
+        "CollectorId":  "L4-03",
+        "Layer":  "L4",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "IntegridadDeSoftware",
+        "Title":  "Ejecutables sin firma digital fuera de rutas de instalacion gestionadas",
+        "Asset":  "1 archivos",
+        "Detail":  "Se identificaron 1 ejecutables o bibliotecas sin firma Authenticode. Sin firma no es posible verificar el origen ni la integridad del artefacto, ni detectar su alteracion posterior.",
+        "Evidence":  "D:\\Instaladores Addon 2023 SAP 10\\SSO.TRF.InstaladorAsientosContables.msi [115093.5 KB]",
+        "ISO27001":  [
+                         "A.8.19",
+                         "A.8.9"
+                     ],
+        "ISO27001Text":  "A.8.19; A.8.9",
+        "Recommendation":  "Verificar el origen de cada binario, reinstalarlo desde una fuente oficial firmada y aplicar control de aplicaciones (AppLocker/WDAC) en modo de exigir firma para rutas de trabajo.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:10"
+    },
+    {
+        "FindingId":  "L4-04-A538C4E8",
+        "CollectorId":  "L4-04",
+        "Layer":  "L4",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "IntegridadDeSoftware",
+        "Title":  "Servicios o procesos ejecutando binarios sin firma digital",
+        "Asset":  "7 binarios",
+        "Detail":  "7 imagenes en ejecucion carecen de firma Authenticode. Estos binarios operan con los privilegios de su contexto sin que sea posible verificar su origen ni detectar modificaciones.",
+        "Evidence":  "c:\\Program Files\\SAP\\SAP Business One ServerTools\\License Service\\service\\B1_License.exe \u003c= Servicio: B1LicenseService | C:\\Program Files\\SAP\\SAP Business One ServerTools\\ServiceLayer\\Apache\\bin\\httpd.exe \u003c= Servicio: b1s50000; Servicio: b1s50001; Servicio: b1s50002; Servicio: b1s50003; Servicio: b1s50004; Servicio: b1s50005; Servicio: b1s50006; Servicio: b1s50007; Servicio: b1s50008; Servicio: b1s50009; Servicio: b1s50010 | C:\\Program Files\\SAP\\SAP Business One SetupFiles\\support\\tools\\nssm\\nssm.exe \u003c= Servicio: B1ServerToolsAuthentication | c:\\Program Files\\SAP\\SAP Business One ServerTools\\Mailer\\B1_Mailer.exe \u003c= Servicio: SBOMail | c:\\Program Files\\SAP\\SAP Business One SLD Agent\\sldagentservice\\sldAgent.exe \u003c= Servicio: SLDAgentOP | c:\\Program Files\\SAP\\SAP Business One ServerTools\\License Service\\service\\TAO_NT_CosNaming.exe \u003c= Servicio: TAO_NT_Naming_Service | C:\\windows_exporter\\windows_exporter.exe \u003c= Servicio: windows_exporter",
+        "ISO27001":  [
+                         "A.8.19",
+                         "A.8.9"
+                     ],
+        "ISO27001Text":  "A.8.19; A.8.9",
+        "Recommendation":  "Identificar el proveedor de cada binario y exigir entregables firmados. Registrar el hash SHA256 como linea base y monitorear su cambio entre ejecuciones de auditoria.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:27"
+    },
+    {
+        "FindingId":  "L4-05-10557F4E",
+        "CollectorId":  "L4-05",
+        "Layer":  "L4",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "CicloDeVida",
+        "Title":  "Software fuera de soporte del proveedor: Microsoft Access database engine 2010 (English)",
+        "Asset":  "Microsoft Access database engine 2010 (English) 14.0.7015.1000",
+        "Detail":  "Fin de soporte: 2020-10-13 (hace 2129 dias). Motor de base de datos Access fuera de soporte. Usado con frecuencia como puente ODBC/OLEDB entre aplicaciones. Un producto sin soporte no recibe correcciones para vulnerabilidades descubiertas despues de esa fecha.",
+        "Evidence":  "Publicador: Microsoft Corporation | Instalado: 2023-05-24",
+        "ISO27001":  [
+                         "A.8.8",
+                         "A.5.9",
+                         "A.8.19"
+                     ],
+        "ISO27001Text":  "A.8.8; A.5.9; A.8.19",
+        "Recommendation":  "Actualizar a una version soportada. Si la migracion no es viable a corto plazo, documentar la aceptacion del riesgo con aprobacion de la direccion, definir controles compensatorios (aislamiento de red, control de aplicaciones) y fijar una fecha limite de remediacion.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:29"
+    },
+    {
+        "FindingId":  "L4-05-8FC18FBB",
+        "CollectorId":  "L4-05",
+        "Layer":  "L4",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "CicloDeVida",
+        "Title":  "Software fuera de soporte del proveedor: Microsoft SQL Server 2012 Native Client",
+        "Asset":  "Microsoft SQL Server 2012 Native Client 11.4.7462.6",
+        "Detail":  "Fin de soporte: 2024-07-09 (hace 764 dias). Version de SQL Server fuera de soporte extendido. Un producto sin soporte no recibe correcciones para vulnerabilidades descubiertas despues de esa fecha.",
+        "Evidence":  "Publicador: Microsoft Corporation | Instalado: 2023-03-08",
+        "ISO27001":  [
+                         "A.8.8",
+                         "A.5.9",
+                         "A.8.19"
+                     ],
+        "ISO27001Text":  "A.8.8; A.5.9; A.8.19",
+        "Recommendation":  "Actualizar a una version soportada. Si la migracion no es viable a corto plazo, documentar la aceptacion del riesgo con aprobacion de la direccion, definir controles compensatorios (aislamiento de red, control de aplicaciones) y fijar una fecha limite de remediacion.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:29"
+    },
+    {
+        "FindingId":  "L4-06-376CB46E",
+        "CollectorId":  "L4-06",
+        "Layer":  "L4",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "ConformidadArquitectonica",
+        "Title":  "Artefactos con rol no alineado al proposito declarado del servidor",
+        "Asset":  "10 artefactos",
+        "Detail":  "El servidor esta declarado como \u0027Servidor de aplicaciones de negocio\u0027 en entorno de Produccion. Se detectaron 10 artefactos cuyo rol arquitectonico figura entre los NO esperados para este proposito: Multimedia y entretenimiento (1), Sincronizacion en nube (1), Herramienta de desarrollo (6), Navegador web (2). Cada uno amplia la superficie de ataque sin aportar a la funcion del activo.",
+        "Evidence":  "obs-browser-plus 3.23.9 [Multimedia y entretenimiento] =\u003e C:\\Program Files\\obs-browser-plus | Microsoft OneDrive [Sincronizacion en nube] =\u003e C:\\Program Files\\Microsoft OneDrive\\26.134.0713.0004 | Azure Data Studio [Herramienta de desarrollo] =\u003e C:\\Program Files\\Azure Data Studio | Microsoft Visual Studio Installer [Herramienta de desarrollo] =\u003e C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer | DevExpress Components 24.2 [Herramienta de desarrollo] =\u003e C:\\Program Files\\DevExpress 24.2\\Components | Microsoft Edge [Navegador web] =\u003e C:\\Program Files (x86)\\Microsoft\\Edge\\Application | Microsoft Edge WebView2 Runtime [Navegador web] =\u003e C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application | vs_CoreEditorFonts [Herramienta de desarrollo] =\u003e  | Microsoft Visual Studio Tools for Applications 2019 [Herramienta de desarrollo] =\u003e C:\\ProgramData\\Package Cache\\{f3fbabb4-bcfb-45eb-8fff-9b784fd68c38} | Microsoft Visual Studio Tools for Applications 2017 [Herramienta de desarrollo] =\u003e C:\\ProgramData\\Package Cache\\{f895a2f1-ae3f-4212-8af1-7fa1f8c212ea}",
+        "ISO27001":  [
+                         "A.8.19",
+                         "A.8.9",
+                         "A.8.31"
+                     ],
+        "ISO27001Text":  "A.8.19; A.8.9; A.8.31",
+        "Recommendation":  "Para cada artefacto: documentar la justificacion funcional o retirarlo. Si el rol es legitimo para este servidor, incorporarlo a RolesEsperados en Arquitectura.psd1 y dejar constancia de la decision arquitectonica.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:37"
+    },
+    {
+        "FindingId":  "L5-01-425232A8",
+        "CollectorId":  "L5-01",
+        "Layer":  "L5",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "Privilegios",
+        "Title":  "Servicios de terceros ejecutandose como LocalSystem",
+        "Asset":  "4 servicios",
+        "Detail":  "Servicios cuyo binario no proviene de rutas del sistema se ejecutan con la cuenta de mayor privilegio del equipo. Una vulnerabilidad en ellos implica compromiso total del servidor.",
+        "Evidence":  "cloudResetPwdAgent [LocalSystem] =\u003e C:\\CloudResetPwdAgent\\bin\\wrapper.exe | cloudResetPwdUpdateAgent [LocalSystem] =\u003e C:\\CloudResetPwdUpdateAgent\\bin\\wrapper.exe | MDCoreSvc [LocalSystem] =\u003e C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.26070.9-0\\MpDefenderCoreService.exe | WinDefend [LocalSystem] =\u003e C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.26070.9-0\\MsMpEng.exe",
+        "ISO27001":  [
+                         "A.8.2",
+                         "A.8.9"
+                     ],
+        "ISO27001Text":  "A.8.2; A.8.9",
+        "Recommendation":  "Aplicar el principio de privilegio minimo: migrar a cuentas de servicio gestionadas (gMSA) o a NetworkService/LocalService cuando el producto lo soporte.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:38"
+    },
+    {
+        "FindingId":  "L5-02-CEE7C7E3",
+        "CollectorId":  "L5-02",
+        "Layer":  "L5",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "Privilegios",
+        "Title":  "Tareas programadas de terceros con privilegios maximos",
+        "Asset":  "1 tareas",
+        "Detail":  "Estas tareas se ejecutan como SYSTEM o con el nivel de privilegio mas alto. Si el script o binario invocado reside en una ubicacion escribible, cualquier usuario con acceso a esa ruta logra ejecucion privilegiada.",
+        "Evidence":  "\\OneDrive Per-Machine Standalone Update Task [SYSTEM [Highest]]",
+        "ISO27001":  [
+                         "A.8.2",
+                         "A.8.19"
+                     ],
+        "ISO27001Text":  "A.8.2; A.8.19",
+        "Recommendation":  "Reducir el nivel de privilegio al minimo necesario y proteger con ACL restrictivas los archivos que estas tareas invocan.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:39"
+    },
+    {
+        "FindingId":  "L5-02-A6AD93E9",
+        "CollectorId":  "L5-02",
+        "Layer":  "L5",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "Persistencia",
+        "Title":  "Suscripciones de eventos WMI permanentes registradas",
+        "Asset":  "1 consumidores",
+        "Detail":  "Las suscripciones WMI permanentes ejecutan codigo ante eventos del sistema y sobreviven a reinicios. Son poco frecuentes en configuraciones legitimas y constituyen una tecnica de persistencia sigilosa.",
+        "Evidence":  "SCM Event Log Consumer",
+        "ISO27001":  [
+                         "A.8.16",
+                         "A.8.7",
+                         "A.5.25"
+                     ],
+        "ISO27001Text":  "A.8.16; A.8.7; A.5.25",
+        "Recommendation":  "Identificar el producto que registro cada suscripcion. Si no se corresponde con software autorizado (agentes de monitoreo o gestion), tratar como incidente.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:39"
+    },
+    {
+        "FindingId":  "L6-01-90D1810C",
+        "CollectorId":  "L6-01",
+        "Layer":  "L6",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "Autenticacion",
+        "Title":  "Bloqueo de cuenta por intentos fallidos no configurado",
+        "Asset":  "Politica local de contrasenas",
+        "Detail":  "Sin umbral de bloqueo, el servidor no ofrece resistencia frente a ataques de fuerza bruta o de rociado de contrasenas.",
+        "Evidence":  "",
+        "ISO27001":  [
+                         "A.8.5",
+                         "A.5.17"
+                     ],
+        "ISO27001Text":  "A.8.5; A.5.17",
+        "Recommendation":  "Configurar un umbral de bloqueo (referencia: 10 intentos fallidos, ventana de 15 minutos) equilibrando seguridad y disponibilidad.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:40"
+    },
+    {
+        "FindingId":  "L6-01-5AC9FB02",
+        "CollectorId":  "L6-01",
+        "Layer":  "L6",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "Autenticacion",
+        "Title":  "Longitud minima de contrasena por debajo de la recomendacion",
+        "Asset":  "Politica local de contrasenas",
+        "Detail":  "La longitud minima configurada es de 7 caracteres. Las lineas base actuales recomiendan al menos 14 para cuentas locales de servidor.",
+        "Evidence":  "",
+        "ISO27001":  [
+                         "A.5.17",
+                         "A.8.5"
+                     ],
+        "ISO27001Text":  "A.5.17; A.8.5",
+        "Recommendation":  "Elevar la longitud minima a 14 caracteres o mas mediante directiva de grupo, priorizando longitud sobre complejidad.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:40"
+    },
+    {
+        "FindingId":  "L6-01-194F1AFB",
+        "CollectorId":  "L6-01",
+        "Layer":  "L6",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "AccesoRemoto",
+        "Title":  "RDP habilitado sin autenticacion a nivel de red (NLA)",
+        "Asset":  "RDP-Tcp",
+        "Detail":  "Sin NLA, el servidor establece una sesion completa antes de autenticar al usuario, lo que lo expone a agotamiento de recursos y a vulnerabilidades previas a la autenticacion.",
+        "Evidence":  "",
+        "ISO27001":  [
+                         "A.8.5",
+                         "A.5.15",
+                         "A.8.20"
+                     ],
+        "ISO27001Text":  "A.8.5; A.5.15; A.8.20",
+        "Recommendation":  "Habilitar UserAuthentication=1 y SecurityLayer=2 (TLS) en la configuracion de Escritorio remoto.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:40"
+    },
+    {
+        "FindingId":  "L7-01-D15EED41",
+        "CollectorId":  "L7-01",
+        "Layer":  "L7",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "ExposicionDeRed",
+        "Title":  "Servicios sensibles escuchando en todas las interfaces de red",
+        "Asset":  "8 puertos",
+        "Detail":  "Estos servicios aceptan conexiones en cualquier interfaz (0.0.0.0 o ::). Si el firewall perimetral o de host no los restringe, quedan accesibles desde toda la red alcanzable.",
+        "Evidence":  "5985/TCP [WinRM HTTP] \u003c= System | 3389/TCP [RDP] \u003c= svchost | 1433/TCP [Microsoft SQL Server] \u003c= sqlservr | 445/TCP [SMB] \u003c= System | 135/TCP [RPC Endpoint Mapper] \u003c= svchost | 3389/TCP [RDP] \u003c= svchost | 1433/TCP [Microsoft SQL Server] \u003c= sqlservr | 135/TCP [RPC Endpoint Mapper] \u003c= svchost",
+        "ISO27001":  [
+                         "A.8.20",
+                         "A.8.21",
+                         "A.8.22"
+                     ],
+        "ISO27001Text":  "A.8.20; A.8.21; A.8.22",
+        "Recommendation":  "Restringir la escucha a las interfaces necesarias, aplicar reglas de firewall con origen acotado y aplicar segmentacion de red para los servicios de administracion y de base de datos.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:41"
+    },
+    {
+        "FindingId":  "L7-01-935A9774",
+        "CollectorId":  "L7-01",
+        "Layer":  "L7",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "ControlDeAcceso",
+        "Title":  "Recursos compartidos con permisos amplios de escritura",
+        "Asset":  "4 recursos",
+        "Detail":  "Existen comparticiones que otorgan permisos de cambio o control total a grupos amplios, permitiendo lectura y modificacion de datos por cualquier cuenta autenticada de la red.",
+        "Evidence":  "B1_SHR =\u003e Everyone: Full | Guacamole =\u003e Everyone: Full | Program Files =\u003e Everyone: Full | SAP Business One =\u003e Everyone: Full",
+        "ISO27001":  [
+                         "A.8.3",
+                         "A.5.15",
+                         "A.8.12"
+                     ],
+        "ISO27001Text":  "A.8.3; A.5.15; A.8.12",
+        "Recommendation":  "Aplicar permisos basados en grupos especificos siguiendo el principio de privilegio minimo, tanto en la comparticion como en las ACL NTFS subyacentes.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:43"
+    },
+    {
+        "FindingId":  "L8-01-3023B386",
+        "CollectorId":  "L8-01",
+        "Layer":  "L8",
+        "Severity":  "High",
+        "SeverityRank":  4,
+        "Category":  "Registro",
+        "Title":  "Registro de eventos deshabilitado: Microsoft-Windows-TaskScheduler/Operational",
+        "Asset":  "Microsoft-Windows-TaskScheduler/Operational",
+        "Detail":  "Un canal de registro deshabilitado elimina la trazabilidad de los eventos que cubre e impide la deteccion y la investigacion posterior.",
+        "Evidence":  "",
+        "ISO27001":  [
+                         "A.8.15",
+                         "A.8.16"
+                     ],
+        "ISO27001Text":  "A.8.15; A.8.16",
+        "Recommendation":  "Habilitar el canal de registro y verificar que ninguna directiva de grupo lo este desactivando.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:51:24"
+    },
+    {
+        "FindingId":  "L1-01-E857BE8A",
+        "CollectorId":  "L1-01",
+        "Layer":  "L1",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "Firmware",
+        "Title":  "Firmware BIOS/UEFI con antiguedad superior a 4 anios",
+        "Asset":  "OpenStack Foundation OpenStack Nova",
+        "Detail":  "Fecha de version del BIOS: 2014-03-31 (4516 dias). El firmware desactualizado puede contener vulnerabilidades sin corregir.",
+        "Evidence":  "BIOSVersion=BOCHS  - 1 Intel IGD BDSM enabled at 0x%08x, size %lldMB, dev 00:02.0",
+        "ISO27001":  [
+                         "A.8.8",
+                         "A.8.1"
+                     ],
+        "ISO27001Text":  "A.8.8; A.8.1",
+        "Recommendation":  "Revisar el catalogo de firmware del fabricante e incorporar el firmware al ciclo formal de gestion de parches.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:49:13"
+    },
+    {
+        "FindingId":  "L2-01-2729E691",
+        "CollectorId":  "L2-01",
+        "Layer":  "L2",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "Parcheo",
+        "Title":  "Reinicio pendiente: parches aplicados pero no efectivos",
+        "Asset":  "SRV-SAP",
+        "Detail":  "Indicadores detectados: PendingFileRename. Hasta que se reinicie, las correcciones instaladas no protegen al sistema.",
+        "Evidence":  "",
+        "ISO27001":  [
+                         "A.8.8",
+                         "A.8.32"
+                     ],
+        "ISO27001Text":  "A.8.8; A.8.32",
+        "Recommendation":  "Coordinar el reinicio dentro de la proxima ventana de mantenimiento aprobada.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:49:18"
+    },
+    {
+        "FindingId":  "L2-03-0DD29681",
+        "CollectorId":  "L2-03",
+        "Layer":  "L2",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "Hardening",
+        "Title":  "Firma SMB no exigida en el servidor",
+        "Asset":  "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\RequireSecuritySignature",
+        "Detail":  "Valor actual: 0. Valor esperado segun linea base: 1.",
+        "Evidence":  "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\RequireSecuritySignature=0",
+        "ISO27001":  [
+                         "A.8.21"
+                     ],
+        "ISO27001Text":  "A.8.21",
+        "Recommendation":  "Exigir firma SMB para mitigar ataques de retransmision (relay).",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:49:26"
+    },
+    {
+        "FindingId":  "L2-03-53FFF7D6",
+        "CollectorId":  "L2-03",
+        "Layer":  "L2",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "Hardening",
+        "Title":  "UAC configurado sin solicitud de consentimiento",
+        "Asset":  "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\ConsentPromptBehaviorAdmin",
+        "Detail":  "Valor actual: 5. Valor esperado segun linea base: 2.",
+        "Evidence":  "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\ConsentPromptBehaviorAdmin=5",
+        "ISO27001":  [
+                         "A.8.9"
+                     ],
+        "ISO27001Text":  "A.8.9",
+        "Recommendation":  "Establecer ConsentPromptBehaviorAdmin en 2 (solicitar consentimiento en escritorio seguro) o superior.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:49:26"
+    },
+    {
+        "FindingId":  "L4-03-6A198F87",
+        "CollectorId":  "L4-03",
+        "Layer":  "L4",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "CodigoOperativo",
+        "Title":  "Scripts operativos sin control de versiones ni firma",
+        "Asset":  "21 scripts",
+        "Detail":  "Se identificaron 21 scripts (.ps1/.bat/.cmd/.vbs) en las rutas auditadas. El codigo operativo no firmado y sin trazabilidad puede ser modificado sin deteccion y suele ejecutarse con privilegios elevados.",
+        "Evidence":  "C:\\Scripts\\Audit\\bootstrap.ps1 | C:\\Scripts\\Audit\\Invoke-Audit.ps1 | C:\\Scripts\\Audit\\Collectors\\L1-01_Hardware-Inventory.ps1 | C:\\Scripts\\Audit\\Collectors\\L2-01_OS-Baseline.ps1 | C:\\Scripts\\Audit\\Collectors\\L2-02_Patch-Level.ps1 | C:\\Scripts\\Audit\\Collectors\\L2-03_Security-Config.ps1 | C:\\Scripts\\Audit\\Collectors\\L3-01_Runtimes-Middleware.ps1 | C:\\Scripts\\Audit\\Collectors\\L4-01_Installed-Software.ps1 | C:\\Scripts\\Audit\\Collectors\\L4-02_Package-Managers.ps1 | C:\\Scripts\\Audit\\Collectors\\L4-03_Unmanaged-Binaries.ps1 | C:\\Scripts\\Audit\\Collectors\\L4-04_Software-Integrity.ps1 | C:\\Scripts\\Audit\\Collectors\\L4-05_Software-Lifecycle.ps1 | C:\\Scripts\\Audit\\Collectors\\L4-06_EA-Baseline.ps1 | C:\\Scripts\\Audit\\Collectors\\L5-01_Services.ps1 | C:\\Scripts\\Audit\\Collectors\\L5-02_Autoruns-Tasks.ps1",
+        "ISO27001":  [
+                         "A.8.28",
+                         "A.8.19",
+                         "A.8.32"
+                     ],
+        "ISO27001Text":  "A.8.28; A.8.19; A.8.32",
+        "Recommendation":  "Trasladar el codigo operativo a un repositorio con control de versiones, firmarlo con un certificado de la organizacion y establecer ExecutionPolicy en AllSigned.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:10"
+    },
+    {
+        "FindingId":  "L4-06-B453ED7F",
+        "CollectorId":  "L4-06",
+        "Layer":  "L4",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "LineaBaseEA",
+        "Title":  "Aplicaciones declaradas en el catalogo que no se detectaron en el servidor",
+        "Asset":  "REPOFEL",
+        "Detail":  "El catalogo de arquitectura declara 1 aplicacion(es) que no fueron encontradas mediante el registro de desinstalacion ni las rutas de servicios. O la aplicacion no reside en este servidor, o su patron de deteccion esta mal definido, o se despliega por un mecanismo que el inventario gestionado no cubre (copia manual, contenedor, recurso de red).",
+        "Evidence":  "REPOFEL: patron \u0027(?i)repofel\u0027",
+        "ISO27001":  [
+                         "A.5.9",
+                         "A.8.19"
+                     ],
+        "ISO27001Text":  "A.5.9; A.8.19",
+        "Recommendation":  "Confirmar con el responsable si la aplicacion reside efectivamente en este activo. Si reside, ajustar el patron de deteccion en Arquitectura.psd1 o ejecutar el colector L4-03 con la ruta de despliegue incluida en UnmanagedScan.Rutas.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:37"
+    },
+    {
+        "FindingId":  "L4-06-CD39602C",
+        "CollectorId":  "L4-06",
+        "Layer":  "L4",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "GobiernoDeActivos",
+        "Title":  "Aplicaciones de negocio sin propietario asignado",
+        "Asset":  "REPOFEL, SAP",
+        "Detail":  "Sin propietario declarado no hay responsable de autorizar cambios, aprobar accesos, definir la clasificacion de la informacion ni asumir el riesgo residual del activo.",
+        "Evidence":  "",
+        "ISO27001":  [
+                         "A.5.9",
+                         "A.5.10",
+                         "A.5.18"
+                     ],
+        "ISO27001Text":  "A.5.9; A.5.10; A.5.18",
+        "Recommendation":  "Asignar propietario y responsable tecnico a cada aplicacion en Arquitectura.psd1, y formalizarlo en el inventario de activos del SGSI.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:37"
+    },
+    {
+        "FindingId":  "L4-06-2906B263",
+        "CollectorId":  "L4-06",
+        "Layer":  "L4",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "GobiernoDeActivos",
+        "Title":  "El servidor no tiene propietario declarado en la linea base",
+        "Asset":  "SRV-SAP",
+        "Detail":  "El bloque RolServidor de Arquitectura.psd1 mantiene el propietario sin definir. El activo no tiene responsable formal identificado.",
+        "Evidence":  "",
+        "ISO27001":  [
+                         "A.5.9",
+                         "A.5.10"
+                     ],
+        "ISO27001Text":  "A.5.9; A.5.10",
+        "Recommendation":  "Completar Propietario, ResponsableTecnico y UnidadNegocio en Config\\Arquitectura.psd1.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:37"
+    },
+    {
+        "FindingId":  "L5-01-67CA0037",
+        "CollectorId":  "L5-01",
+        "Layer":  "L5",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "Privilegios",
+        "Title":  "Servicios configurados con cuentas nominales o de dominio",
+        "Asset":  "2 servicios",
+        "Detail":  "Las cuentas nominales usadas como cuentas de servicio almacenan credenciales en el LSA, rara vez rotan su contrasena y dificultan la atribucion de acciones.",
+        "Evidence":  "Tableau Bridge worker(db_replica@SRV-SAP) [.\\db_replica] | Tableau Bridge worker(Administrator@SRV-SAP) [.\\Administrator]",
+        "ISO27001":  [
+                         "A.8.2",
+                         "A.5.16",
+                         "A.5.17"
+                     ],
+        "ISO27001Text":  "A.8.2; A.5.16; A.5.17",
+        "Recommendation":  "Migrar a cuentas de servicio administradas de grupo (gMSA) con rotacion automatica de contrasena, o a cuentas de servicio dedicadas con rotacion documentada.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:38"
+    },
+    {
+        "FindingId":  "L5-01-046BB6B3",
+        "CollectorId":  "L5-01",
+        "Layer":  "L5",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "SoftwareNoGestionado",
+        "Title":  "Servicios ejecutando binarios fuera de las rutas de instalacion estandar",
+        "Asset":  "5 servicios",
+        "Detail":  "Estos servicios ejecutan binarios que no residen en Windows ni en Archivos de programa, lo que sugiere software desplegado sin instalador o fuera del proceso de gestion de cambios.",
+        "Evidence":  "cloudResetPwdAgent =\u003e C:\\CloudResetPwdAgent\\bin\\wrapper.exe | cloudResetPwdUpdateAgent =\u003e C:\\CloudResetPwdUpdateAgent\\bin\\wrapper.exe | MDCoreSvc =\u003e C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.26070.9-0\\MpDefenderCoreService.exe | WdNisSvc =\u003e C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.26070.9-0\\NisSrv.exe | WinDefend =\u003e C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.26070.9-0\\MsMpEng.exe",
+        "ISO27001":  [
+                         "A.8.19",
+                         "A.8.9"
+                     ],
+        "ISO27001Text":  "A.8.19; A.8.9",
+        "Recommendation":  "Correlacionar cada servicio con el inventario de software autorizado (colector L4-01) y confirmar su firma digital (colector L4-04).",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:38"
+    },
+    {
+        "FindingId":  "L5-02-27B379B2",
+        "CollectorId":  "L5-02",
+        "Layer":  "L5",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "Automatizacion",
+        "Title":  "Tareas programadas de terceros activas en el servidor",
+        "Asset":  "2 tareas",
+        "Detail":  "Cada tarea programada de terceros ejecuta codigo de forma automatica y desatendida. Constituyen tanto un mecanismo operativo legitimo como el vector de persistencia mas utilizado; deben estar inventariadas y aprobadas.",
+        "Evidence":  "\\OneDrive Per-Machine Standalone Update Task =\u003e C:\\Program Files\\Microsoft OneDrive\\OneDriveStandaloneUpdater.exe | \\OneDrive Reporting Task-S-1-5-21-2969368601-2643879877-1254880530-1019 =\u003e C:\\Program Files\\Microsoft OneDrive\\OneDriveStandaloneUpdater.exe /reporting",
+        "ISO27001":  [
+                         "A.8.19",
+                         "A.5.37",
+                         "A.8.16"
+                     ],
+        "ISO27001Text":  "A.8.19; A.5.37; A.8.16",
+        "Recommendation":  "Documentar cada tarea en el procedimiento operativo del servidor: proposito, responsable, cuenta de ejecucion y frecuencia. Deshabilitar las que no tengan dueno identificable.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:39"
+    },
+    {
+        "FindingId":  "L6-01-73FA486D",
+        "CollectorId":  "L6-01",
+        "Layer":  "L6",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "Autenticacion",
+        "Title":  "Contrasenas sin rotacion por periodo prolongado",
+        "Asset":  "7 cuentas",
+        "Detail":  "Cuentas cuya contrasena no cambia desde hace mas de 365 dias.",
+        "Evidence":  "Administrator (1107 dias); b1scswworkingshare (559 dias); B1_Tech_User (559 dias); conta.seno (768 dias); edson.cuque (799 dias); jefedesarrollo (1047 dias); rublan (1006 dias)",
+        "ISO27001":  [
+                         "A.5.17",
+                         "A.8.5"
+                     ],
+        "ISO27001Text":  "A.5.17; A.8.5",
+        "Recommendation":  "Forzar el cambio de contrasena y verificar el cumplimiento de la politica corporativa de credenciales.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:40"
+    },
+    {
+        "FindingId":  "L6-01-4D37F125",
+        "CollectorId":  "L6-01",
+        "Layer":  "L6",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "Identidad",
+        "Title":  "Cuentas locales habilitadas sin uso reciente",
+        "Asset":  "3 cuentas",
+        "Detail":  "Las siguientes cuentas siguen habilitadas pese a no registrar inicio de sesion en mas de 90 dias. Las cuentas latentes amplian la superficie de ataque sin aportar valor operativo.",
+        "Evidence":  "b1scswworkingshare (559 dias); edson.cuque (742 dias); jefedesarrollo (321 dias)",
+        "ISO27001":  [
+                         "A.5.16",
+                         "A.5.18"
+                     ],
+        "ISO27001Text":  "A.5.16; A.5.18",
+        "Recommendation":  "Ejecutar la revision periodica de derechos de acceso y deshabilitar las cuentas sin dueno o sin uso justificado.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:39"
+    },
+    {
+        "FindingId":  "L6-01-8C334017",
+        "CollectorId":  "L6-01",
+        "Layer":  "L6",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "Identidad",
+        "Title":  "Cuenta de administrador integrada habilitada",
+        "Asset":  "Administrator",
+        "Detail":  "La cuenta con SID terminado en -500 esta habilitada. Es un objetivo conocido de ataques de fuerza bruta y no permite atribuir acciones a una persona concreta. Nombre actual: Administrator.",
+        "Evidence":  "SID=S-1-5-21-2969368601-2643879877-1254880530-500 UltimoInicio=2026-08-11",
+        "ISO27001":  [
+                         "A.8.2",
+                         "A.5.16",
+                         "A.5.17"
+                     ],
+        "ISO27001Text":  "A.8.2; A.5.16; A.5.17",
+        "Recommendation":  "Deshabilitar la cuenta integrada y operar con cuentas administrativas nominales sujetas a trazabilidad. Si debe permanecer activa, renombrarla y asignarle una contrasena larga custodiada en boveda.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:39"
+    },
+    {
+        "FindingId":  "L7-01-E56E5C19",
+        "CollectorId":  "L7-01",
+        "Layer":  "L7",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "Red",
+        "Title":  "Reglas de firewall entrantes sin restriccion de origen ni de puerto",
+        "Asset":  "80 reglas",
+        "Detail":  "Estas reglas permiten trafico entrante desde cualquier origen hacia cualquier puerto, anulando en la practica el filtrado de host para el programa o perfil que cubren.",
+        "Evidence":  "Core Networking - IPv6 (IPv6-In) [Any] | Cast to Device streaming server (RTCP-Streaming-In) [Domain] | Remote Desktop - Shadow (TCP-In) [Any] | AllJoyn Router (UDP-In) [Domain, Private] | Core Networking - Internet Group Management Protocol (IGMP-In) [Any] | Distributed Transaction Coordinator (TCP-In) [Any] | Your account [Domain, Private] | Work or school account [Domain, Private] | Start [Domain, Private] | Windows Search [Domain, Private] | Desktop App Web Viewer [Domain, Private, Public] | Your account [Domain, Private] | Work or school account [Domain, Private] | Start [Domain, Private] | Windows Search [Domain, Private]",
+        "ISO27001":  [
+                         "A.8.20",
+                         "A.8.21"
+                     ],
+        "ISO27001Text":  "A.8.20; A.8.21",
+        "Recommendation":  "Acotar cada regla al puerto y al rango de direcciones de origen estrictamente requeridos, y eliminar las reglas sin dueno identificable.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:51:23"
+    },
+    {
+        "FindingId":  "L8-01-8A614855",
+        "CollectorId":  "L8-01",
+        "Layer":  "L8",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "Capacidad",
+        "Title":  "Espacio libre insuficiente en el volumen C:",
+        "Asset":  "C:",
+        "Detail":  "Espacio libre: 11.5% (40.33 GB de 349.9 GB). Umbral de advertencia: 15%, umbral critico: 8%. La falta de espacio compromete el registro de eventos, la aplicacion de parches y la disponibilidad del servicio.",
+        "Evidence":  "",
+        "ISO27001":  [
+                         "A.8.6",
+                         "A.8.15"
+                     ],
+        "ISO27001Text":  "A.8.6; A.8.15",
+        "Recommendation":  "Liberar espacio, ampliar el volumen y establecer alertas de capacidad con umbral preventivo en la plataforma de monitoreo.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:51:24"
+    },
+    {
+        "FindingId":  "L8-01-54971D23",
+        "CollectorId":  "L8-01",
+        "Layer":  "L8",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "Registro",
+        "Title":  "Sin reenvio de registros a una plataforma centralizada",
+        "Asset":  "SRV-SAP",
+        "Detail":  "Los registros permanecen unicamente en el propio servidor. Un atacante con privilegios administrativos puede borrarlos, y la correlacion entre sistemas no es posible.",
+        "Evidence":  "",
+        "ISO27001":  [
+                         "A.8.15",
+                         "A.8.16",
+                         "A.5.28"
+                     ],
+        "ISO27001Text":  "A.8.15; A.8.16; A.5.28",
+        "Recommendation":  "Configurar Windows Event Forwarding o un agente de SIEM que remita los canales criticos a una plataforma centralizada con retencion e integridad protegidas.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:51:24"
+    },
+    {
+        "FindingId":  "L9-01-07E6FBEB",
+        "CollectorId":  "L9-01",
+        "Layer":  "L9",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "Capacidad",
+        "Title":  "Memoria disponible por debajo del umbral operativo",
+        "Asset":  "SRV-SAP",
+        "Detail":  "Memoria disponible: 12725 MB de 131071 MB (9.7% libre). El umbral definido es 12%. La presion de memoria degrada el rendimiento y puede provocar interrupciones del servicio.",
+        "Evidence":  "",
+        "ISO27001":  [
+                         "A.8.6"
+                     ],
+        "ISO27001Text":  "A.8.6",
+        "Recommendation":  "Identificar los procesos con mayor consumo, evaluar la ampliacion de memoria y configurar alertas preventivas de capacidad.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:51:34"
+    },
+    {
+        "FindingId":  "L9-01-5AAE7F16",
+        "CollectorId":  "L9-01",
+        "Layer":  "L9",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "Disponibilidad",
+        "Title":  "Apagados inesperados registrados en los ultimos 30 dias",
+        "Asset":  "SRV-SAP",
+        "Detail":  "Se registraron 1 eventos de apagado inesperado (ID 6008). Indican fallas de hardware, energia o del sistema que afectan la disponibilidad del servicio.",
+        "Evidence":  "2026-07-25 17:07",
+        "ISO27001":  [
+                         "A.8.16",
+                         "A.5.30",
+                         "A.8.6"
+                     ],
+        "ISO27001Text":  "A.8.16; A.5.30; A.8.6",
+        "Recommendation":  "Investigar la causa raiz de cada evento y verificar la cobertura del sistema de alimentacion ininterrumpida y del plan de continuidad.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:51:43"
+    },
+    {
+        "FindingId":  "L1-01-9E05F4AC",
+        "CollectorId":  "L1-01",
+        "Layer":  "L1",
+        "Severity":  "Low",
+        "SeverityRank":  2,
+        "Category":  "Gobierno",
+        "Title":  "Servidor fuera de dominio (workgroup)",
+        "Asset":  "SRV-SAP",
+        "Detail":  "El equipo no pertenece a un dominio, por lo que no recibe politicas de grupo centralizadas.",
+        "Evidence":  "",
+        "ISO27001":  [
+                         "A.8.9",
+                         "A.5.15"
+                     ],
+        "ISO27001Text":  "A.8.9; A.5.15",
+        "Recommendation":  "Confirmar si el aislamiento es intencional. De no serlo, incorporar al dominio o aplicar una linea base local equivalente y auditable.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:49:13"
+    },
+    {
+        "FindingId":  "L4-01-408BDE81",
+        "CollectorId":  "L4-01",
+        "Layer":  "L4",
+        "Severity":  "Low",
+        "SeverityRank":  2,
+        "Category":  "LineaBaseEA",
+        "Title":  "Artefactos sin ruta de instalacion determinable",
+        "Asset":  "16 paquetes",
+        "Detail":  "No fue posible resolver la ubicacion fisica de 16 artefactos a partir de InstallLocation, UninstallString ni DisplayIcon. Sin ruta conocida no se puede verificar integridad, aplicar control de aplicaciones ni delimitar el respaldo.",
+        "Evidence":  "SAP Crystal Reports runtime engine for .NET Framework (64-bit); Microsoft Visual C++ 2005 Redistributable (x64); Microsoft VSS Writer for SQL Server 2019; vs_CoreEditorFonts; Microsoft SQL Server 2012 Native Client; Microsoft OLE DB Driver for SQL Server; Microsoft Visual C++ 2005 Redistributable; Microsoft ODBC Driver 17 for SQL Server; Microsoft SQL Server 2019 T-SQL Language Service; Microsoft Access database engine 2010 (English); Instalador; Browser for SQL Server 2019; Microsoft Visual C++ 2010  x64 Redistributable - 10.0.40219; Microsoft SQL Server 2019 Setup (English); SSO.TRF.InstaladorAsientosContables",
+        "ISO27001":  [
+                         "A.5.9",
+                         "A.8.19"
+                     ],
+        "ISO27001Text":  "A.5.9; A.8.19",
+        "Recommendation":  "Completar la ruta manualmente en el inventario de arquitectura para estos artefactos, o retirarlos si ya no estan efectivamente instalados.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:49:36"
+    },
+    {
+        "FindingId":  "L4-01-3EA66EB7",
+        "CollectorId":  "L4-01",
+        "Layer":  "L4",
+        "Severity":  "Low",
+        "SeverityRank":  2,
+        "Category":  "CicloDeVida",
+        "Title":  "Software sin actualizacion desde hace mas de dos anios",
+        "Asset":  "15 paquetes",
+        "Detail":  "15 paquetes no registran instalacion ni actualizacion en mas de 730 dias. Puede tratarse de software estable o de software abandonado sin mantenimiento de seguridad.",
+        "Evidence":  "VMware Tools 11.3.5.18557794 [2022-06-14]; Browser for SQL Server 2019 15.0.2000.5 [2023-03-08]; Microsoft SQL Server 2019 T-SQL Language Service 15.0.2000.5 [2023-03-08]; Microsoft VSS Writer for SQL Server 2019 15.0.2000.5 [2023-03-08]; Microsoft SQL Server 2019 Setup (English) 15.0.2000.5 [2023-03-08]; Microsoft SQL Server 2012 Native Client 11.4.7462.6 [2023-03-08]; Microsoft Access database engine 2010 (English) 14.0.7015.1000 [2023-05-24]; Microsoft Visual C++ 2010  x64 Redistributable - 10.0.40219 10.0.40219 [2023-05-25]; Microsoft Visual C++ 2005 Redistributable (x64) 8.0.61000 [2023-05-25]; Microsoft Visual C++ 2005 Redistributable 8.0.61001 [2023-05-25]; SAP Business One Client Agent 1.0.1.6 [2023-10-12]; BOERuntime For Business One (64 bit) 1.00.0000 [2023-10-19]; SAP Business One Crystal Report Integration Package 1.00.0000 [2023-10-23]; Azure Data Studio 1.47.0 [2023-12-09]; SSO.TRF.InstaladorAsientosContables 10.0.0 [2024-01-04]",
+        "ISO27001":  [
+                         "A.8.8",
+                         "A.5.9"
+                     ],
+        "ISO27001Text":  "A.8.8; A.5.9",
+        "Recommendation":  "Verificar para cada paquete si existe una version soportada mas reciente y si el proveedor mantiene el producto. Ver tambien el colector L4-05 de ciclo de vida.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:49:36"
+    },
+    {
+        "FindingId":  "L4-04-79188365",
+        "CollectorId":  "L4-04",
+        "Layer":  "L4",
+        "Severity":  "Low",
+        "SeverityRank":  2,
+        "Category":  "Procedencia",
+        "Title":  "Binarios firmados por publicadores no incluidos en la lista de confianza",
+        "Asset":  "8 binarios de 5 publicadores",
+        "Detail":  "Estos artefactos tienen firma valida pero su publicador no figura en la lista de proveedores aprobados de la configuracion. No es necesariamente una desviacion, pero requiere validacion del inventario autorizado.",
+        "Evidence":  "CN=The Apache Software Foundation, OU=Apache Commons PMC, O=The Apache Software Foundation, L=Wilmington, S=Delaware, C=US, SERIALNUMBER=3022048, OID.1.3.6.1.4.1.311.60.2.1.2=Delaware, OID.1.3.6.1.4.1... | CN=Checkmk GmbH, O=Checkmk GmbH, S=Bayern, C=DE | CN=Tanuki Software Ltd., O=Tanuki Software Ltd., STREET=\"6-16-7-1001 Nishi-Kasai, Edogawa-ku\", L=Tokyo, S=Tokyo, PostalCode=134-0088, C=JP | CN=SAP SE, OU=SAP Production CSA, O=SAP SE, L=Walldorf, S=Baden-Württemberg, C=DE | CN=\"Salesforce, Inc.\", O=\"Salesforce, Inc.\", L=San Francisco, S=California, C=US",
+        "ISO27001":  [
+                         "A.5.9",
+                         "A.8.19",
+                         "A.5.21"
+                     ],
+        "ISO27001Text":  "A.5.9; A.8.19; A.5.21",
+        "Recommendation":  "Revisar cada publicador con el responsable del activo y actualizar la lista PublicadoresConfiables en Audit.config.psd1 para reducir el ruido en ejecuciones posteriores.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:27"
+    },
+    {
+        "FindingId":  "L4-05-4CB6CE83",
+        "CollectorId":  "L4-05",
+        "Layer":  "L4",
+        "Severity":  "Low",
+        "SeverityRank":  2,
+        "Category":  "CicloDeVida",
+        "Title":  "Coexistencia de multiples versiones del mismo producto",
+        "Asset":  "3 productos",
+        "Detail":  "La convivencia de varias versiones dificulta la gestion de parches: una version antigua puede permanecer vulnerable aunque la nueva ya este corregida.",
+        "Evidence":  "Microsoft Visual C++ 2013 Redistributable (x64) - 12.0.40664: 12.0.40664.0, 12.0.21005.1 | Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.40664: 12.0.40664.0, 12.0.21005.1, 12.0.30501.0 | Microsoft Visual Studio Tools for Applications 2019: 16.0.31110, 15.0.27520",
+        "ISO27001":  [
+                         "A.8.8",
+                         "A.5.9"
+                     ],
+        "ISO27001Text":  "A.8.8; A.5.9",
+        "Recommendation":  "Desinstalar las versiones obsoletas tras confirmar que ninguna aplicacion depende de ellas.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:29"
+    },
+    {
+        "FindingId":  "L5-01-E6541DEF",
+        "CollectorId":  "L5-01",
+        "Layer":  "L5",
+        "Severity":  "Low",
+        "SeverityRank":  2,
+        "Category":  "Operacion",
+        "Title":  "Servicios con inicio automatico que se encuentran detenidos",
+        "Asset":  "5 servicios",
+        "Detail":  "Un servicio configurado para iniciar automaticamente pero detenido puede indicar una falla no atendida o la desactivacion manual de un control de seguridad.",
+        "Evidence":  "cloudResetPwdAgent, edgeupdate, RemoteRegistry, Tableau Bridge worker(db_replica@SRV-SAP), VMTools",
+        "ISO27001":  [
+                         "A.8.16",
+                         "A.8.9"
+                     ],
+        "ISO27001Text":  "A.8.16; A.8.9",
+        "Recommendation":  "Revisar el registro de eventos del sistema para cada servicio y determinar si la interrupcion es intencional y esta documentada.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:38"
+    },
+    {
+        "FindingId":  "L5-02-EE2C1310",
+        "CollectorId":  "L5-02",
+        "Layer":  "L5",
+        "Severity":  "Low",
+        "SeverityRank":  2,
+        "Category":  "Automatizacion",
+        "Title":  "Entradas de autoarranque configuradas en el registro",
+        "Asset":  "10 entradas",
+        "Detail":  "Las claves Run ejecutan programas automaticamente al inicio de sesion. En un servidor deben ser minimas y estar justificadas.",
+        "Evidence":  "Maquina\\SecurityHealth =\u003e C:\\Windows\\system32\\SecurityHealthSystray.exe | Maquina\\VMware User Process =\u003e \"C:\\Program Files\\VMware\\VMware Tools\\vmtoolsd.exe\" -n vmusr | Maquina\\AzureArcSetup =\u003e C:\\Windows\\AzureArcSetup\\Systray\\AzureArcSysTray.exe | Maquina\\SAP Business One Service Manager =\u003e c:\\Program Files\\SAP\\SAP Business One ServerTools\\Service Manager\\B1_ServiceManager.exe | Maquina (una vez)\\Delete Cached Update Binary =\u003e C:\\Windows\\system32\\cmd.exe /q /c del /q \"C:\\Program Files\\Microsoft OneDrive\\Update\\OneDriveSetup.exe\" | Maquina (una vez)\\Delete Cached Standalone Update Binary =\u003e C:\\Windows\\system32\\cmd.exe /q /c del /q \"C:\\Program Files\\Microsoft OneDrive\\StandaloneUpdater\\OneDriveSetup.exe\" | Maquina (una vez)\\msedge_cleanup_{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5} =\u003e \"C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\151.0.4129.78\\Installer\\setup.exe\" --msedgewebview --delete-old-versions --system-level --verbose-logging --on-logon | Usuario actual\\OneDrive =\u003e \"C:\\Program Files\\Microsoft OneDrive\\OneDrive.exe\" /background | Winlogon\\Shell =\u003e explorer.exe | Winlogon\\Userinit =\u003e C:\\Windows\\system32\\userinit.exe,",
+        "ISO27001":  [
+                         "A.8.19",
+                         "A.8.9"
+                     ],
+        "ISO27001Text":  "A.8.19; A.8.9",
+        "Recommendation":  "Validar cada entrada contra el inventario de software autorizado y eliminar las que no correspondan a un producto aprobado.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:39"
+    },
+    {
+        "FindingId":  "L6-01-64FE068F",
+        "CollectorId":  "L6-01",
+        "Layer":  "L6",
+        "Severity":  "Low",
+        "SeverityRank":  2,
+        "Category":  "AccesoRemoto",
+        "Title":  "Miembros con derecho de acceso por Escritorio remoto",
+        "Asset":  "Remote Desktop Users: 2 miembros",
+        "Detail":  "El acceso por RDP debe restringirse al personal estrictamente necesario y realizarse preferentemente a traves de un host de salto (jump server).",
+        "Evidence":  "SRV-SAP\\db_replica; SRV-SAP\\svalle",
+        "ISO27001":  [
+                         "A.5.15",
+                         "A.8.5",
+                         "A.5.18"
+                     ],
+        "ISO27001Text":  "A.5.15; A.8.5; A.5.18",
+        "Recommendation":  "Revisar la membresia contra la matriz de accesos autorizada y exigir autenticacion multifactor en el punto de entrada remoto.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:40"
+    },
+    {
+        "FindingId":  "L6-01-E9A779DF",
+        "CollectorId":  "L6-01",
+        "Layer":  "L6",
+        "Severity":  "Low",
+        "SeverityRank":  2,
+        "Category":  "Identidad",
+        "Title":  "Cuentas habilitadas que nunca han iniciado sesion",
+        "Asset":  "B1_Tech_User",
+        "Detail":  "Cuentas creadas y habilitadas sin uso registrado. Pueden ser cuentas de servicio (aceptable) o cuentas residuales de aprovisionamiento (a eliminar).",
+        "Evidence":  "",
+        "ISO27001":  [
+                         "A.5.16"
+                     ],
+        "ISO27001Text":  "A.5.16",
+        "Recommendation":  "Clasificar cada cuenta como de servicio o nominal y eliminar las que no tengan proposito vigente.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:50:39"
+    },
+    {
+        "FindingId":  "L4-01-47690CE4",
+        "CollectorId":  "L4-01",
+        "Layer":  "L4",
+        "Severity":  "Info",
+        "SeverityRank":  1,
+        "Category":  "GestionDeCambios",
+        "Title":  "Instalaciones de software en los ultimos 30 dias",
+        "Asset":  "2 paquetes",
+        "Detail":  "Se registraron 2 instalaciones o actualizaciones recientes. Cada una debe corresponder a un cambio aprobado y trazable.",
+        "Evidence":  "Microsoft Edge 151.0.4129.78 [2026-08-11]; Microsoft Edge WebView2 Runtime 151.0.4129.78 [2026-08-11]",
+        "ISO27001":  [
+                         "A.8.32",
+                         "A.8.19"
+                     ],
+        "ISO27001Text":  "A.8.32; A.8.19",
+        "Recommendation":  "Contrastar esta lista contra los registros de cambio aprobados (RFC/tickets). Toda instalacion sin cambio asociado constituye una desviacion de A.8.19.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-11T18:49:36"
+    }
+]

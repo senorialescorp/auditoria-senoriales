@@ -1,0 +1,219 @@
+﻿[
+    {
+        "Control":  "VUL-02",
+        "Elemento":  "Antimalware",
+        "Valor":  "Microsoft Defender",
+        "Esperado":  "Presente y activo",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "VUL-02",
+        "Elemento":  "ProteccionTiempoReal",
+        "Valor":  "True",
+        "Esperado":  "True",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "VUL-02",
+        "Elemento":  "AntimalwareHabilitado",
+        "Valor":  "True",
+        "Esperado":  "True",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "VUL-02",
+        "Elemento":  "VersionFirmas",
+        "Valor":  "1.457.198.0",
+        "Esperado":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Control":  "VUL-02",
+        "Elemento":  "EdadFirmasDias",
+        "Valor":  "1",
+        "Esperado":  "\u003c= 3",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "VUL-02",
+        "Elemento":  "UltimoEscaneoCompleto",
+        "Valor":  "",
+        "Esperado":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Control":  "VUL-02",
+        "Elemento":  "ProteccionManipulacion",
+        "Valor":  "True",
+        "Esperado":  "True",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "VUL-02",
+        "Elemento":  "ExclusionesDefinidas",
+        "Valor":  "3",
+        "Esperado":  "\u003c= 10 justificadas",
+        "Estado":  "Info"
+    },
+    {
+        "Control":  "VUL-02",
+        "Elemento":  "ExclusionRuta",
+        "Valor":  "N/A: Must be an administrator to view exclusions",
+        "Esperado":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Control":  "RED-01",
+        "Elemento":  "Firewall-Domain",
+        "Valor":  "False",
+        "Esperado":  "True",
+        "Estado":  "FALLA"
+    },
+    {
+        "Control":  "RED-01",
+        "Elemento":  "FirewallEntrante-Domain",
+        "Valor":  "NotConfigured",
+        "Esperado":  "Block",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Control":  "REG-01",
+        "Elemento":  "FirewallLog-Domain",
+        "Valor":  "False",
+        "Esperado":  "True",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Control":  "RED-01",
+        "Elemento":  "Firewall-Private",
+        "Valor":  "False",
+        "Esperado":  "True",
+        "Estado":  "FALLA"
+    },
+    {
+        "Control":  "RED-01",
+        "Elemento":  "FirewallEntrante-Private",
+        "Valor":  "NotConfigured",
+        "Esperado":  "Block",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Control":  "REG-01",
+        "Elemento":  "FirewallLog-Private",
+        "Valor":  "False",
+        "Esperado":  "True",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Control":  "RED-01",
+        "Elemento":  "Firewall-Public",
+        "Valor":  "False",
+        "Esperado":  "True",
+        "Estado":  "FALLA"
+    },
+    {
+        "Control":  "RED-01",
+        "Elemento":  "FirewallEntrante-Public",
+        "Valor":  "NotConfigured",
+        "Esperado":  "Block",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Control":  "REG-01",
+        "Elemento":  "FirewallLog-Public",
+        "Valor":  "False",
+        "Esperado":  "True",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Control":  "ARQ-01",
+        "Elemento":  "EnableLUA",
+        "Valor":  "1",
+        "Esperado":  "1",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "ARQ-01",
+        "Elemento":  "ConsentPromptBehaviorAdmin",
+        "Valor":  "5",
+        "Esperado":  "2",
+        "Estado":  "FALLA"
+    },
+    {
+        "Control":  "ARQ-01",
+        "Elemento":  "RunAsPPL",
+        "Valor":  "(no definido)",
+        "Esperado":  "1",
+        "Estado":  "NO DEFINIDO"
+    },
+    {
+        "Control":  "ACC-03",
+        "Elemento":  "LimitBlankPasswordUse",
+        "Valor":  "1",
+        "Esperado":  "1",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "CRI-02",
+        "Elemento":  "NoLMHash",
+        "Valor":  "1",
+        "Esperado":  "1",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "RED-02",
+        "Elemento":  "SMB1",
+        "Valor":  "(no definido)",
+        "Esperado":  "0",
+        "Estado":  "NO DEFINIDO"
+    },
+    {
+        "Control":  "RED-02",
+        "Elemento":  "RequireSecuritySignature",
+        "Valor":  "0",
+        "Esperado":  "1",
+        "Estado":  "FALLA"
+    },
+    {
+        "Control":  "REG-01",
+        "Elemento":  "EnableScriptBlockLogging",
+        "Valor":  "(no definido)",
+        "Esperado":  "1",
+        "Estado":  "NO DEFINIDO"
+    },
+    {
+        "Control":  "REG-01",
+        "Elemento":  "EnableModuleLogging",
+        "Valor":  "(no definido)",
+        "Esperado":  "1",
+        "Estado":  "NO DEFINIDO"
+    },
+    {
+        "Control":  "CRI-02",
+        "Elemento":  "SChannel TLS 1.0 (Server)",
+        "Valor":  "Enabled=0 DisabledByDefault=1",
+        "Esperado":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Control":  "CRI-02",
+        "Elemento":  "SChannel TLS 1.0 (Client)",
+        "Valor":  "Enabled=0 DisabledByDefault=1",
+        "Esperado":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Control":  "CRI-02",
+        "Elemento":  "SChannel TLS 1.1 (Server)",
+        "Valor":  "Enabled=0 DisabledByDefault=1",
+        "Esperado":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Control":  "CRI-02",
+        "Elemento":  "SChannel TLS 1.1 (Client)",
+        "Valor":  "Enabled=0 DisabledByDefault=1",
+        "Esperado":  "",
+        "Estado":  "Info"
+    }
+]

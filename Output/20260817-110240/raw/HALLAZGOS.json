@@ -1,0 +1,42 @@
+﻿[
+    {
+        "FindingId":  "L1-01-E857BE8A",
+        "CollectorId":  "L1-01",
+        "Layer":  "L1",
+        "Severity":  "Medium",
+        "SeverityRank":  3,
+        "Category":  "Firmware",
+        "Title":  "Firmware BIOS/UEFI con antiguedad superior a 4 anios",
+        "Asset":  "OpenStack Foundation OpenStack Nova",
+        "Detail":  "Fecha de version del BIOS: 2014-03-31 (4521 dias). El firmware desactualizado puede contener vulnerabilidades sin corregir.",
+        "Evidence":  "BIOSVersion=BOCHS  - 1 Intel IGD BDSM enabled at 0x%08x, size %lldMB, dev 00:02.0",
+        "Criterios":  [
+                          "VUL-01",
+                          "ARQ-01"
+                      ],
+        "CriteriosTexto":  "VUL-01; ARQ-01",
+        "Recommendation":  "Revisar el catalogo de firmware del fabricante e incorporar el firmware al ciclo formal de gestion de parches.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-17T11:02:42"
+    },
+    {
+        "FindingId":  "L1-01-9E05F4AC",
+        "CollectorId":  "L1-01",
+        "Layer":  "L1",
+        "Severity":  "Low",
+        "SeverityRank":  2,
+        "Category":  "Gobierno",
+        "Title":  "Servidor fuera de dominio (workgroup)",
+        "Asset":  "SRV-SAP",
+        "Detail":  "El equipo no pertenece a un dominio, por lo que no recibe politicas de grupo centralizadas.",
+        "Evidence":  "",
+        "Criterios":  [
+                          "ARQ-01",
+                          "ACC-04"
+                      ],
+        "CriteriosTexto":  "ARQ-01; ACC-04",
+        "Recommendation":  "Confirmar si el aislamiento es intencional. De no serlo, incorporar al dominio o aplicar una linea base local equivalente y auditable.",
+        "Host":  "SRV-SAP",
+        "DetectedAt":  "2026-08-17T11:02:42"
+    }
+]

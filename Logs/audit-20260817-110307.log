@@ -1,0 +1,28 @@
+﻿2026-08-17 11:03:07 [INFO ] [CORE] Contexto inicializado. RunId=20260817-110307 Host=SRV-SAP Admin=False
+2026-08-17 11:03:07 [WARN ] [ORQ] Sesion sin privilegios administrativos. Varios criterios no podran evidenciarse por completo; las brechas quedaran registradas en el reporte.
+2026-08-17 11:03:09 [OK   ] [L1-01] Completado en 1.37s con 23 registros y 2 hallazgos.
+2026-08-17 11:03:12 [OK   ] [L2-01] Completado en 3.02s con 12 registros y 1 hallazgos.
+2026-08-17 11:03:22 [OK   ] [L2-02] Completado en 9.34s con 10 registros y 2 hallazgos.
+2026-08-17 11:03:26 [WARN ] [L2-03] Brecha de evidencia: Get-BitLockerVolume no disponible (caracteristica no instalada o falta de privilegios).
+2026-08-17 11:03:26 [WARN ] [L2-03] Brecha de evidencia: Get-WindowsOptionalFeature requiere privilegios elevados; no se verifico SMBv1 como caracteristica.
+2026-08-17 11:03:26 [WARN ] [L2-03] Brecha de evidencia: auditpol requiere privilegios elevados; no se evaluo la directiva de auditoria.
+2026-08-17 11:03:26 [OK   ] [L2-03] Completado en 3.88s con 31 registros y 3 hallazgos.
+2026-08-17 11:03:27 [WARN ] [L3-01] Brecha de evidencia: Modulo WebAdministration no disponible; no se enumeraron los grupos de aplicaciones de IIS.
+2026-08-17 11:03:27 [OK   ] [L3-01] Completado en 1.42s con 83 registros y 1 hallazgos.
+2026-08-17 11:03:39 [OK   ] [L4-01] Completado en 11.49s con 80 registros y 3 hallazgos.
+2026-08-17 11:03:55 [OK   ] [L4-02] Completado en 16.34s con 7 registros y 0 hallazgos.
+2026-08-17 11:04:40 [OK   ] [L4-03] Completado en 45.11s con 390 registros y 3 hallazgos.
+2026-08-17 11:05:01 [WARN ] [L4-04] Brecha de evidencia: No se pudo resolver la ruta de 372 procesos (habitual sin privilegios elevados: procesos de sistema y de otras sesiones).
+2026-08-17 11:05:01 [OK   ] [L4-04] Completado en 20.34s con 83 registros y 2 hallazgos.
+2026-08-17 11:05:03 [OK   ] [L4-05] Completado en 2.17s con 66 registros y 3 hallazgos.
+2026-08-17 11:05:15 [OK   ] [L4-06] Completado en 11.64s con 51 registros y 4 hallazgos.
+2026-08-17 11:05:15 [OK   ] [L5-01] Completado en 0.48s con 290 registros y 4 hallazgos.
+2026-08-17 11:05:17 [OK   ] [L5-02] Completado en 1.16s con 134 registros y 4 hallazgos.
+2026-08-17 11:05:17 [OK   ] [L6-01] Completado en 0.47s con 31 registros y 8 hallazgos.
+2026-08-17 11:06:04 [OK   ] [L7-01] Completado en 46.94s con 159 registros y 3 hallazgos.
+2026-08-17 11:06:05 [WARN ] [L8-01] Brecha de evidencia: No se pudo consultar el registro de seguridad (requiere privilegios administrativos).
+2026-08-17 11:06:05 [WARN ] [L8-01] Brecha de evidencia: Win32_ShadowCopy no accesible (puede requerir elevacion).
+2026-08-17 11:06:05 [WARN ] [L8-01] Brecha de evidencia: Sin registros de Windows Server Backup en los ultimos 30 dias. Si el respaldo lo realiza una herramienta de terceros, verificarlo por fuera de esta auditoria.
+2026-08-17 11:06:05 [OK   ] [L8-01] Completado en 0.75s con 17 registros y 3 hallazgos.
+2026-08-17 11:06:26 [OK   ] [L9-01] Completado en 21.31s con 55 registros y 2 hallazgos.
+2026-08-17 11:06:29 [OK   ] [ORQ] Auditoria finalizada. Riesgo=288.4 (CRITICO). Hallazgos=48.

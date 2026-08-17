@@ -1,0 +1,42 @@
+﻿[
+    {
+        "Colector":  "L2-03",
+        "Capa":  "L2",
+        "Brecha":  "Get-BitLockerVolume no disponible (caracteristica no instalada o falta de privilegios)."
+    },
+    {
+        "Colector":  "L2-03",
+        "Capa":  "L2",
+        "Brecha":  "Get-WindowsOptionalFeature requiere privilegios elevados; no se verifico SMBv1 como caracteristica."
+    },
+    {
+        "Colector":  "L2-03",
+        "Capa":  "L2",
+        "Brecha":  "auditpol requiere privilegios elevados; no se evaluo la directiva de auditoria."
+    },
+    {
+        "Colector":  "L3-01",
+        "Capa":  "L3",
+        "Brecha":  "Modulo WebAdministration no disponible; no se enumeraron los grupos de aplicaciones de IIS."
+    },
+    {
+        "Colector":  "L4-04",
+        "Capa":  "L4",
+        "Brecha":  "No se pudo resolver la ruta de 372 procesos (habitual sin privilegios elevados: procesos de sistema y de otras sesiones)."
+    },
+    {
+        "Colector":  "L8-01",
+        "Capa":  "L8",
+        "Brecha":  "No se pudo consultar el registro de seguridad (requiere privilegios administrativos)."
+    },
+    {
+        "Colector":  "L8-01",
+        "Capa":  "L8",
+        "Brecha":  "Win32_ShadowCopy no accesible (puede requerir elevacion)."
+    },
+    {
+        "Colector":  "L8-01",
+        "Capa":  "L8",
+        "Brecha":  "Sin registros de Windows Server Backup en los ultimos 30 dias. Si el respaldo lo realiza una herramienta de terceros, verificarlo por fuera de esta auditoria."
+    }
+]

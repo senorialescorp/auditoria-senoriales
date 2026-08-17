@@ -1,0 +1,392 @@
+﻿[
+    {
+        "Control":  "A.5.9",
+        "Tema":  "Organizacional",
+        "Titulo":  "Inventario de informacion y otros activos asociados",
+        "Descripcion":  "Debe elaborarse y mantenerse un inventario de la informacion y de los demas activos asociados, incluidos sus propietarios. El inventario debe ser exacto, estar actualizado y ser coherente con los demas inventarios de la organizacion.",
+        "Objetivo":  "Identificar y mantener un inventario de activos, incluido el software instalado, con su ubicacion, descripcion y propietario.",
+        "Cobertura":  "Total",
+        "Capas":  "L1, L2, L3, L4",
+        "Colectores":  "L1-01, L2-01, L3-01, L4-01, L4-02, L4-06"
+    },
+    {
+        "Control":  "A.5.10",
+        "Tema":  "Organizacional",
+        "Titulo":  "Uso aceptable de la informacion y otros activos asociados",
+        "Descripcion":  "Deben identificarse, documentarse e implementarse reglas para el uso aceptable y los procedimientos de manejo de la informacion y de los activos asociados.",
+        "Objetivo":  "Detectar software fuera de politica instalado en el servidor y artefactos sin proposito declarado.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L4",
+        "Colectores":  "L4-01, L4-03, L4-06"
+    },
+    {
+        "Control":  "A.5.15",
+        "Tema":  "Organizacional",
+        "Titulo":  "Control de acceso",
+        "Descripcion":  "Deben establecerse e implementarse reglas para controlar el acceso fisico y logico a la informacion y a los activos asociados, con base en los requisitos de seguridad y de negocio.",
+        "Objetivo":  "Verificar reglas de acceso logico a sistemas y recursos compartidos.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L6, L7",
+        "Colectores":  "L6-01, L7-01"
+    },
+    {
+        "Control":  "A.5.16",
+        "Tema":  "Organizacional",
+        "Titulo":  "Gestion de identidad",
+        "Descripcion":  "El ciclo de vida completo de las identidades debe gestionarse: alta, modificacion y baja oportuna de identidades de personas y de sistemas, evitando identidades duplicadas o huerfanas.",
+        "Objetivo":  "Identificar cuentas locales, huerfanas o inactivas.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L6",
+        "Colectores":  "L6-01"
+    },
+    {
+        "Control":  "A.5.17",
+        "Tema":  "Organizacional",
+        "Titulo":  "Informacion de autenticacion",
+        "Descripcion":  "La asignacion y gestion de la informacion de autenticacion debe controlarse mediante un proceso que incluya asesorar al personal sobre su manejo apropiado, su confidencialidad y su rotacion.",
+        "Objetivo":  "Evaluar politica de contrasenas, caducidad y almacenamiento de credenciales.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L6",
+        "Colectores":  "L6-01"
+    },
+    {
+        "Control":  "A.5.18",
+        "Tema":  "Organizacional",
+        "Titulo":  "Derechos de acceso",
+        "Descripcion":  "Los derechos de acceso a la informacion y a otros activos deben aprovisionarse, revisarse, modificarse y retirarse conforme a la politica de control de acceso de la organizacion.",
+        "Objetivo":  "Revisar membresias de grupos privilegiados locales y su vigencia.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L6",
+        "Colectores":  "L6-01"
+    },
+    {
+        "Control":  "A.5.21",
+        "Tema":  "Organizacional",
+        "Titulo":  "Gestion de la seguridad en la cadena de suministro de TIC",
+        "Descripcion":  "Deben definirse e implementarse procesos y procedimientos para gestionar los riesgos de seguridad asociados a la cadena de suministro de productos y servicios de tecnologia de la informacion y las comunicaciones.",
+        "Objetivo":  "Identificar repositorios de paquetes de terceros marcados como confiables y la dependencia de proveedores.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L4",
+        "Colectores":  "L4-02, L4-05"
+    },
+    {
+        "Control":  "A.5.23",
+        "Tema":  "Organizacional",
+        "Titulo":  "Seguridad de la informacion en servicios en la nube",
+        "Descripcion":  "Los procesos de adquisicion, uso, gestion y salida de servicios en la nube deben establecerse conforme a los requisitos de seguridad de la organizacion.",
+        "Objetivo":  "Detectar agentes de sincronizacion en nube no autorizados que constituyan canales de datos fuera de control.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L4",
+        "Colectores":  "L4-01"
+    },
+    {
+        "Control":  "A.5.25",
+        "Tema":  "Organizacional",
+        "Titulo":  "Evaluacion y decision sobre eventos de seguridad de la informacion",
+        "Descripcion":  "La organizacion debe evaluar los eventos de seguridad de la informacion y decidir si se clasifican como incidentes de seguridad de la informacion.",
+        "Objetivo":  "Senalar indicadores de compromiso que deben escalarse al proceso de gestion de incidentes.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L4, L5, L8",
+        "Colectores":  "L4-03, L4-04, L5-02, L8-01"
+    },
+    {
+        "Control":  "A.5.28",
+        "Tema":  "Organizacional",
+        "Titulo":  "Recoleccion de evidencia",
+        "Descripcion":  "La organizacion debe establecer e implementar procedimientos para la identificacion, recoleccion, adquisicion y preservacion de evidencia relacionada con eventos de seguridad de la informacion.",
+        "Objetivo":  "Verificar retencion e integridad de los registros que constituirian evidencia ante un incidente.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L8",
+        "Colectores":  "L8-01"
+    },
+    {
+        "Control":  "A.5.30",
+        "Tema":  "Organizacional",
+        "Titulo":  "Preparacion de las TIC para la continuidad de negocio",
+        "Descripcion":  "La preparacion de las tecnologias de informacion y comunicacion debe planificarse, implementarse, mantenerse y probarse con base en los objetivos de continuidad de negocio y los requisitos de continuidad de las TIC.",
+        "Objetivo":  "Verificar existencia de respaldos, instantaneas y capacidad de recuperacion.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L8",
+        "Colectores":  "L8-01"
+    },
+    {
+        "Control":  "A.5.37",
+        "Tema":  "Organizacional",
+        "Titulo":  "Procedimientos operativos documentados",
+        "Descripcion":  "Los procedimientos operativos para las instalaciones de procesamiento de informacion deben documentarse y ponerse a disposicion del personal que los necesite.",
+        "Objetivo":  "Identificar automatizaciones no documentadas (tareas programadas y autoarranque sin dueno).",
+        "Cobertura":  "Indicio",
+        "Capas":  "L5",
+        "Colectores":  "L5-02"
+    },
+    {
+        "Control":  "A.7.9",
+        "Tema":  "Fisico",
+        "Titulo":  "Seguridad de los activos fuera de las instalaciones",
+        "Descripcion":  "Los activos situados fuera de las instalaciones de la organizacion deben protegerse considerando los distintos riesgos derivados de operar fuera del perimetro fisico controlado.",
+        "Objetivo":  "Verificar cifrado de volumenes para activos moviles o alojados fuera del centro de datos propio.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L1, L2",
+        "Colectores":  "L1-01, L2-03"
+    },
+    {
+        "Control":  "A.7.10",
+        "Tema":  "Fisico",
+        "Titulo":  "Medios de almacenamiento",
+        "Descripcion":  "Los medios de almacenamiento deben gestionarse a lo largo de su ciclo de vida de adquisicion, uso, transporte y disposicion, conforme al esquema de clasificacion y a los requisitos de manejo de la organizacion.",
+        "Objetivo":  "Inventariar volumenes y detectar medios extraibles conectados al servidor.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L1, L8",
+        "Colectores":  "L1-01, L8-01"
+    },
+    {
+        "Control":  "A.8.1",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Dispositivos finales de usuario",
+        "Descripcion":  "La informacion almacenada, procesada o accesible a traves de dispositivos finales de usuario debe protegerse mediante configuraciones y controles apropiados.",
+        "Objetivo":  "Verificar la configuracion de proteccion del dispositivo y su firmware.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L1, L2",
+        "Colectores":  "L1-01, L2-03"
+    },
+    {
+        "Control":  "A.8.2",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Derechos de acceso privilegiado",
+        "Descripcion":  "La asignacion y el uso de derechos de acceso privilegiado deben restringirse y gestionarse, otorgandose solo cuando sea necesario y sujetos a revision periodica.",
+        "Objetivo":  "Enumerar administradores locales, cuentas de servicio privilegiadas y tareas con privilegio maximo.",
+        "Cobertura":  "Total",
+        "Capas":  "L6, L5",
+        "Colectores":  "L6-01, L5-01"
+    },
+    {
+        "Control":  "A.8.3",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Restriccion de acceso a la informacion",
+        "Descripcion":  "El acceso a la informacion y a otros activos asociados debe restringirse conforme a la politica de control de acceso establecida por la organizacion.",
+        "Objetivo":  "Revisar permisos de recursos compartidos de red y su alcance.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L7",
+        "Colectores":  "L7-01"
+    },
+    {
+        "Control":  "A.8.5",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Autenticacion segura",
+        "Descripcion":  "Deben implementarse tecnologias y procedimientos de autenticacion segura acordes con las restricciones de acceso y con la politica de control de acceso.",
+        "Objetivo":  "Verificar NLA en RDP, bloqueo de cuentas, longitud de contrasena y cifrado del canal de administracion.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L6, L7",
+        "Colectores":  "L6-01, L7-01"
+    },
+    {
+        "Control":  "A.8.6",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Gestion de la capacidad",
+        "Descripcion":  "El uso de los recursos debe monitorearse y ajustarse conforme a los requisitos de capacidad actuales y proyectados, para asegurar el desempeno requerido de los sistemas.",
+        "Objetivo":  "Medir uso de CPU, memoria y almacenamiento frente a umbrales definidos.",
+        "Cobertura":  "Total",
+        "Capas":  "L9, L8",
+        "Colectores":  "L9-01, L8-01"
+    },
+    {
+        "Control":  "A.8.7",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Proteccion contra codigo malicioso",
+        "Descripcion":  "Debe implementarse proteccion contra codigo malicioso, respaldada por una adecuada concienciacion de los usuarios.",
+        "Objetivo":  "Verificar estado del antimalware, vigencia de firmas, proteccion en tiempo real y alcance de las exclusiones.",
+        "Cobertura":  "Total",
+        "Capas":  "L2",
+        "Colectores":  "L2-03"
+    },
+    {
+        "Control":  "A.8.8",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Gestion de vulnerabilidades tecnicas",
+        "Descripcion":  "Debe obtenerse informacion sobre las vulnerabilidades tecnicas de los sistemas de informacion en uso, evaluarse la exposicion de la organizacion a dichas vulnerabilidades y tomarse las medidas apropiadas.",
+        "Objetivo":  "Evaluar latencia de parcheo del SO y detectar software y componentes fuera de soporte del proveedor.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L2, L3, L4",
+        "Colectores":  "L2-02, L3-01, L4-05"
+    },
+    {
+        "Control":  "A.8.9",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Gestion de la configuracion",
+        "Descripcion":  "Las configuraciones, incluidas las de seguridad, del hardware, software, servicios y redes deben establecerse, documentarse, implementarse, monitorearse y revisarse.",
+        "Objetivo":  "Contrastar la configuracion del sistema y sus servicios contra una linea base segura documentada.",
+        "Cobertura":  "Total",
+        "Capas":  "L2, L3, L5",
+        "Colectores":  "L2-01, L2-03, L3-01, L5-01, L4-06"
+    },
+    {
+        "Control":  "A.8.10",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Eliminacion de informacion",
+        "Descripcion":  "La informacion almacenada en sistemas de informacion, dispositivos o en cualquier otro medio debe eliminarse cuando ya no sea requerida.",
+        "Objetivo":  "Verificar politica de retencion de registros y acumulacion de archivos temporales.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L8",
+        "Colectores":  "L8-01"
+    },
+    {
+        "Control":  "A.8.12",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Prevencion de fuga de datos",
+        "Descripcion":  "Deben aplicarse medidas de prevencion de fuga de datos a los sistemas, redes y demas dispositivos que procesen, almacenen o transmitan informacion sensible.",
+        "Objetivo":  "Detectar canales potenciales de exfiltracion: nube personal, P2P, medios extraibles y comparticiones abiertas.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L4, L7",
+        "Colectores":  "L4-01, L7-01"
+    },
+    {
+        "Control":  "A.8.13",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Respaldo de la informacion",
+        "Descripcion":  "Deben mantenerse y probarse regularmente copias de respaldo de la informacion, del software y de los sistemas, conforme a la politica de respaldo acordada.",
+        "Objetivo":  "Verificar configuracion, ultima ejecucion y disponibilidad de respaldos e instantaneas.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L8",
+        "Colectores":  "L8-01"
+    },
+    {
+        "Control":  "A.8.15",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Registro de eventos (logging)",
+        "Descripcion":  "Deben producirse, almacenarse, protegerse y analizarse registros que documenten actividades, excepciones, fallas y otros eventos relevantes.",
+        "Objetivo":  "Verificar tamano, modo de retencion, proteccion y cobertura de la politica de auditoria de los registros de eventos.",
+        "Cobertura":  "Total",
+        "Capas":  "L8, L2",
+        "Colectores":  "L8-01, L2-03"
+    },
+    {
+        "Control":  "A.8.16",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Actividades de monitoreo",
+        "Descripcion":  "Las redes, sistemas y aplicaciones deben monitorearse para detectar comportamientos anomalos y adoptar acciones apropiadas para evaluar potenciales incidentes de seguridad.",
+        "Objetivo":  "Verificar presencia de agentes de monitoreo, reenvio de eventos y anomalias operativas registradas.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L8, L9, L5",
+        "Colectores":  "L8-01, L9-01, L5-02"
+    },
+    {
+        "Control":  "A.8.17",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Sincronizacion de relojes",
+        "Descripcion":  "Los relojes de los sistemas de procesamiento de informacion deben sincronizarse con fuentes de tiempo aprobadas.",
+        "Objetivo":  "Verificar el servicio de tiempo y que apunte a una fuente NTP autorizada.",
+        "Cobertura":  "Total",
+        "Capas":  "L2",
+        "Colectores":  "L2-01"
+    },
+    {
+        "Control":  "A.8.18",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Uso de programas utilitarios privilegiados",
+        "Descripcion":  "El uso de programas utilitarios capaces de anular los controles del sistema y de las aplicaciones debe restringirse y controlarse estrictamente.",
+        "Objetivo":  "Detectar utilitarios capaces de eludir controles del sistema y su ubicacion.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L4, L5",
+        "Colectores":  "L4-03, L5-01"
+    },
+    {
+        "Control":  "A.8.19",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Instalacion de software en sistemas operativos",
+        "Descripcion":  "Deben implementarse procedimientos y medidas para gestionar de forma segura la instalacion de software en los sistemas operativos, asegurando que solo se instale software autorizado y que su origen sea verificable.",
+        "Objetivo":  "CONTROL EJE DE ESTA AUDITORIA. Inventario, procedencia, ubicacion, firma digital, integridad y rol arquitectonico de todo artefacto de software instalado.",
+        "Cobertura":  "Total",
+        "Capas":  "L4",
+        "Colectores":  "L4-01, L4-02, L4-03, L4-04, L4-06"
+    },
+    {
+        "Control":  "A.8.20",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Seguridad de redes",
+        "Descripcion":  "Las redes y los dispositivos de red deben asegurarse, gestionarse y controlarse para proteger la informacion que transita por los sistemas y aplicaciones.",
+        "Objetivo":  "Verificar el estado del firewall por perfil y la superficie de escucha del servidor.",
+        "Cobertura":  "Total",
+        "Capas":  "L7, L2",
+        "Colectores":  "L7-01, L2-03"
+    },
+    {
+        "Control":  "A.8.21",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Seguridad de los servicios de red",
+        "Descripcion":  "Deben identificarse, implementarse y monitorearse los mecanismos de seguridad, los niveles de servicio y los requisitos de los servicios de red, tanto propios como contratados.",
+        "Objetivo":  "Identificar servicios de red expuestos y protocolos heredados o sin cifrado habilitados.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L7",
+        "Colectores":  "L7-01"
+    },
+    {
+        "Control":  "A.8.22",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Segregacion de redes",
+        "Descripcion":  "Los grupos de servicios de informacion, usuarios y sistemas de informacion deben segregarse en las redes de la organizacion.",
+        "Objetivo":  "Revisar interfaces, perfiles de red y alcance de escucha de los servicios sensibles.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L7",
+        "Colectores":  "L7-01"
+    },
+    {
+        "Control":  "A.8.24",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Uso de criptografia",
+        "Descripcion":  "Deben definirse e implementarse reglas para el uso efectivo de la criptografia, incluida la gestion de claves criptograficas.",
+        "Objetivo":  "Verificar cifrado de volumenes, protocolos TLS/SChannel habilitados y presencia de algoritmos debiles.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L2",
+        "Colectores":  "L2-03"
+    },
+    {
+        "Control":  "A.8.25",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Ciclo de vida de desarrollo seguro",
+        "Descripcion":  "Deben establecerse y aplicarse reglas para el desarrollo seguro de software y sistemas a lo largo de todo su ciclo de vida.",
+        "Objetivo":  "Identificar dependencias y gestores de paquetes de desarrollo instalados en un servidor productivo.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L4",
+        "Colectores":  "L4-02"
+    },
+    {
+        "Control":  "A.8.28",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Codificacion segura",
+        "Descripcion":  "Deben aplicarse principios de codificacion segura al desarrollo de software, incluyendo la proteccion e integridad del codigo desplegado.",
+        "Objetivo":  "Detectar scripts operativos sin firma ni control de versiones, y la politica de ejecucion de PowerShell.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L4",
+        "Colectores":  "L4-03"
+    },
+    {
+        "Control":  "A.8.31",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Separacion de entornos de desarrollo, prueba y produccion",
+        "Descripcion":  "Los entornos de desarrollo, prueba y produccion deben estar separados y asegurados, evitando que herramientas o datos de un entorno comprometan a otro.",
+        "Objetivo":  "Detectar SDK, compiladores o herramientas de desarrollo presentes en un servidor declarado como productivo.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L3, L4",
+        "Colectores":  "L3-01, L4-02, L4-06"
+    },
+    {
+        "Control":  "A.8.32",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Gestion de cambios",
+        "Descripcion":  "Los cambios en las instalaciones de procesamiento de informacion y en los sistemas de informacion deben estar sujetos a procedimientos de gestion de cambios.",
+        "Objetivo":  "Establecer la trazabilidad de instalaciones y actualizaciones recientes contra cambios aprobados.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L4, L2",
+        "Colectores":  "L4-01, L2-02"
+    },
+    {
+        "Control":  "A.8.34",
+        "Tema":  "Tecnologico",
+        "Titulo":  "Proteccion de sistemas de informacion durante auditorias",
+        "Descripcion":  "Las pruebas de auditoria y demas actividades de aseguramiento que impliquen la evaluacion de sistemas operativos deben planificarse y acordarse entre el auditor y la direccion, minimizando su impacto sobre los procesos de negocio.",
+        "Objetivo":  "La suite opera en modo de solo lectura, evita clases WMI de efecto colateral y registra su propio impacto sobre el sistema auditado.",
+        "Cobertura":  "Total",
+        "Capas":  "L9",
+        "Colectores":  "L9-01"
+    }
+]

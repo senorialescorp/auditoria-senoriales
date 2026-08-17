@@ -1,0 +1,121 @@
+﻿[
+    {
+        "Categoria":  "RegistroEventos",
+        "Elemento":  "Security",
+        "Valor":  "No accesible",
+        "Detalle":  "Could not retrieve information about the Security log. Error: Attempted to perform an unauthorized operation..",
+        "Estado":  "N/D"
+    },
+    {
+        "Categoria":  "RegistroEventos",
+        "Elemento":  "System",
+        "Valor":  "Habilitado",
+        "Detalle":  "MaxMB=20 UsadoMB=20 Modo=Circular Registros=60661",
+        "Estado":  "OK"
+    },
+    {
+        "Categoria":  "RegistroEventos",
+        "Elemento":  "Application",
+        "Valor":  "Habilitado",
+        "Detalle":  "MaxMB=20 UsadoMB=20 Modo=Circular Registros=50090",
+        "Estado":  "OK"
+    },
+    {
+        "Categoria":  "RegistroEventos",
+        "Elemento":  "Windows PowerShell",
+        "Valor":  "Habilitado",
+        "Detalle":  "MaxMB=15 UsadoMB=15 Modo=Circular Registros=700",
+        "Estado":  "OK"
+    },
+    {
+        "Categoria":  "RegistroEventos",
+        "Elemento":  "Microsoft-Windows-PowerShell/Operational",
+        "Valor":  "Habilitado",
+        "Detalle":  "MaxMB=15 UsadoMB=15 Modo=Circular Registros=967",
+        "Estado":  "OK"
+    },
+    {
+        "Categoria":  "RegistroEventos",
+        "Elemento":  "Microsoft-Windows-Windows Defender/Operational",
+        "Valor":  "Habilitado",
+        "Detalle":  "MaxMB=16 UsadoMB=16 Modo=Circular Registros=17416",
+        "Estado":  "OK"
+    },
+    {
+        "Categoria":  "RegistroEventos",
+        "Elemento":  "Microsoft-Windows-TaskScheduler/Operational",
+        "Valor":  "Deshabilitado",
+        "Detalle":  "MaxMB=10 UsadoMB=10 Modo=Circular Registros=17527",
+        "Estado":  "FALLA"
+    },
+    {
+        "Categoria":  "RegistroEventos",
+        "Elemento":  "ReenvioCentralizado(WEF)",
+        "Valor":  "No configurado",
+        "Detalle":  "",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Categoria":  "Respaldo",
+        "Elemento":  "Servicio wbengine",
+        "Valor":  "No instalado",
+        "Detalle":  "Windows Server Backup no presente",
+        "Estado":  "Info"
+    },
+    {
+        "Categoria":  "Capacidad",
+        "Elemento":  "Volumen C:",
+        "Valor":  "11.6% libre",
+        "Detalle":  "40.48 GB libres de 349.9 GB",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Categoria":  "Capacidad",
+        "Elemento":  "Volumen D:",
+        "Valor":  "79.3% libre",
+        "Detalle":  "7.92 GB libres de 10 GB",
+        "Estado":  "OK"
+    },
+    {
+        "Categoria":  "Capacidad",
+        "Elemento":  "Volumen E:",
+        "Valor":  "26.2% libre",
+        "Detalle":  "210 GB libres de 800 GB",
+        "Estado":  "OK"
+    },
+    {
+        "Categoria":  "Capacidad",
+        "Elemento":  "Volumen F:",
+        "Valor":  "61% libre",
+        "Detalle":  "103.65 GB libres de 170 GB",
+        "Estado":  "OK"
+    },
+    {
+        "Categoria":  "Capacidad",
+        "Elemento":  "Volumen G:",
+        "Valor":  "30.5% libre",
+        "Detalle":  "152.72 GB libres de 500 GB",
+        "Estado":  "OK"
+    },
+    {
+        "Categoria":  "Capacidad",
+        "Elemento":  "Volumen I:",
+        "Valor":  "91.8% libre",
+        "Detalle":  "41.32 GB libres de 45 GB",
+        "Estado":  "OK"
+    },
+    {
+        "Categoria":  "Temporales",
+        "Elemento":  "C:\\Windows\\Temp",
+        "Valor":  "0 archivos, 0 MB",
+        "Detalle":  "0 con mas de 90 dias",
+        "Estado":  "OK"
+    },
+    {
+        "Categoria":  "Temporales",
+        "Elemento":  "C:\\Users\\svalle\\AppData\\Local\\Temp\\4",
+        "Valor":  "16 archivos, 28.8 MB",
+        "Detalle":  "0 con mas de 90 dias",
+        "Estado":  "OK"
+    }
+]

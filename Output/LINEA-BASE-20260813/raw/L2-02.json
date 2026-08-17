@@ -1,0 +1,83 @@
+﻿[
+    {
+        "Categoria":  "Actualizacion",
+        "HotFixID":  "KB5082142",
+        "Tipo":  "Security Update",
+        "InstaladoEl":  "2026-04-30",
+        "InstaladoPor":  "NT AUTHORITY\\SYSTEM",
+        "DiasDesde":  105,
+        "Enlace":  "https://support.microsoft.com/help/5082142"
+    },
+    {
+        "Categoria":  "Actualizacion",
+        "HotFixID":  "KB5082137",
+        "Tipo":  "Security Update",
+        "InstaladoEl":  "2026-04-30",
+        "InstaladoPor":  "NT AUTHORITY\\SYSTEM",
+        "DiasDesde":  105,
+        "Enlace":  ""
+    },
+    {
+        "Categoria":  "Actualizacion",
+        "HotFixID":  "KB5082427",
+        "Tipo":  "Update",
+        "InstaladoEl":  "2026-04-30",
+        "InstaladoPor":  "NT AUTHORITY\\SYSTEM",
+        "DiasDesde":  105,
+        "Enlace":  "http://support.microsoft.com/?kbid=5082427"
+    },
+    {
+        "Categoria":  "Actualizacion",
+        "HotFixID":  "KB5012170",
+        "Tipo":  "Security Update",
+        "InstaladoEl":  "2023-09-06",
+        "InstaladoPor":  "SRV-SAP\\Administrator",
+        "DiasDesde":  1072,
+        "Enlace":  "https://support.microsoft.com/help/5012170"
+    },
+    {
+        "Categoria":  "ConfiguracionWU",
+        "HotFixID":  "AUOptions",
+        "Tipo":  "Descargar y notificar antes de instalar",
+        "InstaladoEl":  "",
+        "InstaladoPor":  "",
+        "DiasDesde":  null,
+        "Enlace":  "Microsoft Update"
+    },
+    {
+        "Categoria":  "ConfiguracionWU",
+        "HotFixID":  "wuauserv",
+        "Tipo":  "Stopped / Manual",
+        "InstaladoEl":  "",
+        "InstaladoPor":  "",
+        "DiasDesde":  null,
+        "Enlace":  "Servicio Windows Update"
+    },
+    {
+        "Categoria":  "Pendiente",
+        "HotFixID":  "890830",
+        "Tipo":  "Windows Malicious Software Removal Tool x64 - v5.144 (KB890830)",
+        "InstaladoEl":  "",
+        "InstaladoPor":  "",
+        "DiasDesde":  null,
+        "Enlace":  "Severidad MSRC: "
+    },
+    {
+        "Categoria":  "Pendiente",
+        "HotFixID":  "5121650",
+        "Tipo":  "2026-08 Cumulative Update for .NET Framework 3.5, 4.8 and 4.8.1 for Microsoft server operating system version 21H2 for x64 (KB5121650)",
+        "InstaladoEl":  "",
+        "InstaladoPor":  "",
+        "DiasDesde":  null,
+        "Enlace":  "Severidad MSRC: Important"
+    },
+    {
+        "Categoria":  "Pendiente",
+        "HotFixID":  "5120242",
+        "Tipo":  "2026-08 Cumulative Update for Microsoft server operating system version 21H2 for x64-based Systems (KB5120242)",
+        "InstaladoEl":  "",
+        "InstaladoPor":  "",
+        "DiasDesde":  null,
+        "Enlace":  "Severidad MSRC: "
+    }
+]

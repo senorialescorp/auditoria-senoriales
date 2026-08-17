@@ -1,0 +1,322 @@
+﻿[
+    {
+        "Criterio":  "INV-01",
+        "Dominio":  "INV - Inventario y gobierno de activos",
+        "Titulo":  "Inventario de activos de software y hardware",
+        "Descripcion":  "Debe existir y mantenerse un inventario exacto y actualizado de los componentes de hardware y software del activo, incluida su ubicacion fisica en disco, su version y su procedencia.",
+        "Objetivo":  "Levantar el inventario completo de artefactos con descripcion, ruta y rol arquitectonico.",
+        "Cobertura":  "Total",
+        "Capas":  "L1, L2, L3, L4",
+        "Colectores":  "L1-01, L2-01, L3-01, L4-01, L4-02, L4-06"
+    },
+    {
+        "Criterio":  "INV-03",
+        "Dominio":  "INV - Inventario y gobierno de activos",
+        "Titulo":  "Software autorizado y uso aceptable",
+        "Descripcion":  "Solo debe residir en el activo software autorizado y acorde con el proposito del servidor. Debe existir una politica que defina que es aceptable instalar y usar.",
+        "Objetivo":  "Detectar software fuera de politica y artefactos sin proposito declarado.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L4",
+        "Colectores":  "L4-01, L4-03, L4-06"
+    },
+    {
+        "Criterio":  "ARQ-01",
+        "Dominio":  "ARQ - Arquitectura y configuracion",
+        "Titulo":  "Linea base de configuracion segura",
+        "Descripcion":  "La configuracion del hardware, sistema operativo, servicios y red debe estar documentada, implementada conforme a una linea base endurecida, y revisarse periodicamente.",
+        "Objetivo":  "Contrastar la configuracion del sistema y sus servicios contra una linea base segura.",
+        "Cobertura":  "Total",
+        "Capas":  "L1, L2, L3, L5",
+        "Colectores":  "L1-01, L2-01, L2-03, L3-01, L5-01"
+    },
+    {
+        "Criterio":  "ARQ-03",
+        "Dominio":  "ARQ - Arquitectura y configuracion",
+        "Titulo":  "Separacion de entornos",
+        "Descripcion":  "Los entornos de desarrollo, prueba y produccion deben estar separados. Un servidor productivo no debe alojar herramientas de construccion de software ni datos de otros entornos.",
+        "Objetivo":  "Detectar SDK, compiladores y herramientas de desarrollo en un servidor declarado como productivo.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L3, L4",
+        "Colectores":  "L3-01, L4-02, L4-06"
+    },
+    {
+        "Criterio":  "ARQ-04",
+        "Dominio":  "ARQ - Arquitectura y configuracion",
+        "Titulo":  "Sincronizacion de reloj",
+        "Descripcion":  "El reloj del sistema debe sincronizarse con una fuente de tiempo autorizada, condicion necesaria para que los registros tengan valor probatorio y sean correlacionables.",
+        "Objetivo":  "Verificar el servicio de tiempo y que apunte a una fuente NTP autorizada.",
+        "Cobertura":  "Total",
+        "Capas":  "L2",
+        "Colectores":  "L2-01"
+    },
+    {
+        "Criterio":  "SW-02",
+        "Dominio":  "SW - Gestion de software",
+        "Titulo":  "Ciclo de vida y soporte del proveedor",
+        "Descripcion":  "El software instalado debe contar con soporte vigente del proveedor. Los productos fuera de soporte no reciben correcciones de seguridad y requieren plan de tratamiento del riesgo.",
+        "Objetivo":  "Detectar software y componentes de plataforma fuera de soporte, y versiones duplicadas.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L3, L4",
+        "Colectores":  "L3-01, L4-05"
+    },
+    {
+        "Criterio":  "SW-03",
+        "Dominio":  "SW - Gestion de software",
+        "Titulo":  "Control de instalacion de software",
+        "Descripcion":  "CRITERIO EJE DE ESTA AUDITORIA. La instalacion de software en el activo debe estar controlada: solo software autorizado, instalado por un mecanismo gestionado, con origen verificable y registrado en el inventario.",
+        "Objetivo":  "Inventariar, ubicar y verificar todo artefacto de software, incluidos los instalados fuera del registro gestionado.",
+        "Cobertura":  "Total",
+        "Capas":  "L4, L5",
+        "Colectores":  "L4-01, L4-02, L4-03, L4-04, L4-06, L5-01, L5-02"
+    },
+    {
+        "Criterio":  "SW-04",
+        "Dominio":  "SW - Gestion de software",
+        "Titulo":  "Cadena de suministro y repositorios de paquetes",
+        "Descripcion":  "Los repositorios y gestores de paquetes desde los que se obtiene software deben ser controlados por la organizacion o estar formalmente aprobados, evitando la instalacion desde fuentes publicas sin validacion.",
+        "Objetivo":  "Identificar gestores de paquetes, repositorios marcados como confiables y concentracion de proveedores.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L4",
+        "Colectores":  "L4-02, L4-05"
+    },
+    {
+        "Criterio":  "SW-05",
+        "Dominio":  "SW - Gestion de software",
+        "Titulo":  "Codigo operativo, scripts y utilitarios privilegiados",
+        "Descripcion":  "El codigo operativo desplegado en el activo debe estar bajo control de versiones y firmado. El uso de utilitarios capaces de anular controles del sistema debe restringirse y registrarse.",
+        "Objetivo":  "Detectar scripts sin firma ni trazabilidad, y utilitarios capaces de eludir controles.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L4, L5",
+        "Colectores":  "L4-03, L5-01"
+    },
+    {
+        "Criterio":  "VUL-01",
+        "Dominio":  "VUL - Vulnerabilidades y proteccion",
+        "Titulo":  "Gestion de vulnerabilidades tecnicas y parcheo",
+        "Descripcion":  "Debe obtenerse informacion sobre las vulnerabilidades tecnicas de los componentes en uso, evaluarse la exposicion del activo y aplicarse las correcciones dentro de plazos definidos.",
+        "Objetivo":  "Medir la latencia de parcheo del sistema operativo y detectar correcciones pendientes o no efectivas.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L2, L3, L4",
+        "Colectores":  "L2-02, L3-01, L4-05"
+    },
+    {
+        "Criterio":  "VUL-02",
+        "Dominio":  "VUL - Vulnerabilidades y proteccion",
+        "Titulo":  "Proteccion contra codigo malicioso",
+        "Descripcion":  "El activo debe contar con proteccion antimalware activa, con definiciones actualizadas, proteccion en tiempo real habilitada y exclusiones justificadas y acotadas.",
+        "Objetivo":  "Verificar estado del antimalware, vigencia de firmas y alcance de las exclusiones configuradas.",
+        "Cobertura":  "Total",
+        "Capas":  "L2",
+        "Colectores":  "L2-03"
+    },
+    {
+        "Criterio":  "ACC-01",
+        "Dominio":  "ACC - Identidad y control de acceso",
+        "Titulo":  "Gestion de identidades y cuentas",
+        "Descripcion":  "El ciclo de vida de las cuentas debe gestionarse: alta, modificacion y baja oportuna. No deben persistir cuentas huerfanas, inactivas o sin proposito identificable.",
+        "Objetivo":  "Identificar cuentas locales inactivas, nunca usadas o sin responsable.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L6",
+        "Colectores":  "L6-01"
+    },
+    {
+        "Criterio":  "ACC-02",
+        "Dominio":  "ACC - Identidad y control de acceso",
+        "Titulo":  "Acceso privilegiado",
+        "Descripcion":  "La asignacion y el uso de privilegios administrativos deben restringirse al minimo necesario, revisarse periodicamente y aplicarse tambien a las cuentas de servicio y tareas automatizadas.",
+        "Objetivo":  "Enumerar administradores locales, cuentas de servicio privilegiadas y automatizaciones con privilegio maximo.",
+        "Cobertura":  "Total",
+        "Capas":  "L5, L6",
+        "Colectores":  "L5-01, L5-02, L6-01"
+    },
+    {
+        "Criterio":  "ACC-03",
+        "Dominio":  "ACC - Identidad y control de acceso",
+        "Titulo":  "Autenticacion y gestion de credenciales",
+        "Descripcion":  "Los mecanismos de autenticacion deben ser robustos: longitud minima de contrasena adecuada, caducidad y rotacion definidas, bloqueo por intentos fallidos y ausencia de almacenamiento debil de credenciales.",
+        "Objetivo":  "Evaluar politica de contrasenas, bloqueo de cuentas y robustez del canal de autenticacion.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L6, L7",
+        "Colectores":  "L6-01, L7-01"
+    },
+    {
+        "Criterio":  "ACC-04",
+        "Dominio":  "ACC - Identidad y control de acceso",
+        "Titulo":  "Restriccion de acceso a la informacion",
+        "Descripcion":  "El acceso a la informacion y a los recursos compartidos debe restringirse conforme a la politica de control de acceso, aplicando privilegio minimo tanto en la comparticion como en el sistema de archivos.",
+        "Objetivo":  "Revisar permisos de recursos compartidos de red y su alcance efectivo.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L6, L7",
+        "Colectores":  "L6-01, L7-01"
+    },
+    {
+        "Criterio":  "RED-01",
+        "Dominio":  "RED - Red y exposicion",
+        "Titulo":  "Superficie de exposicion y filtrado de host",
+        "Descripcion":  "El filtrado de red en el host debe estar activo en todos los perfiles, con politica entrante restrictiva por defecto y reglas acotadas al puerto y origen estrictamente requeridos.",
+        "Objetivo":  "Verificar el estado del firewall por perfil y la superficie de escucha del servidor.",
+        "Cobertura":  "Total",
+        "Capas":  "L2, L7",
+        "Colectores":  "L2-03, L7-01"
+    },
+    {
+        "Criterio":  "RED-02",
+        "Dominio":  "RED - Red y exposicion",
+        "Titulo":  "Servicios y protocolos de red",
+        "Descripcion":  "Los servicios de red expuestos deben ser los minimos necesarios y emplear protocolos con cifrado y autenticacion. Los protocolos heredados o sin cifrado deben estar deshabilitados.",
+        "Objetivo":  "Identificar servicios expuestos y protocolos heredados o en texto claro habilitados.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L2, L7",
+        "Colectores":  "L2-03, L7-01"
+    },
+    {
+        "Criterio":  "RED-03",
+        "Dominio":  "RED - Red y exposicion",
+        "Titulo":  "Segmentacion de red",
+        "Descripcion":  "Los servicios de administracion y de datos deben estar segregados de las redes de usuario, limitando el alcance de escucha de los servicios sensibles.",
+        "Objetivo":  "Revisar interfaces, perfiles de red y alcance de escucha de los servicios sensibles.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L7",
+        "Colectores":  "L7-01"
+    },
+    {
+        "Criterio":  "CRI-01",
+        "Dominio":  "CRI - Criptografia",
+        "Titulo":  "Cifrado de la informacion en reposo",
+        "Descripcion":  "La informacion almacenada debe protegerse mediante cifrado acorde a su clasificacion, especialmente en activos que puedan salir del perimetro fisico controlado.",
+        "Objetivo":  "Verificar el cifrado de los volumenes del servidor.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L1, L2",
+        "Colectores":  "L1-01, L2-03"
+    },
+    {
+        "Criterio":  "CRI-02",
+        "Dominio":  "CRI - Criptografia",
+        "Titulo":  "Protocolos y algoritmos criptograficos",
+        "Descripcion":  "Deben emplearse unicamente protocolos y algoritmos criptograficos vigentes. Los protocolos con debilidades conocidas deben estar explicitamente deshabilitados.",
+        "Objetivo":  "Revisar los protocolos TLS/SChannel habilitados y detectar algoritmos debiles o heredados.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L2, L7",
+        "Colectores":  "L2-03, L7-01"
+    },
+    {
+        "Criterio":  "REG-01",
+        "Dominio":  "REG - Registro y monitoreo",
+        "Titulo":  "Registro de eventos",
+        "Descripcion":  "Deben registrarse las actividades, excepciones y eventos relevantes del activo, con capacidad de almacenamiento suficiente, politica de retencion definida y proteccion frente a borrado.",
+        "Objetivo":  "Verificar tamano, modo de retencion y cobertura de la politica de auditoria de los registros.",
+        "Cobertura":  "Total",
+        "Capas":  "L2, L8",
+        "Colectores":  "L2-03, L8-01"
+    },
+    {
+        "Criterio":  "REG-02",
+        "Dominio":  "REG - Registro y monitoreo",
+        "Titulo":  "Monitoreo y deteccion de anomalias",
+        "Descripcion":  "El activo debe monitorearse para detectar comportamientos anomalos, y los eventos relevantes deben evaluarse para determinar si constituyen incidentes.",
+        "Objetivo":  "Detectar indicadores de compromiso, persistencia no documentada y anomalias operativas.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L4, L5, L8, L9",
+        "Colectores":  "L4-03, L4-04, L5-02, L8-01, L9-01"
+    },
+    {
+        "Criterio":  "REG-03",
+        "Dominio":  "REG - Registro y monitoreo",
+        "Titulo":  "Preservacion de evidencia",
+        "Descripcion":  "Debe existir capacidad de identificar, recolectar y preservar evidencia relacionada con eventos de seguridad, incluyendo el envio de registros a una plataforma centralizada fuera del alcance del activo.",
+        "Objetivo":  "Verificar retencion, reenvio centralizado e integridad de los registros que constituirian evidencia.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L8",
+        "Colectores":  "L8-01"
+    },
+    {
+        "Criterio":  "CAP-01",
+        "Dominio":  "CAP - Capacidad y continuidad",
+        "Titulo":  "Gestion de capacidad",
+        "Descripcion":  "El uso de CPU, memoria y almacenamiento debe monitorearse y ajustarse conforme a los requisitos actuales y proyectados, para asegurar el desempeno del servicio.",
+        "Objetivo":  "Medir el uso de recursos frente a umbrales definidos y detectar saturacion.",
+        "Cobertura":  "Total",
+        "Capas":  "L8, L9",
+        "Colectores":  "L8-01, L9-01"
+    },
+    {
+        "Criterio":  "CAP-02",
+        "Dominio":  "CAP - Capacidad y continuidad",
+        "Titulo":  "Respaldo y recuperacion",
+        "Descripcion":  "Deben mantenerse y probarse copias de respaldo de la informacion, el software y la configuracion, conforme a una politica de respaldo definida.",
+        "Objetivo":  "Verificar configuracion, ultima ejecucion y disponibilidad de respaldos e instantaneas.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L8",
+        "Colectores":  "L8-01"
+    },
+    {
+        "Criterio":  "CAP-03",
+        "Dominio":  "CAP - Capacidad y continuidad",
+        "Titulo":  "Continuidad operativa",
+        "Descripcion":  "La capacidad de recuperacion del activo debe planificarse y probarse conforme a los objetivos de continuidad del negocio.",
+        "Objetivo":  "Verificar mecanismos de recuperacion y estabilidad operativa del servidor.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L8, L9",
+        "Colectores":  "L8-01, L9-01"
+    },
+    {
+        "Criterio":  "DAT-01",
+        "Dominio":  "DAT - Gestion de datos",
+        "Titulo":  "Retencion y eliminacion de informacion",
+        "Descripcion":  "La informacion debe eliminarse cuando deja de ser necesaria, incluidos archivos temporales y datos residuales que puedan contener fragmentos sensibles.",
+        "Objetivo":  "Verificar politica de retencion y acumulacion de archivos temporales.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L8",
+        "Colectores":  "L8-01"
+    },
+    {
+        "Criterio":  "DAT-02",
+        "Dominio":  "DAT - Gestion de datos",
+        "Titulo":  "Canales de salida de informacion",
+        "Descripcion":  "Deben controlarse los canales por los que la informacion puede salir del activo: sincronizacion a nube no corporativa, intercambio P2P, medios extraibles y comparticiones abiertas.",
+        "Objetivo":  "Detectar canales potenciales de exfiltracion de informacion.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L4, L7",
+        "Colectores":  "L4-01, L7-01"
+    },
+    {
+        "Criterio":  "DAT-03",
+        "Dominio":  "DAT - Gestion de datos",
+        "Titulo":  "Medios de almacenamiento",
+        "Descripcion":  "Los medios de almacenamiento deben gestionarse durante todo su ciclo de vida, controlando la conexion de medios extraibles al activo.",
+        "Objetivo":  "Inventariar volumenes y detectar medios extraibles conectados.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L1, L8",
+        "Colectores":  "L1-01, L8-01"
+    },
+    {
+        "Criterio":  "CAM-01",
+        "Dominio":  "CAM - Gestion de cambios",
+        "Titulo":  "Trazabilidad de cambios",
+        "Descripcion":  "Las modificaciones al activo deben estar sujetas a un procedimiento de gestion de cambios, de modo que toda instalacion o actualizacion corresponda a un cambio aprobado y trazable.",
+        "Objetivo":  "Establecer la trazabilidad de instalaciones y actualizaciones recientes contra cambios aprobados.",
+        "Cobertura":  "Parcial",
+        "Capas":  "L2, L4",
+        "Colectores":  "L2-02, L4-01"
+    },
+    {
+        "Criterio":  "CAM-02",
+        "Dominio":  "CAM - Gestion de cambios",
+        "Titulo":  "Procedimientos operativos documentados",
+        "Descripcion":  "Los procedimientos operativos del activo, incluidas las automatizaciones programadas, deben estar documentados y tener responsable identificado.",
+        "Objetivo":  "Identificar automatizaciones y tareas programadas sin documentacion ni dueno.",
+        "Cobertura":  "Indicio",
+        "Capas":  "L5",
+        "Colectores":  "L5-02"
+    },
+    {
+        "Criterio":  "AUD-01",
+        "Dominio":  "AUD - Ejecucion de la auditoria",
+        "Titulo":  "Proteccion del sistema durante la auditoria",
+        "Descripcion":  "Las actividades de auditoria sobre sistemas en operacion deben planificarse para minimizar su impacto en los procesos de negocio, y el propio proceso debe ser reproducible y trazable.",
+        "Objetivo":  "La suite opera en modo de solo lectura, evita mecanismos de efecto colateral y registra su propio impacto.",
+        "Cobertura":  "Total",
+        "Capas":  "L9",
+        "Colectores":  "L9-01"
+    }
+]

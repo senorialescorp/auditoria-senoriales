@@ -1,0 +1,219 @@
+﻿[
+    {
+        "Control":  "A.8.7",
+        "Elemento":  "Antimalware",
+        "Valor":  "Microsoft Defender",
+        "Esperado":  "Presente y activo",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "A.8.7",
+        "Elemento":  "ProteccionTiempoReal",
+        "Valor":  "True",
+        "Esperado":  "True",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "A.8.7",
+        "Elemento":  "AntimalwareHabilitado",
+        "Valor":  "True",
+        "Esperado":  "True",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "A.8.7",
+        "Elemento":  "VersionFirmas",
+        "Valor":  "1.457.118.0",
+        "Esperado":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Control":  "A.8.7",
+        "Elemento":  "EdadFirmasDias",
+        "Valor":  "0",
+        "Esperado":  "\u003c= 3",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "A.8.7",
+        "Elemento":  "UltimoEscaneoCompleto",
+        "Valor":  "",
+        "Esperado":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Control":  "A.8.7",
+        "Elemento":  "ProteccionManipulacion",
+        "Valor":  "True",
+        "Esperado":  "True",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "A.8.7",
+        "Elemento":  "ExclusionesDefinidas",
+        "Valor":  "3",
+        "Esperado":  "\u003c= 10 justificadas",
+        "Estado":  "Info"
+    },
+    {
+        "Control":  "A.8.7",
+        "Elemento":  "ExclusionRuta",
+        "Valor":  "N/A: Must be an administrator to view exclusions",
+        "Esperado":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Control":  "A.8.20",
+        "Elemento":  "Firewall-Domain",
+        "Valor":  "False",
+        "Esperado":  "True",
+        "Estado":  "FALLA"
+    },
+    {
+        "Control":  "A.8.20",
+        "Elemento":  "FirewallEntrante-Domain",
+        "Valor":  "NotConfigured",
+        "Esperado":  "Block",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Control":  "A.8.15",
+        "Elemento":  "FirewallLog-Domain",
+        "Valor":  "False",
+        "Esperado":  "True",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Control":  "A.8.20",
+        "Elemento":  "Firewall-Private",
+        "Valor":  "False",
+        "Esperado":  "True",
+        "Estado":  "FALLA"
+    },
+    {
+        "Control":  "A.8.20",
+        "Elemento":  "FirewallEntrante-Private",
+        "Valor":  "NotConfigured",
+        "Esperado":  "Block",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Control":  "A.8.15",
+        "Elemento":  "FirewallLog-Private",
+        "Valor":  "False",
+        "Esperado":  "True",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Control":  "A.8.20",
+        "Elemento":  "Firewall-Public",
+        "Valor":  "False",
+        "Esperado":  "True",
+        "Estado":  "FALLA"
+    },
+    {
+        "Control":  "A.8.20",
+        "Elemento":  "FirewallEntrante-Public",
+        "Valor":  "NotConfigured",
+        "Esperado":  "Block",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Control":  "A.8.15",
+        "Elemento":  "FirewallLog-Public",
+        "Valor":  "False",
+        "Esperado":  "True",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Control":  "A.8.9",
+        "Elemento":  "EnableLUA",
+        "Valor":  "1",
+        "Esperado":  "1",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "A.8.9",
+        "Elemento":  "ConsentPromptBehaviorAdmin",
+        "Valor":  "5",
+        "Esperado":  "2",
+        "Estado":  "FALLA"
+    },
+    {
+        "Control":  "A.8.9",
+        "Elemento":  "RunAsPPL",
+        "Valor":  "(no definido)",
+        "Esperado":  "1",
+        "Estado":  "NO DEFINIDO"
+    },
+    {
+        "Control":  "A.8.5",
+        "Elemento":  "LimitBlankPasswordUse",
+        "Valor":  "1",
+        "Esperado":  "1",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "A.8.24",
+        "Elemento":  "NoLMHash",
+        "Valor":  "1",
+        "Esperado":  "1",
+        "Estado":  "OK"
+    },
+    {
+        "Control":  "A.8.21",
+        "Elemento":  "SMB1",
+        "Valor":  "(no definido)",
+        "Esperado":  "0",
+        "Estado":  "NO DEFINIDO"
+    },
+    {
+        "Control":  "A.8.21",
+        "Elemento":  "RequireSecuritySignature",
+        "Valor":  "0",
+        "Esperado":  "1",
+        "Estado":  "FALLA"
+    },
+    {
+        "Control":  "A.8.15",
+        "Elemento":  "EnableScriptBlockLogging",
+        "Valor":  "(no definido)",
+        "Esperado":  "1",
+        "Estado":  "NO DEFINIDO"
+    },
+    {
+        "Control":  "A.8.15",
+        "Elemento":  "EnableModuleLogging",
+        "Valor":  "(no definido)",
+        "Esperado":  "1",
+        "Estado":  "NO DEFINIDO"
+    },
+    {
+        "Control":  "A.8.24",
+        "Elemento":  "SChannel TLS 1.0 (Server)",
+        "Valor":  "Enabled=0 DisabledByDefault=1",
+        "Esperado":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Control":  "A.8.24",
+        "Elemento":  "SChannel TLS 1.0 (Client)",
+        "Valor":  "Enabled=0 DisabledByDefault=1",
+        "Esperado":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Control":  "A.8.24",
+        "Elemento":  "SChannel TLS 1.1 (Server)",
+        "Valor":  "Enabled=0 DisabledByDefault=1",
+        "Esperado":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Control":  "A.8.24",
+        "Elemento":  "SChannel TLS 1.1 (Client)",
+        "Valor":  "Enabled=0 DisabledByDefault=1",
+        "Esperado":  "",
+        "Estado":  "Info"
+    }
+]

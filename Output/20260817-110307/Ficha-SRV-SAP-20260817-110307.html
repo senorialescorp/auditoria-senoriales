@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8">
+<title>Ficha de auditoria - SRV-SAP</title>
+<style>
+@page { size: A4; margin: 12mm 10mm; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI",Arial,sans-serif;font-size:9.5pt;line-height:1.4;color:#1a1f26;background:#e9ecef}
+.hoja{width:210mm;min-height:297mm;margin:0 auto;background:#fff;padding:10mm 9mm}
+
+h1{font-size:15pt;font-weight:700;letter-spacing:-.2px}
+h2{font-size:10pt;font-weight:700;color:#1f4e79;text-transform:uppercase;letter-spacing:.7px;
+   border-bottom:1.5pt solid #1f4e79;padding-bottom:2pt;margin:9pt 0 5pt}
+h3{font-size:9pt;font-weight:700;margin:6pt 0 3pt;color:#374151}
+
+.cab{display:flex;justify-content:space-between;align-items:flex-start;
+     border-bottom:2.5pt solid #1f4e79;padding-bottom:6pt;margin-bottom:3pt}
+.cab .sub{font-size:8.5pt;color:#5b6673;margin-top:2pt}
+.cab .der{text-align:right;font-size:8pt;color:#5b6673;line-height:1.5}
+.cab .der b{color:#1a1f26}
+
+.veredicto{display:flex;gap:5pt;margin:7pt 0}
+.vbox{flex:1;border:1pt solid #d5dae0;border-radius:3pt;padding:5pt 6pt;text-align:center}
+.vbox .n{font-size:17pt;font-weight:700;line-height:1.1}
+.vbox .l{font-size:6.8pt;color:#5b6673;text-transform:uppercase;letter-spacing:.4px;margin-top:1pt}
+.vbox.r-crit{background:#fdecec;border-color:#c0272d} .vbox.r-crit .n{color:#c0272d}
+.vbox.r-med{background:#fdf6e3;border-color:#c9a000}  .vbox.r-med .n{color:#8a6d00}
+.vbox.r-ok{background:#eaf6ef;border-color:#1a7f4b}   .vbox.r-ok .n{color:#1a7f4b}
+.vbox.crit .n{color:#c0272d} .vbox.alto .n{color:#e06c00}
+.vbox.medio .n{color:#8a6d00} .vbox.bajo .n{color:#2c7bb6}
+
+table{width:100%;border-collapse:collapse;font-size:8.3pt}
+th{background:#eef2f6;text-align:left;padding:3pt 4pt;border:.5pt solid #d5dae0;
+   font-weight:700;color:#1f4e79;font-size:7.8pt;text-transform:uppercase;letter-spacing:.3px}
+td{padding:3pt 4pt;border:.5pt solid #d5dae0;vertical-align:top}
+.ident td:first-child{width:33%;background:#f7f9fb;font-weight:600}
+.pend{color:#c0272d;font-weight:700}
+
+.sev{display:inline-block;padding:.5pt 4pt;border-radius:2pt;font-size:7pt;
+     font-weight:700;color:#fff;white-space:nowrap}
+.s-crit{background:#c0272d} .s-alto{background:#e06c00}
+.s-med{background:#c9a000}  .s-bajo{background:#2c7bb6}
+
+.dosc{display:flex;gap:7pt}
+.dosc>div{flex:1}
+
+.barras td{border:none;padding:1.5pt 0;font-size:8pt}
+.barras .bn{width:32%} .barras .bv{width:12%;text-align:right;font-weight:700;padding-right:4pt}
+.barra{height:7pt;background:#eef2f6;border-radius:2pt;overflow:hidden}
+.barra i{display:block;height:100%;background:#1f4e79}
+.barra i.prio{background:#c0272d}
+
+.nota{background:#fdf6e3;border-left:2.5pt solid #c9a000;padding:4pt 6pt;font-size:8pt;margin:5pt 0}
+.pie{margin-top:8pt;padding-top:4pt;border-top:.5pt solid #d5dae0;
+     font-size:7.2pt;color:#5b6673;display:flex;justify-content:space-between}
+.firma{margin-top:10pt;display:flex;gap:14pt}
+.firma div{flex:1;border-top:.5pt solid #4b5563;padding-top:2pt;font-size:7.5pt;color:#5b6673;text-align:center}
+
+.salto{page-break-before:always}
+tr,td,th{page-break-inside:avoid}
+@media print{body{background:#fff}.hoja{margin:0;padding:0;width:auto;min-height:0}.noimp{display:none}}
+.noimp{position:fixed;top:8px;right:8px;background:#1f4e79;color:#fff;border:none;
+       padding:7px 13px;border-radius:4px;font-size:12px;cursor:pointer;font-family:inherit}
+</style>
+</head><body>
+<button class="noimp" onclick="window.print()">Imprimir / Guardar PDF</button>
+<div class="hoja">
+<div class="cab">
+<div>
+<h1>Ficha de auditoria de sistemas</h1>
+<div class="sub">Servidor <b>SRV-SAP</b> &middot; Servidor de aplicaciones de negocio</div>
+</div>
+<div class="der">
+Corrida <b>20260817-110307</b><br>
+Fecha <b>2026-08-17 11:06</b><br>
+Privilegios <b>Estandar</b>
+</div></div>
+<div class="veredicto">
+<div class="vbox r-crit"><div class="n">288.4</div><div class="l">Riesgo &middot; CRITICO</div></div>
+<div class="vbox crit"><div class="n">3</div><div class="l">Criticos</div></div>
+<div class="vbox alto"><div class="n">16</div><div class="l">Altos</div></div>
+<div class="vbox medio"><div class="n">19</div><div class="l">Medios</div></div>
+<div class="vbox bajo"><div class="n">9</div><div class="l">Bajos</div></div>
+<div class="vbox"><div class="n">80</div><div class="l">Artefactos</div></div>
+</div>
+<div class="nota"><b>Alcance limitado:</b> ejecutada sin privilegios administrativos. 8 verificaciones no pudieron completarse; ver hoja <i>Brechas Evidencia</i> del libro adjunto. Para expediente formal, reejecutar con cuenta administrativa.</div>
+<div class="dosc">
+<div>
+<h2>Identificacion del activo</h2>
+<table class="ident">
+<tr><td>Servidor</td><td>SRV-SAP</td></tr>
+<tr><td>Dominio</td><td>Workgroup</td></tr>
+<tr><td>Rol declarado</td><td>Servidor de aplicaciones de negocio</td></tr>
+<tr><td>Entorno</td><td>Produccion</td></tr>
+<tr><td>Criticidad</td><td>Alta</td></tr>
+<tr><td>Clasificacion datos</td><td>Confidencial</td></tr>
+<tr><td>Propietario</td><td><span class="pend">SIN ASIGNAR</span></td></tr>
+<tr><td>Responsable tecnico</td><td><span class="pend">SIN ASIGNAR</span></td></tr>
+<tr><td>Unidad de negocio</td><td><span class="pend">SIN ASIGNAR</span></td></tr>
+</table>
+</div>
+<div>
+<h2>Perfil arquitectonico</h2>
+<table class="ident">
+<tr><td>Artefactos clasificados</td><td>47 de 49</td></tr>
+<tr><td>Alineados al rol</td><td>37 (76%)</td></tr>
+<tr><td>No alineados</td><td><span class="pend">10</span></td></tr>
+<tr><td>Sin clasificar</td><td>2</td></tr>
+</table>
+<h3>Distribucion por capa de arquitectura</h3>
+<table class="barras">
+<tr><td class="bn">Datos</td><td class="bv">21</td><td><div class="barra"><i style="width:100%"></i></div></td></tr>
+<tr><td class="bn">Aplicacion</td><td class="bv">15</td><td><div class="barra"><i style="width:71%"></i></div></td></tr>
+<tr><td class="bn">Tecnologia</td><td class="bv">10</td><td><div class="barra"><i style="width:48%"></i></div></td></tr>
+<tr><td class="bn">No determinada</td><td class="bv">2</td><td><div class="barra"><i style="width:10%"></i></div></td></tr>
+<tr><td class="bn">Infraestructura</td><td class="bv">1</td><td><div class="barra"><i style="width:5%"></i></div></td></tr>
+</table>
+</div></div>
+<h2>Riesgo por capa</h2>
+<table class="barras">
+<tr><td class="bn">L1 Infraestructura fisica y hardware</td><td class="bv">3.2</td><td><div class="barra"><i class="" style="width:3%"></i></div></td><td style="width:22%;font-size:7.5pt;color:#5b6673">2 hallazgos</td></tr>
+<tr><td class="bn">L2 Sistema operativo y hardening</td><td class="bv">42</td><td><div class="barra"><i class="" style="width:38%"></i></div></td><td style="width:22%;font-size:7.5pt;color:#5b6673">6 hallazgos</td></tr>
+<tr><td class="bn">L3 Plataforma, runtimes y middleware</td><td class="bv">9</td><td><div class="barra"><i class="" style="width:8%"></i></div></td><td style="width:22%;font-size:7.5pt;color:#5b6673">1 hallazgos</td></tr>
+<tr><td class="bn">L4 <b>Artefactos de software (PRIORIDAD)</b></td><td class="bv">112</td><td><div class="barra"><i class="prio" style="width:100%"></i></div></td><td style="width:22%;font-size:7.5pt;color:#5b6673">15 hallazgos</td></tr>
+<tr><td class="bn">L5 Servicios, procesos y persistencia</td><td class="bv">43.5</td><td><div class="barra"><i class="" style="width:39%"></i></div></td><td style="width:22%;font-size:7.5pt;color:#5b6673">8 hallazgos</td></tr>
+<tr><td class="bn">L6 Identidad y control de acceso</td><td class="bv">40.6</td><td><div class="barra"><i class="" style="width:36%"></i></div></td><td style="width:22%;font-size:7.5pt;color:#5b6673">8 hallazgos</td></tr>
+<tr><td class="bn">L7 Red y exposicion</td><td class="bv">19.5</td><td><div class="barra"><i class="" style="width:17%"></i></div></td><td style="width:22%;font-size:7.5pt;color:#5b6673">3 hallazgos</td></tr>
+<tr><td class="bn">L8 Datos, registro y resiliencia</td><td class="bv">13.2</td><td><div class="barra"><i class="" style="width:12%"></i></div></td><td style="width:22%;font-size:7.5pt;color:#5b6673">3 hallazgos</td></tr>
+<tr><td class="bn">L9 Rendimiento y capacidad</td><td class="bv">5.4</td><td><div class="barra"><i class="" style="width:5%"></i></div></td><td style="width:22%;font-size:7.5pt;color:#5b6673">2 hallazgos</td></tr>
+</table>
+<h2>Hallazgos que exigen accion (19)</h2>
+<table>
+<thead><tr><th style="width:8%">Sev.</th><th style="width:6%">Capa</th><th style="width:34%">Hallazgo</th><th style="width:22%">Activo</th><th style="width:11%">Criterios</th><th style="width:19%">Accion requerida</th></tr></thead><tbody>
+<tr><td><span class="sev s-crit">CRIT</span></td><td>L2</td><td><b>Latencia de parcheo fuera del umbral definido</b></td><td>SRV-SAP</td><td>VUL-01</td><td>Ejecutar el ciclo de actualizacion pendiente y verificar la conectividad del servidor con WSUS o el servicio de actualizacion corporativo.</td></tr>
+<tr><td><span class="sev s-crit">CRIT</span></td><td>L2</td><td><b>Actualizaciones de seguridad criticas pendientes de instalacion</b></td><td>SRV-SAP</td><td>VUL-01</td><td>Priorizar la instalacion de las actualizaciones criticas en la proxima ventana y registrar el cambio en el proceso formal de gestion de cambios.</td></tr>
+<tr><td><span class="sev s-crit">CRIT</span></td><td>L4</td><td><b>Archivos con firma digital invalida o no confiable</b></td><td>2 archivos</td><td>SW-03; VUL-02; REG-02</td><td>Aislar los archivos afectados, calcular su hash y contrastarlo con la fuente oficial. Escalar al proceso de gestion de incidentes si la discrepancia se ...</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L2</td><td><b>Perfiles de firewall de Windows deshabilitados</b></td><td>Domain, Private, Public</td><td>RED-01; RED-02</td><td>Habilitar todos los perfiles con accion entrante predeterminada Block y definir reglas explicitas solo para los servicios requeridos.</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L3</td><td><b>Componente de plataforma fuera de soporte: Windows PowerShell 2.0 Engine</b></td><td>Windows PowerShell 2.0 Engine </td><td>SW-02; VUL-01; INV-01</td><td>Planificar la migracion a una version soportada o formalizar un plan de tratamiento del riesgo con controles compensatorios y fecha limite.</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L4</td><td><b>Ejecutables sin firma digital fuera de rutas de instalacion gestionadas</b></td><td>273 archivos</td><td>SW-03; ARQ-01</td><td>Verificar el origen de cada binario, reinstalarlo desde una fuente oficial firmada y aplicar control de aplicaciones (AppLocker/WDAC) en modo de exigir ...</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L4</td><td><b>Servicios o procesos ejecutando binarios sin firma digital</b></td><td>7 binarios</td><td>SW-03; ARQ-01</td><td>Identificar el proveedor de cada binario y exigir entregables firmados. Registrar el hash SHA256 como linea base y monitorear su cambio entre ejecucione...</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L4</td><td><b>Software fuera de soporte del proveedor: Microsoft SQL Server 2012 Native Client</b></td><td>Microsoft SQL Server 2012 Native Client 11.4.7462.6</td><td>SW-02; VUL-01; INV-01; SW-03</td><td>Actualizar a una version soportada. Si la migracion no es viable a corto plazo, documentar la aceptacion del riesgo con aprobacion de la direccion, defi...</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L4</td><td><b>Software fuera de soporte del proveedor: Microsoft Access database engine 2010 (English)</b></td><td>Microsoft Access database engine 2010 (English) 14.0.7015.1000</td><td>SW-02; VUL-01; INV-01; SW-03</td><td>Actualizar a una version soportada. Si la migracion no es viable a corto plazo, documentar la aceptacion del riesgo con aprobacion de la direccion, defi...</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L4</td><td><b>Artefactos con rol no alineado al proposito declarado del servidor</b></td><td>10 artefactos</td><td>SW-03; ARQ-01; ARQ-03</td><td>Para cada artefacto: documentar la justificacion funcional o retirarlo. Si el rol es legitimo para este servidor, incorporarlo a RolesEsperados en Arqui...</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L5</td><td><b>Servicios de terceros ejecutandose como LocalSystem</b></td><td>4 servicios</td><td>ACC-02; ARQ-01</td><td>Aplicar el principio de privilegio minimo: migrar a cuentas de servicio gestionadas (gMSA) o a NetworkService/LocalService cuando el producto lo soporte.</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L5</td><td><b>Tareas programadas de terceros con privilegios maximos</b></td><td>1 tareas</td><td>ACC-02; SW-03</td><td>Reducir el nivel de privilegio al minimo necesario y proteger con ACL restrictivas los archivos que estas tareas invocan.</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L5</td><td><b>Suscripciones de eventos WMI permanentes registradas</b></td><td>1 consumidores</td><td>REG-02; VUL-02</td><td>Identificar el producto que registro cada suscripcion. Si no se corresponde con software autorizado (agentes de monitoreo o gestion), tratar como incide...</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L6</td><td><b>Longitud minima de contrasena por debajo de la recomendacion</b></td><td>Politica local de contrasenas</td><td>ACC-03</td><td>Elevar la longitud minima a 14 caracteres o mas mediante directiva de grupo, priorizando longitud sobre complejidad.</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L6</td><td><b>Bloqueo de cuenta por intentos fallidos no configurado</b></td><td>Politica local de contrasenas</td><td>ACC-03</td><td>Configurar un umbral de bloqueo (referencia: 10 intentos fallidos, ventana de 15 minutos) equilibrando seguridad y disponibilidad.</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L6</td><td><b>RDP habilitado sin autenticacion a nivel de red (NLA)</b></td><td>RDP-Tcp</td><td>ACC-03; ACC-04; RED-01</td><td>Habilitar UserAuthentication=1 y SecurityLayer=2 (TLS) en la configuracion de Escritorio remoto.</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L7</td><td><b>Recursos compartidos con permisos amplios de escritura</b></td><td>4 recursos</td><td>ACC-04; DAT-02</td><td>Aplicar permisos basados en grupos especificos siguiendo el principio de privilegio minimo, tanto en la comparticion como en las ACL NTFS subyacentes.</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L7</td><td><b>Servicios sensibles escuchando en todas las interfaces de red</b></td><td>8 puertos</td><td>RED-01; RED-02; RED-03</td><td>Restringir la escucha a las interfaces necesarias, aplicar reglas de firewall con origen acotado y aplicar segmentacion de red para los servicios de adm...</td></tr>
+<tr><td><span class="sev s-alto">ALTO</span></td><td>L8</td><td><b>Registro de eventos deshabilitado: Microsoft-Windows-TaskScheduler/Operational</b></td><td>Microsoft-Windows-TaskScheduler/Operational</td><td>REG-01; REG-02</td><td>Habilitar el canal de registro y verificar que ninguna directiva de grupo lo este desactivando.</td></tr>
+</tbody></table>
+<h2>Desviaciones arquitectonicas (10)</h2>
+<p style="font-size:8pt;color:#5b6673;margin-bottom:3pt">Artefactos cuyo rol no corresponde al proposito declarado del servidor (Servidor de aplicaciones de negocio, entorno de Produccion).</p>
+<table>
+<thead><tr><th style="width:32%">Artefacto</th><th style="width:22%">Rol detectado</th><th style="width:46%">Ubicacion</th></tr></thead><tbody>
+<tr><td><b>obs-browser-plus 3.23.9</b></td><td>Multimedia y entretenimiento</td><td style="font-family:Consolas,monospace;font-size:7.5pt">C:\Program Files\obs-browser-plus</td></tr>
+<tr><td><b>Microsoft OneDrive</b></td><td>Sincronizacion en nube</td><td style="font-family:Consolas,monospace;font-size:7.5pt">C:\Program Files\Microsoft OneDrive\26.134.0713.0007</td></tr>
+<tr><td><b>Azure Data Studio</b></td><td>Herramienta de desarrollo</td><td style="font-family:Consolas,monospace;font-size:7.5pt">C:\Program Files\Azure Data Studio</td></tr>
+<tr><td><b>Microsoft Visual Studio Installer</b></td><td>Herramienta de desarrollo</td><td style="font-family:Consolas,monospace;font-size:7.5pt">C:\Program Files (x86)\Microsoft Visual Studio\Installer</td></tr>
+<tr><td><b>DevExpress Components 24.2</b></td><td>Herramienta de desarrollo</td><td style="font-family:Consolas,monospace;font-size:7.5pt">C:\Program Files\DevExpress 24.2\Components</td></tr>
+<tr><td><b>Microsoft Edge</b></td><td>Navegador web</td><td style="font-family:Consolas,monospace;font-size:7.5pt">C:\Program Files (x86)\Microsoft\Edge\Application</td></tr>
+<tr><td><b>Microsoft Edge WebView2 Runtime</b></td><td>Navegador web</td><td style="font-family:Consolas,monospace;font-size:7.5pt">C:\Program Files (x86)\Microsoft\EdgeWebView\Application</td></tr>
+<tr><td><b>vs_CoreEditorFonts</b></td><td>Herramienta de desarrollo</td><td style="font-family:Consolas,monospace;font-size:7.5pt"><i style="color:#8894a3">ruta no determinada</i></td></tr>
+<tr><td><b>Microsoft Visual Studio Tools for Applications 2019</b></td><td>Herramienta de desarrollo</td><td style="font-family:Consolas,monospace;font-size:7.5pt">C:\ProgramData\Package Cache\{f3fbabb4-bcfb-45eb-8fff-9b784fd68c38}</td></tr>
+<tr><td><b>Microsoft Visual Studio Tools for Applications 2017</b></td><td>Herramienta de desarrollo</td><td style="font-family:Consolas,monospace;font-size:7.5pt">C:\ProgramData\Package Cache\{f895a2f1-ae3f-4212-8af1-7fa1f8c212ea}</td></tr>
+</tbody></table>
+<h2>Conformidad por dominio de criterios</h2>
+<table>
+<thead><tr><th style="width:34%">Dominio</th><th style="width:11%">Criterios</th><th style="width:13%">Conformes</th><th style="width:20%">Con observaciones</th><th style="width:12%">No conformes</th><th style="width:10%">Sin evaluar</th></tr></thead><tbody>
+<tr><td>ACC - Identidad y control de acceso</td><td>5</td><td>1</td><td>1</td><td><span class="pend">3</span></td><td>0</td></tr>
+<tr><td>ARQ - Arquitectura y configuracion</td><td>4</td><td>2</td><td>0</td><td><span class="pend">2</span></td><td>0</td></tr>
+<tr><td>AUD - Ejecucion de la auditoria</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>CAM - Gestion de cambios</td><td>2</td><td>0</td><td>2</td><td>0</td><td>0</td></tr>
+<tr><td>CAP - Capacidad y continuidad</td><td>3</td><td>1</td><td>2</td><td>0</td><td>0</td></tr>
+<tr><td>CRI - Criptografia</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>DAT - Gestion de datos</td><td>3</td><td>2</td><td>0</td><td><span class="pend">1</span></td><td>0</td></tr>
+<tr><td>INV - Inventario y gobierno de activos</td><td>4</td><td>2</td><td>1</td><td><span class="pend">1</span></td><td>0</td></tr>
+<tr><td>RED - Red y exposicion</td><td>3</td><td>0</td><td>0</td><td><span class="pend">3</span></td><td>0</td></tr>
+<tr><td>REG - Registro y monitoreo</td><td>3</td><td>0</td><td>1</td><td><span class="pend">2</span></td><td>0</td></tr>
+<tr><td>SW - Gestion de software</td><td>5</td><td>1</td><td>2</td><td><span class="pend">2</span></td><td>0</td></tr>
+<tr><td>VUL - Vulnerabilidades y proteccion</td><td>2</td><td>0</td><td>0</td><td><span class="pend">2</span></td><td>0</td></tr>
+</tbody></table>
+<div class="firma">
+<div>Elaborado por</div><div>Revisado por</div><div>Responsable del activo</div>
+</div>
+<div class="pie">
+<span>Detalle completo: <b>Auditoria-SRV-SAP-20260817-110307.xlsx</b></span>
+<span>Auditoria de solo lectura &middot; 1522 registros &middot; 17 colectores</span>
+</div>
+</div></body></html>

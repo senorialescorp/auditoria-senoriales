@@ -1,0 +1,217 @@
+﻿[
+    {
+        "Tipo":  "Sistema",
+        "Nombre":  "SRV-SAP",
+        "Dominio":  "WORKGROUP",
+        "Fabricante":  "OpenStack Foundation",
+        "Modelo":  "OpenStack Nova",
+        "TipoChasis":  "Otro",
+        "Virtualizacion":  "Fisico",
+        "NumeroSerie":  "db1ad544-a431-4ea0-868d-f3f67ee65cc2",
+        "BiosVersion":  "BOCHS  - 1 Intel IGD BDSM enabled at 0x%08x, size %lldMB, dev 00:02.0",
+        "BiosFecha":  "\/Date(1396310400000)\/",
+        "ProcesadoresFisicos":  1,
+        "ProcesadoresLogicos":  16,
+        "MemoriaTotalGB":  128,
+        "RolDominio":  2,
+        "PartOfDomain":  false
+    },
+    {
+        "Tipo":  "CPU",
+        "Nombre":  "Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz",
+        "Fabricante":  "GenuineIntel",
+        "Nucleos":  8,
+        "HilosLogicos":  16,
+        "VelocidadMaxMHz":  3000,
+        "Arquitectura":  64,
+        "SocketDesignation":  "CPU 0",
+        "VirtualizacionFirmware":  false
+    },
+    {
+        "Tipo":  "Memoria",
+        "Nombre":  "DIMM 0",
+        "CapacidadGB":  16,
+        "VelocidadMHz":  null,
+        "Fabricante":  "QEMU",
+        "NumeroParte":  "",
+        "NumeroSerie":  ""
+    },
+    {
+        "Tipo":  "Memoria",
+        "Nombre":  "DIMM 1",
+        "CapacidadGB":  16,
+        "VelocidadMHz":  null,
+        "Fabricante":  "QEMU",
+        "NumeroParte":  "",
+        "NumeroSerie":  ""
+    },
+    {
+        "Tipo":  "Memoria",
+        "Nombre":  "DIMM 2",
+        "CapacidadGB":  16,
+        "VelocidadMHz":  null,
+        "Fabricante":  "QEMU",
+        "NumeroParte":  "",
+        "NumeroSerie":  ""
+    },
+    {
+        "Tipo":  "Memoria",
+        "Nombre":  "DIMM 3",
+        "CapacidadGB":  16,
+        "VelocidadMHz":  null,
+        "Fabricante":  "QEMU",
+        "NumeroParte":  "",
+        "NumeroSerie":  ""
+    },
+    {
+        "Tipo":  "Memoria",
+        "Nombre":  "DIMM 4",
+        "CapacidadGB":  16,
+        "VelocidadMHz":  null,
+        "Fabricante":  "QEMU",
+        "NumeroParte":  "",
+        "NumeroSerie":  ""
+    },
+    {
+        "Tipo":  "Memoria",
+        "Nombre":  "DIMM 5",
+        "CapacidadGB":  16,
+        "VelocidadMHz":  null,
+        "Fabricante":  "QEMU",
+        "NumeroParte":  "",
+        "NumeroSerie":  ""
+    },
+    {
+        "Tipo":  "Memoria",
+        "Nombre":  "DIMM 6",
+        "CapacidadGB":  16,
+        "VelocidadMHz":  null,
+        "Fabricante":  "QEMU",
+        "NumeroParte":  "",
+        "NumeroSerie":  ""
+    },
+    {
+        "Tipo":  "Memoria",
+        "Nombre":  "DIMM 7",
+        "CapacidadGB":  16,
+        "VelocidadMHz":  null,
+        "Fabricante":  "QEMU",
+        "NumeroParte":  "",
+        "NumeroSerie":  ""
+    },
+    {
+        "Tipo":  "DiscoFisico",
+        "Nombre":  "Red Hat VirtIO SCSI Disk Device",
+        "Interfaz":  "SCSI",
+        "TamanoGB":  10,
+        "Particiones":  1,
+        "NumeroSerie":  "24b18cae-8034-49bd-9",
+        "MediaType":  "Fixed hard disk media"
+    },
+    {
+        "Tipo":  "DiscoFisico",
+        "Nombre":  "Red Hat VirtIO SCSI Disk Device",
+        "Interfaz":  "SCSI",
+        "TamanoGB":  499.99,
+        "Particiones":  1,
+        "NumeroSerie":  "047ca552-a41e-40e3-8",
+        "MediaType":  "Fixed hard disk media"
+    },
+    {
+        "Tipo":  "DiscoFisico",
+        "Nombre":  "Red Hat VirtIO SCSI Disk Device",
+        "Interfaz":  "SCSI",
+        "TamanoGB":  800,
+        "Particiones":  1,
+        "NumeroSerie":  "b0039137-c406-494a-a",
+        "MediaType":  "Fixed hard disk media"
+    },
+    {
+        "Tipo":  "DiscoFisico",
+        "Nombre":  "Red Hat VirtIO SCSI Disk Device",
+        "Interfaz":  "SCSI",
+        "TamanoGB":  45,
+        "Particiones":  1,
+        "NumeroSerie":  "d141434b-38f1-4f66-b",
+        "MediaType":  "Fixed hard disk media"
+    },
+    {
+        "Tipo":  "DiscoFisico",
+        "Nombre":  "Red Hat VirtIO SCSI Disk Device",
+        "Interfaz":  "SCSI",
+        "TamanoGB":  350,
+        "Particiones":  2,
+        "NumeroSerie":  "f509fe7a-8232-4b40-8",
+        "MediaType":  "Fixed hard disk media"
+    },
+    {
+        "Tipo":  "DiscoFisico",
+        "Nombre":  "Red Hat VirtIO SCSI Disk Device",
+        "Interfaz":  "SCSI",
+        "TamanoGB":  170,
+        "Particiones":  1,
+        "NumeroSerie":  "0d7a356e-7855-4946-8",
+        "MediaType":  "Fixed hard disk media"
+    },
+    {
+        "Tipo":  "Volumen",
+        "Nombre":  "C:",
+        "Etiqueta":  "",
+        "SistemaArchivos":  "NTFS",
+        "TotalGB":  349.9,
+        "LibreGB":  41.24,
+        "PorcentajeLibre":  11.8
+    },
+    {
+        "Tipo":  "Volumen",
+        "Nombre":  "D:",
+        "Etiqueta":  "BS",
+        "SistemaArchivos":  "NTFS",
+        "TotalGB":  10,
+        "LibreGB":  7.92,
+        "PorcentajeLibre":  79.3
+    },
+    {
+        "Tipo":  "Volumen",
+        "Nombre":  "E:",
+        "Etiqueta":  "MDF",
+        "SistemaArchivos":  "NTFS",
+        "TotalGB":  800,
+        "LibreGB":  210.01,
+        "PorcentajeLibre":  26.3
+    },
+    {
+        "Tipo":  "Volumen",
+        "Nombre":  "F:",
+        "Etiqueta":  "LDF",
+        "SistemaArchivos":  "NTFS",
+        "TotalGB":  170,
+        "LibreGB":  103.59,
+        "PorcentajeLibre":  60.9
+    },
+    {
+        "Tipo":  "Volumen",
+        "Nombre":  "G:",
+        "Etiqueta":  "BK",
+        "SistemaArchivos":  "NTFS",
+        "TotalGB":  500,
+        "LibreGB":  152.73,
+        "PorcentajeLibre":  30.5
+    },
+    {
+        "Tipo":  "Volumen",
+        "Nombre":  "I:",
+        "Etiqueta":  "TEMP",
+        "SistemaArchivos":  "NTFS",
+        "TotalGB":  45,
+        "LibreGB":  41.32,
+        "PorcentajeLibre":  91.8
+    },
+    {
+        "Tipo":  "AdaptadorRed",
+        "Nombre":  "Red Hat VirtIO Ethernet Adapter",
+        "MAC":  "FA:16:3E:DC:DE:E5",
+        "Estado":  2,
+        "VelocidadMbps":  95367
+    }
+]

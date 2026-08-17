@@ -1,0 +1,1182 @@
+﻿<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auditoria ISO 27001 - SRV-SAP - 20260811-184912</title>
+<style>
+:root{
+  --bg:#f6f7f9; --card:#ffffff; --ink:#1c2128; --muted:#5b6673; --line:#e3e7ec;
+  --crit:#c0272d; --high:#e06c00; --med:#c9a000; --low:#2c7bb6; --ok:#1a7f4b;
+  --accent:#1f4e79; --accent-soft:#eaf1f8;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.55}
+.wrap{max-width:1400px;margin:0 auto;padding:24px}
+header{background:var(--accent);color:#fff;padding:28px 24px;border-radius:8px;margin-bottom:22px}
+header h1{margin:0 0 6px;font-size:24px;font-weight:600}
+header .sub{opacity:.9;font-size:13px}
+header .meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:22px;font-size:12.5px;opacity:.95}
+header .meta b{font-weight:600}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px;margin-bottom:20px}
+.card h2{margin:0 0 4px;font-size:17px;color:var(--accent);font-weight:600}
+.card h2 .iso{font-size:11px;background:var(--accent-soft);color:var(--accent);
+  padding:2px 8px;border-radius:10px;margin-left:8px;font-weight:600;vertical-align:middle}
+.card .desc{color:var(--muted);font-size:12.5px;margin:0 0 16px}
+.grid{display:grid;gap:14px}
+.g5{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.kpi{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--muted);
+  border-radius:6px;padding:14px 16px}
+.kpi .n{font-size:26px;font-weight:600;line-height:1.1}
+.kpi .l{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-top:4px}
+.kpi.crit{border-left-color:var(--crit)} .kpi.crit .n{color:var(--crit)}
+.kpi.high{border-left-color:var(--high)} .kpi.high .n{color:var(--high)}
+.kpi.med{border-left-color:var(--med)}  .kpi.med .n{color:var(--med)}
+.kpi.low{border-left-color:var(--low)}  .kpi.low .n{color:var(--low)}
+.kpi.ok{border-left-color:var(--ok)}    .kpi.ok .n{color:var(--ok)}
+table{width:100%;border-collapse:collapse;font-size:12.8px}
+th{background:#f0f3f7;text-align:left;padding:9px 10px;border-bottom:2px solid var(--line);
+  font-weight:600;color:var(--accent);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:hover td{background:#fafbfc}
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:10.5px;
+  font-weight:700;letter-spacing:.3px;color:#fff;white-space:nowrap}
+.sev-crit{background:var(--crit)} .sev-high{background:var(--high)}
+.sev-med{background:var(--med)}   .sev-low{background:var(--low)}
+.sev-info{background:#8894a3}
+.tag{display:inline-block;background:var(--accent-soft);color:var(--accent);border-radius:4px;
+  padding:1px 6px;font-size:11px;margin:1px 2px 1px 0;font-weight:600;white-space:nowrap}
+.layer{border:1px solid var(--line);border-radius:6px;padding:14px;background:#fcfdfe;
+  border-left:4px solid var(--muted)}
+.layer.prio{border-left-color:var(--accent);background:var(--accent-soft);box-shadow:0 1px 4px rgba(31,78,121,.12)}
+.layer h3{margin:0 0 3px;font-size:14px}
+.layer .code{font-family:Consolas,monospace;color:var(--accent);font-weight:700}
+.layer .d{font-size:11.5px;color:var(--muted);margin:5px 0 10px;min-height:32px}
+.layer .stats{display:flex;gap:14px;font-size:11.5px;flex-wrap:wrap}
+.layer .stats span b{font-size:15px;display:block}
+.bar{height:7px;background:#e8ecf1;border-radius:4px;overflow:hidden;margin-top:9px}
+.bar i{display:block;height:100%;background:var(--accent)}
+.pill{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.p-conf{background:#e3f5eb;color:var(--ok)}
+.p-obs{background:#fdf4dc;color:#8a6d00}
+.p-noconf{background:#fbe4e5;color:var(--crit)}
+.p-na{background:#eef0f3;color:var(--muted)}
+.finding{border:1px solid var(--line);border-left:4px solid var(--muted);border-radius:6px;
+  padding:14px 16px;margin-bottom:12px;background:#fff}
+.finding.f-crit{border-left-color:var(--crit)} .finding.f-high{border-left-color:var(--high)}
+.finding.f-med{border-left-color:var(--med)}   .finding.f-low{border-left-color:var(--low)}
+.finding.f-info{border-left-color:#8894a3}
+.finding .hd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:7px}
+.finding .ttl{font-weight:600;font-size:14px;flex:1;min-width:240px}
+.finding .id{font-family:Consolas,monospace;font-size:10.5px;color:var(--muted)}
+.finding .row{margin:5px 0;font-size:12.7px}
+.finding .row b{color:var(--accent);font-weight:600}
+.finding .ev{font-family:Consolas,monospace;font-size:11px;background:#f5f7f9;border:1px solid var(--line);
+  border-radius:4px;padding:8px 10px;margin-top:7px;word-break:break-all;color:#3c4653;
+  max-height:130px;overflow:auto}
+.finding .rec{background:#f2f8f4;border-left:3px solid var(--ok);padding:8px 11px;margin-top:8px;
+  border-radius:0 4px 4px 0;font-size:12.7px}
+.note{background:#fdf6e3;border:1px solid #f0e2b6;border-radius:6px;padding:12px 14px;
+  font-size:12.7px;margin-bottom:16px}
+.note b{color:#8a6d00}
+footer{text-align:center;color:var(--muted);font-size:11.5px;padding:22px 0 8px;border-top:1px solid var(--line)}
+code{font-family:Consolas,monospace;background:#f0f3f7;padding:1px 5px;border-radius:3px;font-size:11.5px}
+h3.sec{font-size:14px;color:var(--accent);margin:22px 0 10px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+@media print{body{background:#fff}.card{break-inside:avoid;box-shadow:none}header{background:#1f4e79 !important;-webkit-print-color-adjust:exact}}
+</style>
+</head><body><div class="wrap">
+<header>
+<h1>Auditoria de Artefactos y Configuracion - ISO/IEC 27001:2022</h1>
+<div class="sub">Auditoria tecnica de artefactos por capas &middot; prioridad en artefactos de software (control A.8.19)</div>
+<div class="meta">
+<div><b>Servidor:</b> SRV-SAP</div>
+<div><b>Dominio:</b> Workgroup</div>
+<div><b>Ejecucion:</b> 20260811-184912</div>
+<div><b>Inicio:</b> 2026-08-11T18:49:12</div>
+<div><b>Duracion:</b> 149.7 s</div>
+<div><b>Ejecutado por:</b> SRV-SAP\svalle</div>
+<div><b>Privilegios:</b> Estandar (cobertura parcial)</div>
+<div><b>Marco:</b> ISO/IEC 27001:2022 - Anexo A</div>
+</div></header>
+<div class="note"><b>Alcance limitado:</b> la auditoria se ejecuto sin privilegios administrativos. Varios controles no pudieron evidenciarse por completo. Las limitaciones concretas se detallan en la seccion <i>Brechas de evidencia</i>; para un expediente de auditoria formal, reejecute la suite con una cuenta administrativa.</div>
+<div class="card">
+<h2>Resumen ejecutivo</h2>
+<p class="desc">Puntaje de riesgo agregado: suma de los hallazgos por severidad ponderada segun el peso de cada capa. La capa L4 (artefactos de software) pondera el doble por ser el eje de esta auditoria.</p>
+<div class="grid g5">
+<div class="kpi crit"><div class="n">268.4</div><div class="l">Puntaje de riesgo &middot; CRITICO</div></div>
+<div class="kpi crit"><div class="n">2</div><div class="l">Hallazgos criticos</div></div>
+<div class="kpi high"><div class="n">16</div><div class="l">Hallazgos altos</div></div>
+<div class="kpi med"><div class="n">19</div><div class="l">Hallazgos medios</div></div>
+<div class="kpi low"><div class="n">9</div><div class="l">Hallazgos bajos</div></div>
+</div><div class="grid g5" style="margin-top:14px">
+<div class="kpi"><div class="n">1133</div><div class="l">Artefactos inventariados</div></div>
+<div class="kpi ok"><div class="n">17/17</div><div class="l">Colectores ejecutados</div></div>
+<div class="kpi"><div class="n">40/40</div><div class="l">Controles con evidencia</div></div>
+<div class="kpi crit"><div class="n">18</div><div class="l">Controles no conformes</div></div>
+<div class="kpi med"><div class="n">8</div><div class="l">Brechas de evidencia</div></div>
+</div></div>
+<div class="card">
+<h2>Mapa de capas del activo<span class="iso">A.5.9 &middot; A.8.9</span></h2>
+<p class="desc">El activo se descompone en capas verticales. Cada capa agrupa colectores especializados y aporta evidencia a un subconjunto de controles del Anexo A. La capa destacada concentra la prioridad de esta auditoria.</p>
+<div class="grid g3">
+<div class="layer">
+<h3><span class="code">L1</span> &middot; Infraestructura fisica y hardware</h3>
+<div class="d">Chasis, CPU, memoria, almacenamiento, firmware/BIOS, virtualizacion.</div>
+<div class="stats">
+<span><b>23</b>registros</span>
+<span><b>2</b>hallazgos</span>
+<span style="color:var(--crit)"><b>0</b>criticos</span>
+<span style="color:var(--high)"><b>0</b>altos</span>
+<span><b>x0.8</b>peso</span>
+</div>
+<div class="bar"><i style="width:3%"></i></div>
+<div style="font-size:11px;color:var(--muted);margin-top:5px">Riesgo ponderado: <b>3.2</b> &middot; 1/1 colectores</div>
+</div>
+<div class="layer">
+<h3><span class="code">L2</span> &middot; Sistema operativo y hardening</h3>
+<div class="d">Version de SO, parches, configuracion de seguridad, antimalware, cifrado.</div>
+<div class="stats">
+<span><b>52</b>registros</span>
+<span><b>6</b>hallazgos</span>
+<span style="color:var(--crit)"><b>2</b>criticos</span>
+<span style="color:var(--high)"><b>1</b>altos</span>
+<span><b>x1.2</b>peso</span>
+</div>
+<div class="bar"><i style="width:46%"></i></div>
+<div style="font-size:11px;color:var(--muted);margin-top:5px">Riesgo ponderado: <b>42</b> &middot; 3/3 colectores</div>
+</div>
+<div class="layer">
+<h3><span class="code">L3</span> &middot; Plataforma, runtimes y middleware</h3>
+<div class="d">.NET, Java, Python, Node, IIS, bases de datos, servidores de aplicacion.</div>
+<div class="stats">
+<span><b>83</b>registros</span>
+<span><b>1</b>hallazgos</span>
+<span style="color:var(--crit)"><b>0</b>criticos</span>
+<span style="color:var(--high)"><b>1</b>altos</span>
+<span><b>x1.5</b>peso</span>
+</div>
+<div class="bar"><i style="width:10%"></i></div>
+<div style="font-size:11px;color:var(--muted);margin-top:5px">Riesgo ponderado: <b>9</b> &middot; 1/1 colectores</div>
+</div>
+<div class="layer prio">
+<h3><span class="code">L4</span> &middot; Artefactos de software (PRIORIDAD)</h3>
+<div class="d">Inventario de aplicaciones instaladas, gestores de paquetes, binarios no gestionados, integridad y ciclo de vida.</div>
+<div class="stats">
+<span><b>311</b>registros</span>
+<span><b>14</b>hallazgos</span>
+<span style="color:var(--crit)"><b>0</b>criticos</span>
+<span style="color:var(--high)"><b>5</b>altos</span>
+<span><b>x2</b>peso</span>
+</div>
+<div class="bar"><i style="width:100%"></i></div>
+<div style="font-size:11px;color:var(--muted);margin-top:5px">Riesgo ponderado: <b>92</b> &middot; 6/6 colectores</div>
+</div>
+<div class="layer">
+<h3><span class="code">L5</span> &middot; Servicios, procesos y persistencia</h3>
+<div class="d">Servicios Windows, tareas programadas, autoarranque, procesos activos.</div>
+<div class="stats">
+<span><b>423</b>registros</span>
+<span><b>8</b>hallazgos</span>
+<span style="color:var(--crit)"><b>0</b>criticos</span>
+<span style="color:var(--high)"><b>3</b>altos</span>
+<span><b>x1.5</b>peso</span>
+</div>
+<div class="bar"><i style="width:47%"></i></div>
+<div style="font-size:11px;color:var(--muted);margin-top:5px">Riesgo ponderado: <b>43.5</b> &middot; 2/2 colectores</div>
+</div>
+<div class="layer">
+<h3><span class="code">L6</span> &middot; Identidad y control de acceso</h3>
+<div class="d">Cuentas locales, administradores, politica de contrasenas, RDP, privilegios.</div>
+<div class="stats">
+<span><b>30</b>registros</span>
+<span><b>8</b>hallazgos</span>
+<span style="color:var(--crit)"><b>0</b>criticos</span>
+<span style="color:var(--high)"><b>3</b>altos</span>
+<span><b>x1.4</b>peso</span>
+</div>
+<div class="bar"><i style="width:44%"></i></div>
+<div style="font-size:11px;color:var(--muted);margin-top:5px">Riesgo ponderado: <b>40.6</b> &middot; 1/1 colectores</div>
+</div>
+<div class="layer">
+<h3><span class="code">L7</span> &middot; Red y exposicion</h3>
+<div class="d">Puertos en escucha, firewall, recursos compartidos, protocolos heredados.</div>
+<div class="stats">
+<span><b>139</b>registros</span>
+<span><b>3</b>hallazgos</span>
+<span style="color:var(--crit)"><b>0</b>criticos</span>
+<span style="color:var(--high)"><b>2</b>altos</span>
+<span><b>x1.3</b>peso</span>
+</div>
+<div class="bar"><i style="width:21%"></i></div>
+<div style="font-size:11px;color:var(--muted);margin-top:5px">Riesgo ponderado: <b>19.5</b> &middot; 1/1 colectores</div>
+</div>
+<div class="layer">
+<h3><span class="code">L8</span> &middot; Datos, registro y resiliencia</h3>
+<div class="d">Politica de auditoria, logs, respaldos, instantaneas, capacidad de disco.</div>
+<div class="stats">
+<span><b>17</b>registros</span>
+<span><b>3</b>hallazgos</span>
+<span style="color:var(--crit)"><b>0</b>criticos</span>
+<span style="color:var(--high)"><b>1</b>altos</span>
+<span><b>x1.1</b>peso</span>
+</div>
+<div class="bar"><i style="width:14%"></i></div>
+<div style="font-size:11px;color:var(--muted);margin-top:5px">Riesgo ponderado: <b>13.2</b> &middot; 1/1 colectores</div>
+</div>
+<div class="layer">
+<h3><span class="code">L9</span> &middot; Rendimiento y capacidad</h3>
+<div class="d">Estadisticas del servidor: CPU, memoria, disco, red, top de procesos.</div>
+<div class="stats">
+<span><b>55</b>registros</span>
+<span><b>2</b>hallazgos</span>
+<span style="color:var(--crit)"><b>0</b>criticos</span>
+<span style="color:var(--high)"><b>0</b>altos</span>
+<span><b>x0.9</b>peso</span>
+</div>
+<div class="bar"><i style="width:6%"></i></div>
+<div style="font-size:11px;color:var(--muted);margin-top:5px">Riesgo ponderado: <b>5.4</b> &middot; 1/1 colectores</div>
+</div>
+</div></div>
+<div class="card">
+<h2>Matriz de cobertura &middot; ISO/IEC 27001:2022 Anexo A</h2>
+<p class="desc">Relacion entre cada control auditable tecnicamente, las capas que lo evidencian y el resultado de conformidad. El nivel de cobertura indica si la evidencia automatizada es suficiente (<b>Total</b>), requiere complemento documental (<b>Parcial</b>) o solo senala sintomas (<b>Indicio</b>).</p>
+<div class="tbl-scroll"><table>
+<thead><tr><th>Control</th><th>Tema</th><th>Titulo</th><th>Capas</th><th>Cobertura</th><th>Estado</th><th>Conformidad</th><th>Hallazgos</th></tr></thead><tbody>
+<tr><td><span class="tag">A.5.15</span></td><td>Organizacional</td><td>Control de acceso</td><td>L6, L7</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>4 (C:0 A:2)</td></tr>
+<tr><td><span class="tag">A.5.17</span></td><td>Organizacional</td><td>Informacion de autenticacion</td><td>L6</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>5 (C:0 A:2)</td></tr>
+<tr><td><span class="tag">A.5.25</span></td><td>Organizacional</td><td>Evaluacion y decision sobre eventos de seguridad de la informacion</td><td>L4, L5, L8</td><td>Indicio</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>1 (C:0 A:1)</td></tr>
+<tr><td><span class="tag">A.5.9</span></td><td>Organizacional</td><td>Inventario de informacion y otros activos asociados</td><td>L1, L2, L3, L4</td><td>Total</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>10 (C:0 A:3)</td></tr>
+<tr><td><span class="tag">A.8.12</span></td><td>Tecnologico</td><td>Prevencion de fuga de datos</td><td>L4, L7</td><td>Indicio</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>1 (C:0 A:1)</td></tr>
+<tr><td><span class="tag">A.8.15</span></td><td>Tecnologico</td><td>Registro de eventos (logging)</td><td>L8, L2</td><td>Total</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>3 (C:0 A:1)</td></tr>
+<tr><td><span class="tag">A.8.16</span></td><td>Tecnologico</td><td>Actividades de monitoreo</td><td>L8, L9, L5</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>6 (C:0 A:2)</td></tr>
+<tr><td><span class="tag">A.8.19</span></td><td>Tecnologico</td><td>Instalacion de software en sistemas operativos</td><td>L4</td><td>Total</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>14 (C:0 A:6)</td></tr>
+<tr><td><span class="tag">A.8.2</span></td><td>Tecnologico</td><td>Derechos de acceso privilegiado</td><td>L6, L5</td><td>Total</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>4 (C:0 A:2)</td></tr>
+<tr><td><span class="tag">A.8.20</span></td><td>Tecnologico</td><td>Seguridad de redes</td><td>L7, L2</td><td>Total</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>4 (C:0 A:3)</td></tr>
+<tr><td><span class="tag">A.8.21</span></td><td>Tecnologico</td><td>Seguridad de los servicios de red</td><td>L7</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>4 (C:0 A:2)</td></tr>
+<tr><td><span class="tag">A.8.22</span></td><td>Tecnologico</td><td>Segregacion de redes</td><td>L7</td><td>Indicio</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>1 (C:0 A:1)</td></tr>
+<tr><td><span class="tag">A.8.3</span></td><td>Tecnologico</td><td>Restriccion de acceso a la informacion</td><td>L7</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>1 (C:0 A:1)</td></tr>
+<tr><td><span class="tag">A.8.31</span></td><td>Tecnologico</td><td>Separacion de entornos de desarrollo, prueba y produccion</td><td>L3, L4</td><td>Indicio</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>1 (C:0 A:1)</td></tr>
+<tr><td><span class="tag">A.8.5</span></td><td>Tecnologico</td><td>Autenticacion segura</td><td>L6, L7</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>5 (C:0 A:3)</td></tr>
+<tr><td><span class="tag">A.8.7</span></td><td>Tecnologico</td><td>Proteccion contra codigo malicioso</td><td>L2</td><td>Total</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>1 (C:0 A:1)</td></tr>
+<tr><td><span class="tag">A.8.8</span></td><td>Tecnologico</td><td>Gestion de vulnerabilidades tecnicas</td><td>L2, L3, L4</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>9 (C:2 A:3)</td></tr>
+<tr><td><span class="tag">A.8.9</span></td><td>Tecnologico</td><td>Gestion de la configuracion</td><td>L2, L3, L5</td><td>Total</td><td>Evidenciado</td><td><span class="pill p-noconf">No conforme</span></td><td>9 (C:0 A:4)</td></tr>
+<tr><td><span class="tag">A.5.10</span></td><td>Organizacional</td><td>Uso aceptable de la informacion y otros activos asociados</td><td>L4</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-obs">Conforme con observaciones</span></td><td>2 (C:0 A:0)</td></tr>
+<tr><td><span class="tag">A.5.16</span></td><td>Organizacional</td><td>Gestion de identidad</td><td>L6</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-obs">Conforme con observaciones</span></td><td>4 (C:0 A:0)</td></tr>
+<tr><td><span class="tag">A.5.18</span></td><td>Organizacional</td><td>Derechos de acceso</td><td>L6</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-obs">Conforme con observaciones</span></td><td>3 (C:0 A:0)</td></tr>
+<tr><td><span class="tag">A.5.21</span></td><td>Organizacional</td><td>Gestion de la seguridad en la cadena de suministro de TIC</td><td>L4</td><td>Indicio</td><td>Evidenciado</td><td><span class="pill p-obs">Conforme con observaciones</span></td><td>1 (C:0 A:0)</td></tr>
+<tr><td><span class="tag">A.5.23</span></td><td>Organizacional</td><td>Seguridad de la informacion en servicios en la nube</td><td>L4</td><td>Indicio</td><td>Evidenciado</td><td><span class="pill p-conf">Conforme</span></td><td>0</td></tr>
+<tr><td><span class="tag">A.5.28</span></td><td>Organizacional</td><td>Recoleccion de evidencia</td><td>L8</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-obs">Conforme con observaciones</span></td><td>1 (C:0 A:0)</td></tr>
+<tr><td><span class="tag">A.5.30</span></td><td>Organizacional</td><td>Preparacion de las TIC para la continuidad de negocio</td><td>L8</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-obs">Conforme con observaciones</span></td><td>1 (C:0 A:0)</td></tr>
+<tr><td><span class="tag">A.5.32</span></td><td>Organizacional</td><td>Derechos de propiedad intelectual</td><td>L2, L4</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-conf">Conforme</span></td><td>0</td></tr>
+<tr><td><span class="tag">A.5.37</span></td><td>Organizacional</td><td>Procedimientos operativos documentados</td><td>L5</td><td>Indicio</td><td>Evidenciado</td><td><span class="pill p-obs">Conforme con observaciones</span></td><td>1 (C:0 A:0)</td></tr>
+<tr><td><span class="tag">A.7.10</span></td><td>Fisico</td><td>Medios de almacenamiento</td><td>L1, L8</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-conf">Conforme</span></td><td>0</td></tr>
+<tr><td><span class="tag">A.7.9</span></td><td>Fisico</td><td>Seguridad de los activos fuera de las instalaciones</td><td>L1, L2</td><td>Indicio</td><td>Evidenciado</td><td><span class="pill p-conf">Conforme</span></td><td>0</td></tr>
+<tr><td><span class="tag">A.8.1</span></td><td>Tecnologico</td><td>Dispositivos finales de usuario</td><td>L1, L2</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-obs">Conforme con observaciones</span></td><td>1 (C:0 A:0)</td></tr>
+<tr><td><span class="tag">A.8.10</span></td><td>Tecnologico</td><td>Eliminacion de informacion</td><td>L8</td><td>Indicio</td><td>Evidenciado</td><td><span class="pill p-conf">Conforme</span></td><td>0</td></tr>
+<tr><td><span class="tag">A.8.13</span></td><td>Tecnologico</td><td>Respaldo de la informacion</td><td>L8</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-conf">Conforme</span></td><td>0</td></tr>
+<tr><td><span class="tag">A.8.17</span></td><td>Tecnologico</td><td>Sincronizacion de relojes</td><td>L2</td><td>Total</td><td>Evidenciado</td><td><span class="pill p-conf">Conforme</span></td><td>0</td></tr>
+<tr><td><span class="tag">A.8.18</span></td><td>Tecnologico</td><td>Uso de programas utilitarios privilegiados</td><td>L4, L5</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-conf">Conforme</span></td><td>0</td></tr>
+<tr><td><span class="tag">A.8.24</span></td><td>Tecnologico</td><td>Uso de criptografia</td><td>L2</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-conf">Conforme</span></td><td>0</td></tr>
+<tr><td><span class="tag">A.8.25</span></td><td>Tecnologico</td><td>Ciclo de vida de desarrollo seguro</td><td>L4</td><td>Indicio</td><td>Evidenciado</td><td><span class="pill p-conf">Conforme</span></td><td>0</td></tr>
+<tr><td><span class="tag">A.8.28</span></td><td>Tecnologico</td><td>Codificacion segura</td><td>L4</td><td>Indicio</td><td>Evidenciado</td><td><span class="pill p-obs">Conforme con observaciones</span></td><td>1 (C:0 A:0)</td></tr>
+<tr><td><span class="tag">A.8.32</span></td><td>Tecnologico</td><td>Gestion de cambios</td><td>L4, L2</td><td>Parcial</td><td>Evidenciado</td><td><span class="pill p-obs">Conforme con observaciones</span></td><td>3 (C:0 A:0)</td></tr>
+<tr><td><span class="tag">A.8.34</span></td><td>Tecnologico</td><td>Proteccion de sistemas de informacion durante auditorias</td><td>L9</td><td>Total</td><td>Evidenciado</td><td><span class="pill p-conf">Conforme</span></td><td>0</td></tr>
+<tr><td><span class="tag">A.8.6</span></td><td>Tecnologico</td><td>Gestion de la capacidad</td><td>L9, L8</td><td>Total</td><td>Evidenciado</td><td><span class="pill p-obs">Conforme con observaciones</span></td><td>3 (C:0 A:0)</td></tr>
+</tbody></table></div></div>
+<div class="card">
+<h2>Hallazgos detallados (47)</h2>
+<p class="desc">Ordenados por severidad. Cada hallazgo incluye el activo afectado, la evidencia recolectada, los controles del Anexo A implicados y la accion recomendada.</p>
+<h3 class="sec">CRITICO &mdash; 2 hallazgo(s)</h3>
+<div class="finding f-crit">
+<div class="hd">
+<span class="badge sev-crit">CRITICO</span>
+<span class="ttl">Latencia de parcheo fuera del umbral definido</span>
+<span class="id">L2-02-9EBC371A</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L2</span> <b>Colector:</b> <code>L2-02</code> <b>Categoria:</b> Parcheo</div>
+<div class="row"><b>Activo afectado:</b> SRV-SAP</div>
+<div class="row">La ultima actualizacion registrada es del 2026-04-30 (103 dias). El umbral establecido para este servidor es de 45 dias.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.8</span></div>
+<div class="ev">UltimoHotFix=KB5082142</div>
+<div class="rec"><b>Recomendacion:</b> Ejecutar el ciclo de actualizacion pendiente y verificar la conectividad del servidor con WSUS o el servicio de actualizacion corporativo.</div>
+</div>
+<div class="finding f-crit">
+<div class="hd">
+<span class="badge sev-crit">CRITICO</span>
+<span class="ttl">Actualizaciones de seguridad criticas pendientes de instalacion</span>
+<span class="id">L2-02-3E41D643</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L2</span> <b>Colector:</b> <code>L2-02</code> <b>Categoria:</b> Parcheo</div>
+<div class="row"><b>Activo afectado:</b> SRV-SAP</div>
+<div class="row">Hay 3 actualizaciones pendientes, de las cuales 1 estan clasificadas por MSRC como Critical o Important.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.8</span></div>
+<div class="rec"><b>Recomendacion:</b> Priorizar la instalacion de las actualizaciones criticas en la proxima ventana y registrar el cambio en el proceso formal de gestion de cambios.</div>
+</div>
+<h3 class="sec">ALTO &mdash; 16 hallazgo(s)</h3>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">Perfiles de firewall de Windows deshabilitados</span>
+<span class="id">L2-03-6C669C80</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L2</span> <b>Colector:</b> <code>L2-03</code> <b>Categoria:</b> Red</div>
+<div class="row"><b>Activo afectado:</b> Domain, Private, Public</div>
+<div class="row">Los siguientes perfiles estan desactivados: Domain, Private, Public. El servidor queda sin filtrado de host en esos contextos de red.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.20</span> <span class="tag">A.8.21</span></div>
+<div class="rec"><b>Recomendacion:</b> Habilitar todos los perfiles con accion entrante predeterminada Block y definir reglas explicitas solo para los servicios requeridos.</div>
+</div>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">Componente de plataforma fuera de soporte: Windows PowerShell 2.0 Engine</span>
+<span class="id">L3-01-8FB44C50</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L3</span> <b>Colector:</b> <code>L3-01</code> <b>Categoria:</b> CicloDeVida</div>
+<div class="row"><b>Activo afectado:</b> Windows PowerShell 2.0 Engine </div>
+<div class="row">PSv2 sin registro de bloques de script. Deshabilitar la caracteristica.. Fin de soporte: 2017-01-01. Un componente sin soporte no recibe correcciones de seguridad.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.8</span> <span class="tag">A.5.9</span></div>
+<div class="ev">Ruta: PowerShell-V2 | Origen: Get-WindowsFeature</div>
+<div class="rec"><b>Recomendacion:</b> Planificar la migracion a una version soportada o formalizar un plan de tratamiento del riesgo con controles compensatorios y fecha limite.</div>
+</div>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">Ejecutables sin firma digital fuera de rutas de instalacion gestionadas</span>
+<span class="id">L4-03-676B9C0B</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L4</span> <b>Colector:</b> <code>L4-03</code> <b>Categoria:</b> IntegridadDeSoftware</div>
+<div class="row"><b>Activo afectado:</b> 1 archivos</div>
+<div class="row">Se identificaron 1 ejecutables o bibliotecas sin firma Authenticode. Sin firma no es posible verificar el origen ni la integridad del artefacto, ni detectar su alteracion posterior.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.19</span> <span class="tag">A.8.9</span></div>
+<div class="ev">D:\Instaladores Addon 2023 SAP 10\SSO.TRF.InstaladorAsientosContables.msi [115093.5 KB]</div>
+<div class="rec"><b>Recomendacion:</b> Verificar el origen de cada binario, reinstalarlo desde una fuente oficial firmada y aplicar control de aplicaciones (AppLocker/WDAC) en modo de exigir firma para rutas de trabajo.</div>
+</div>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">Servicios o procesos ejecutando binarios sin firma digital</span>
+<span class="id">L4-04-A538C4E8</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L4</span> <b>Colector:</b> <code>L4-04</code> <b>Categoria:</b> IntegridadDeSoftware</div>
+<div class="row"><b>Activo afectado:</b> 7 binarios</div>
+<div class="row">7 imagenes en ejecucion carecen de firma Authenticode. Estos binarios operan con los privilegios de su contexto sin que sea posible verificar su origen ni detectar modificaciones.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.19</span> <span class="tag">A.8.9</span></div>
+<div class="ev">c:\Program Files\SAP\SAP Business One ServerTools\License Service\service\B1_License.exe &lt;= Servicio: B1LicenseService | C:\Program Files\SAP\SAP Business One ServerTools\ServiceLayer\Apache\bin\httpd.exe &lt;= Servicio: b1s50000; Servicio: b1s50001; Servicio: b1s50002; Servicio: b1s50003; Servicio: b1s50004; Servicio: b1s50005; Servicio: b1s50006; Servicio: b1s50007; Servicio: b1s50008; Servicio: b1s50009; Servicio: b1s50010 | C:\Program Files\SAP\SAP Business One SetupFiles\support\tools\nssm\nssm.exe &lt;= Servicio: B1ServerToolsAuthentication | c:\Program Files\SAP\SAP Business One ServerTools\Mailer\B1_Mailer.exe &lt;= Servicio: SBOMail | c:\Program Files\SAP\SAP Business One SLD Agent\sldagentservice\sldAgent.exe &lt;= Servicio: SLDAgentOP | c:\Program Files\SAP\SAP Business One ServerTools\License Service\service\TAO_NT_CosNaming.exe &lt;= Servicio: TAO_NT_Naming_Service | C:\windows_exporter\windows_exporter.exe &lt;= Servicio: windows_exporter</div>
+<div class="rec"><b>Recomendacion:</b> Identificar el proveedor de cada binario y exigir entregables firmados. Registrar el hash SHA256 como linea base y monitorear su cambio entre ejecuciones de auditoria.</div>
+</div>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">Software fuera de soporte del proveedor: Microsoft Access database engine 2010 (English)</span>
+<span class="id">L4-05-10557F4E</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L4</span> <b>Colector:</b> <code>L4-05</code> <b>Categoria:</b> CicloDeVida</div>
+<div class="row"><b>Activo afectado:</b> Microsoft Access database engine 2010 (English) 14.0.7015.1000</div>
+<div class="row">Fin de soporte: 2020-10-13 (hace 2129 dias). Motor de base de datos Access fuera de soporte. Usado con frecuencia como puente ODBC/OLEDB entre aplicaciones. Un producto sin soporte no recibe correcciones para vulnerabilidades descubiertas despues de esa fecha.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.8</span> <span class="tag">A.5.9</span> <span class="tag">A.8.19</span></div>
+<div class="ev">Publicador: Microsoft Corporation | Instalado: 2023-05-24</div>
+<div class="rec"><b>Recomendacion:</b> Actualizar a una version soportada. Si la migracion no es viable a corto plazo, documentar la aceptacion del riesgo con aprobacion de la direccion, definir controles compensatorios (aislamiento de red, control de aplicaciones) y fijar una fecha limite de remediacion.</div>
+</div>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">Software fuera de soporte del proveedor: Microsoft SQL Server 2012 Native Client</span>
+<span class="id">L4-05-8FC18FBB</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L4</span> <b>Colector:</b> <code>L4-05</code> <b>Categoria:</b> CicloDeVida</div>
+<div class="row"><b>Activo afectado:</b> Microsoft SQL Server 2012 Native Client 11.4.7462.6</div>
+<div class="row">Fin de soporte: 2024-07-09 (hace 764 dias). Version de SQL Server fuera de soporte extendido. Un producto sin soporte no recibe correcciones para vulnerabilidades descubiertas despues de esa fecha.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.8</span> <span class="tag">A.5.9</span> <span class="tag">A.8.19</span></div>
+<div class="ev">Publicador: Microsoft Corporation | Instalado: 2023-03-08</div>
+<div class="rec"><b>Recomendacion:</b> Actualizar a una version soportada. Si la migracion no es viable a corto plazo, documentar la aceptacion del riesgo con aprobacion de la direccion, definir controles compensatorios (aislamiento de red, control de aplicaciones) y fijar una fecha limite de remediacion.</div>
+</div>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">Artefactos con rol no alineado al proposito declarado del servidor</span>
+<span class="id">L4-06-376CB46E</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L4</span> <b>Colector:</b> <code>L4-06</code> <b>Categoria:</b> ConformidadArquitectonica</div>
+<div class="row"><b>Activo afectado:</b> 10 artefactos</div>
+<div class="row">El servidor esta declarado como 'Servidor de aplicaciones de negocio' en entorno de Produccion. Se detectaron 10 artefactos cuyo rol arquitectonico figura entre los NO esperados para este proposito: Multimedia y entretenimiento (1), Sincronizacion en nube (1), Herramienta de desarrollo (6), Navegador web (2). Cada uno amplia la superficie de ataque sin aportar a la funcion del activo.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.19</span> <span class="tag">A.8.9</span> <span class="tag">A.8.31</span></div>
+<div class="ev">obs-browser-plus 3.23.9 [Multimedia y entretenimiento] =&gt; C:\Program Files\obs-browser-plus | Microsoft OneDrive [Sincronizacion en nube] =&gt; C:\Program Files\Microsoft OneDrive\26.134.0713.0004 | Azure Data Studio [Herramienta de desarrollo] =&gt; C:\Program Files\Azure Data Studio | Microsoft Visual Studio Installer [Herramienta de desarrollo] =&gt; C:\Program Files (x86)\Microsoft Visual Studio\Installer | DevExpress Components 24.2 [Herramienta de desarrollo] =&gt; C:\Program Files\DevExpress 24.2\Components | Microsoft Edge [Navegador web] =&gt; C:\Program Files (x86)\Microsoft\Edge\Application | Microsoft Edge WebView2 Runtime [Navegador web] =&gt; C:\Program Files (x86)\Microsoft\EdgeWebView\Application | vs_CoreEditorFonts [Herramienta de desarrollo] =&gt;  | Microsoft Visual Studio Tools for Applications 2019 [Herramienta de desarrollo] =&gt; C:\ProgramData\Package Cache\{f3fbabb4-bcfb-45eb-8fff-9b784fd68c38} | Microsoft Visual Studio Tools for Applications 2017 [Herramienta de desarrollo] =&gt; C:\ProgramData\Package Cache\{f895a2f1-ae3f-4212-8af1-7fa1f8c212ea}</div>
+<div class="rec"><b>Recomendacion:</b> Para cada artefacto: documentar la justificacion funcional o retirarlo. Si el rol es legitimo para este servidor, incorporarlo a RolesEsperados en Arquitectura.psd1 y dejar constancia de la decision arquitectonica.</div>
+</div>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">Servicios de terceros ejecutandose como LocalSystem</span>
+<span class="id">L5-01-425232A8</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L5</span> <b>Colector:</b> <code>L5-01</code> <b>Categoria:</b> Privilegios</div>
+<div class="row"><b>Activo afectado:</b> 4 servicios</div>
+<div class="row">Servicios cuyo binario no proviene de rutas del sistema se ejecutan con la cuenta de mayor privilegio del equipo. Una vulnerabilidad en ellos implica compromiso total del servidor.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.2</span> <span class="tag">A.8.9</span></div>
+<div class="ev">cloudResetPwdAgent [LocalSystem] =&gt; C:\CloudResetPwdAgent\bin\wrapper.exe | cloudResetPwdUpdateAgent [LocalSystem] =&gt; C:\CloudResetPwdUpdateAgent\bin\wrapper.exe | MDCoreSvc [LocalSystem] =&gt; C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26070.9-0\MpDefenderCoreService.exe | WinDefend [LocalSystem] =&gt; C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26070.9-0\MsMpEng.exe</div>
+<div class="rec"><b>Recomendacion:</b> Aplicar el principio de privilegio minimo: migrar a cuentas de servicio gestionadas (gMSA) o a NetworkService/LocalService cuando el producto lo soporte.</div>
+</div>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">Tareas programadas de terceros con privilegios maximos</span>
+<span class="id">L5-02-CEE7C7E3</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L5</span> <b>Colector:</b> <code>L5-02</code> <b>Categoria:</b> Privilegios</div>
+<div class="row"><b>Activo afectado:</b> 1 tareas</div>
+<div class="row">Estas tareas se ejecutan como SYSTEM o con el nivel de privilegio mas alto. Si el script o binario invocado reside en una ubicacion escribible, cualquier usuario con acceso a esa ruta logra ejecucion privilegiada.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.2</span> <span class="tag">A.8.19</span></div>
+<div class="ev">\OneDrive Per-Machine Standalone Update Task [SYSTEM [Highest]]</div>
+<div class="rec"><b>Recomendacion:</b> Reducir el nivel de privilegio al minimo necesario y proteger con ACL restrictivas los archivos que estas tareas invocan.</div>
+</div>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">Suscripciones de eventos WMI permanentes registradas</span>
+<span class="id">L5-02-A6AD93E9</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L5</span> <b>Colector:</b> <code>L5-02</code> <b>Categoria:</b> Persistencia</div>
+<div class="row"><b>Activo afectado:</b> 1 consumidores</div>
+<div class="row">Las suscripciones WMI permanentes ejecutan codigo ante eventos del sistema y sobreviven a reinicios. Son poco frecuentes en configuraciones legitimas y constituyen una tecnica de persistencia sigilosa.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.16</span> <span class="tag">A.8.7</span> <span class="tag">A.5.25</span></div>
+<div class="ev">SCM Event Log Consumer</div>
+<div class="rec"><b>Recomendacion:</b> Identificar el producto que registro cada suscripcion. Si no se corresponde con software autorizado (agentes de monitoreo o gestion), tratar como incidente.</div>
+</div>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">Bloqueo de cuenta por intentos fallidos no configurado</span>
+<span class="id">L6-01-90D1810C</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L6</span> <b>Colector:</b> <code>L6-01</code> <b>Categoria:</b> Autenticacion</div>
+<div class="row"><b>Activo afectado:</b> Politica local de contrasenas</div>
+<div class="row">Sin umbral de bloqueo, el servidor no ofrece resistencia frente a ataques de fuerza bruta o de rociado de contrasenas.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.5</span> <span class="tag">A.5.17</span></div>
+<div class="rec"><b>Recomendacion:</b> Configurar un umbral de bloqueo (referencia: 10 intentos fallidos, ventana de 15 minutos) equilibrando seguridad y disponibilidad.</div>
+</div>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">Longitud minima de contrasena por debajo de la recomendacion</span>
+<span class="id">L6-01-5AC9FB02</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L6</span> <b>Colector:</b> <code>L6-01</code> <b>Categoria:</b> Autenticacion</div>
+<div class="row"><b>Activo afectado:</b> Politica local de contrasenas</div>
+<div class="row">La longitud minima configurada es de 7 caracteres. Las lineas base actuales recomiendan al menos 14 para cuentas locales de servidor.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.5.17</span> <span class="tag">A.8.5</span></div>
+<div class="rec"><b>Recomendacion:</b> Elevar la longitud minima a 14 caracteres o mas mediante directiva de grupo, priorizando longitud sobre complejidad.</div>
+</div>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">RDP habilitado sin autenticacion a nivel de red (NLA)</span>
+<span class="id">L6-01-194F1AFB</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L6</span> <b>Colector:</b> <code>L6-01</code> <b>Categoria:</b> AccesoRemoto</div>
+<div class="row"><b>Activo afectado:</b> RDP-Tcp</div>
+<div class="row">Sin NLA, el servidor establece una sesion completa antes de autenticar al usuario, lo que lo expone a agotamiento de recursos y a vulnerabilidades previas a la autenticacion.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.5</span> <span class="tag">A.5.15</span> <span class="tag">A.8.20</span></div>
+<div class="rec"><b>Recomendacion:</b> Habilitar UserAuthentication=1 y SecurityLayer=2 (TLS) en la configuracion de Escritorio remoto.</div>
+</div>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">Servicios sensibles escuchando en todas las interfaces de red</span>
+<span class="id">L7-01-D15EED41</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L7</span> <b>Colector:</b> <code>L7-01</code> <b>Categoria:</b> ExposicionDeRed</div>
+<div class="row"><b>Activo afectado:</b> 8 puertos</div>
+<div class="row">Estos servicios aceptan conexiones en cualquier interfaz (0.0.0.0 o ::). Si el firewall perimetral o de host no los restringe, quedan accesibles desde toda la red alcanzable.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.20</span> <span class="tag">A.8.21</span> <span class="tag">A.8.22</span></div>
+<div class="ev">5985/TCP [WinRM HTTP] &lt;= System | 3389/TCP [RDP] &lt;= svchost | 1433/TCP [Microsoft SQL Server] &lt;= sqlservr | 445/TCP [SMB] &lt;= System | 135/TCP [RPC Endpoint Mapper] &lt;= svchost | 3389/TCP [RDP] &lt;= svchost | 1433/TCP [Microsoft SQL Server] &lt;= sqlservr | 135/TCP [RPC Endpoint Mapper] &lt;= svchost</div>
+<div class="rec"><b>Recomendacion:</b> Restringir la escucha a las interfaces necesarias, aplicar reglas de firewall con origen acotado y aplicar segmentacion de red para los servicios de administracion y de base de datos.</div>
+</div>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">Recursos compartidos con permisos amplios de escritura</span>
+<span class="id">L7-01-935A9774</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L7</span> <b>Colector:</b> <code>L7-01</code> <b>Categoria:</b> ControlDeAcceso</div>
+<div class="row"><b>Activo afectado:</b> 4 recursos</div>
+<div class="row">Existen comparticiones que otorgan permisos de cambio o control total a grupos amplios, permitiendo lectura y modificacion de datos por cualquier cuenta autenticada de la red.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.3</span> <span class="tag">A.5.15</span> <span class="tag">A.8.12</span></div>
+<div class="ev">B1_SHR =&gt; Everyone: Full | Guacamole =&gt; Everyone: Full | Program Files =&gt; Everyone: Full | SAP Business One =&gt; Everyone: Full</div>
+<div class="rec"><b>Recomendacion:</b> Aplicar permisos basados en grupos especificos siguiendo el principio de privilegio minimo, tanto en la comparticion como en las ACL NTFS subyacentes.</div>
+</div>
+<div class="finding f-high">
+<div class="hd">
+<span class="badge sev-high">ALTO</span>
+<span class="ttl">Registro de eventos deshabilitado: Microsoft-Windows-TaskScheduler/Operational</span>
+<span class="id">L8-01-3023B386</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L8</span> <b>Colector:</b> <code>L8-01</code> <b>Categoria:</b> Registro</div>
+<div class="row"><b>Activo afectado:</b> Microsoft-Windows-TaskScheduler/Operational</div>
+<div class="row">Un canal de registro deshabilitado elimina la trazabilidad de los eventos que cubre e impide la deteccion y la investigacion posterior.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.15</span> <span class="tag">A.8.16</span></div>
+<div class="rec"><b>Recomendacion:</b> Habilitar el canal de registro y verificar que ninguna directiva de grupo lo este desactivando.</div>
+</div>
+<h3 class="sec">MEDIO &mdash; 19 hallazgo(s)</h3>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Firmware BIOS/UEFI con antiguedad superior a 4 anios</span>
+<span class="id">L1-01-E857BE8A</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L1</span> <b>Colector:</b> <code>L1-01</code> <b>Categoria:</b> Firmware</div>
+<div class="row"><b>Activo afectado:</b> OpenStack Foundation OpenStack Nova</div>
+<div class="row">Fecha de version del BIOS: 2014-03-31 (4516 dias). El firmware desactualizado puede contener vulnerabilidades sin corregir.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.8</span> <span class="tag">A.8.1</span></div>
+<div class="ev">BIOSVersion=BOCHS  - 1 Intel IGD BDSM enabled at 0x%08x, size %lldMB, dev 00:02.0</div>
+<div class="rec"><b>Recomendacion:</b> Revisar el catalogo de firmware del fabricante e incorporar el firmware al ciclo formal de gestion de parches.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Reinicio pendiente: parches aplicados pero no efectivos</span>
+<span class="id">L2-01-2729E691</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L2</span> <b>Colector:</b> <code>L2-01</code> <b>Categoria:</b> Parcheo</div>
+<div class="row"><b>Activo afectado:</b> SRV-SAP</div>
+<div class="row">Indicadores detectados: PendingFileRename. Hasta que se reinicie, las correcciones instaladas no protegen al sistema.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.8</span> <span class="tag">A.8.32</span></div>
+<div class="rec"><b>Recomendacion:</b> Coordinar el reinicio dentro de la proxima ventana de mantenimiento aprobada.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Firma SMB no exigida en el servidor</span>
+<span class="id">L2-03-0DD29681</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L2</span> <b>Colector:</b> <code>L2-03</code> <b>Categoria:</b> Hardening</div>
+<div class="row"><b>Activo afectado:</b> HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters\RequireSecuritySignature</div>
+<div class="row">Valor actual: 0. Valor esperado segun linea base: 1.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.21</span></div>
+<div class="ev">HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters\RequireSecuritySignature=0</div>
+<div class="rec"><b>Recomendacion:</b> Exigir firma SMB para mitigar ataques de retransmision (relay).</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">UAC configurado sin solicitud de consentimiento</span>
+<span class="id">L2-03-53FFF7D6</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L2</span> <b>Colector:</b> <code>L2-03</code> <b>Categoria:</b> Hardening</div>
+<div class="row"><b>Activo afectado:</b> HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\ConsentPromptBehaviorAdmin</div>
+<div class="row">Valor actual: 5. Valor esperado segun linea base: 2.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.9</span></div>
+<div class="ev">HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\ConsentPromptBehaviorAdmin=5</div>
+<div class="rec"><b>Recomendacion:</b> Establecer ConsentPromptBehaviorAdmin en 2 (solicitar consentimiento en escritorio seguro) o superior.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Scripts operativos sin control de versiones ni firma</span>
+<span class="id">L4-03-6A198F87</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L4</span> <b>Colector:</b> <code>L4-03</code> <b>Categoria:</b> CodigoOperativo</div>
+<div class="row"><b>Activo afectado:</b> 21 scripts</div>
+<div class="row">Se identificaron 21 scripts (.ps1/.bat/.cmd/.vbs) en las rutas auditadas. El codigo operativo no firmado y sin trazabilidad puede ser modificado sin deteccion y suele ejecutarse con privilegios elevados.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.28</span> <span class="tag">A.8.19</span> <span class="tag">A.8.32</span></div>
+<div class="ev">C:\Scripts\Audit\bootstrap.ps1 | C:\Scripts\Audit\Invoke-Audit.ps1 | C:\Scripts\Audit\Collectors\L1-01_Hardware-Inventory.ps1 | C:\Scripts\Audit\Collectors\L2-01_OS-Baseline.ps1 | C:\Scripts\Audit\Collectors\L2-02_Patch-Level.ps1 | C:\Scripts\Audit\Collectors\L2-03_Security-Config.ps1 | C:\Scripts\Audit\Collectors\L3-01_Runtimes-Middleware.ps1 | C:\Scripts\Audit\Collectors\L4-01_Installed-Software.ps1 | C:\Scripts\Audit\Collectors\L4-02_Package-Managers.ps1 | C:\Scripts\Audit\Collectors\L4-03_Unmanaged-Binaries.ps1 | C:\Scripts\Audit\Collectors\L4-04_Software-Integrity.ps1 | C:\Scripts\Audit\Collectors\L4-05_Software-Lifecycle.ps1 | C:\Scripts\Audit\Collectors\L4-06_EA-Baseline.ps1 | C:\Scripts\Audit\Collectors\L5-01_Services.ps1 | C:\Scripts\Audit\Collectors\L5-02_Autoruns-Tasks.ps1</div>
+<div class="rec"><b>Recomendacion:</b> Trasladar el codigo operativo a un repositorio con control de versiones, firmarlo con un certificado de la organizacion y establecer ExecutionPolicy en AllSigned.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Aplicaciones declaradas en el catalogo que no se detectaron en el servidor</span>
+<span class="id">L4-06-B453ED7F</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L4</span> <b>Colector:</b> <code>L4-06</code> <b>Categoria:</b> LineaBaseEA</div>
+<div class="row"><b>Activo afectado:</b> REPOFEL</div>
+<div class="row">El catalogo de arquitectura declara 1 aplicacion(es) que no fueron encontradas mediante el registro de desinstalacion ni las rutas de servicios. O la aplicacion no reside en este servidor, o su patron de deteccion esta mal definido, o se despliega por un mecanismo que el inventario gestionado no cubre (copia manual, contenedor, recurso de red).</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.5.9</span> <span class="tag">A.8.19</span></div>
+<div class="ev">REPOFEL: patron '(?i)repofel'</div>
+<div class="rec"><b>Recomendacion:</b> Confirmar con el responsable si la aplicacion reside efectivamente en este activo. Si reside, ajustar el patron de deteccion en Arquitectura.psd1 o ejecutar el colector L4-03 con la ruta de despliegue incluida en UnmanagedScan.Rutas.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Aplicaciones de negocio sin propietario asignado</span>
+<span class="id">L4-06-CD39602C</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L4</span> <b>Colector:</b> <code>L4-06</code> <b>Categoria:</b> GobiernoDeActivos</div>
+<div class="row"><b>Activo afectado:</b> REPOFEL, SAP</div>
+<div class="row">Sin propietario declarado no hay responsable de autorizar cambios, aprobar accesos, definir la clasificacion de la informacion ni asumir el riesgo residual del activo.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.5.9</span> <span class="tag">A.5.10</span> <span class="tag">A.5.18</span></div>
+<div class="rec"><b>Recomendacion:</b> Asignar propietario y responsable tecnico a cada aplicacion en Arquitectura.psd1, y formalizarlo en el inventario de activos del SGSI.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">El servidor no tiene propietario declarado en la linea base</span>
+<span class="id">L4-06-2906B263</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L4</span> <b>Colector:</b> <code>L4-06</code> <b>Categoria:</b> GobiernoDeActivos</div>
+<div class="row"><b>Activo afectado:</b> SRV-SAP</div>
+<div class="row">El bloque RolServidor de Arquitectura.psd1 mantiene el propietario sin definir. El activo no tiene responsable formal identificado.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.5.9</span> <span class="tag">A.5.10</span></div>
+<div class="rec"><b>Recomendacion:</b> Completar Propietario, ResponsableTecnico y UnidadNegocio en Config\Arquitectura.psd1.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Servicios configurados con cuentas nominales o de dominio</span>
+<span class="id">L5-01-67CA0037</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L5</span> <b>Colector:</b> <code>L5-01</code> <b>Categoria:</b> Privilegios</div>
+<div class="row"><b>Activo afectado:</b> 2 servicios</div>
+<div class="row">Las cuentas nominales usadas como cuentas de servicio almacenan credenciales en el LSA, rara vez rotan su contrasena y dificultan la atribucion de acciones.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.2</span> <span class="tag">A.5.16</span> <span class="tag">A.5.17</span></div>
+<div class="ev">Tableau Bridge worker(db_replica@SRV-SAP) [.\db_replica] | Tableau Bridge worker(Administrator@SRV-SAP) [.\Administrator]</div>
+<div class="rec"><b>Recomendacion:</b> Migrar a cuentas de servicio administradas de grupo (gMSA) con rotacion automatica de contrasena, o a cuentas de servicio dedicadas con rotacion documentada.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Servicios ejecutando binarios fuera de las rutas de instalacion estandar</span>
+<span class="id">L5-01-046BB6B3</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L5</span> <b>Colector:</b> <code>L5-01</code> <b>Categoria:</b> SoftwareNoGestionado</div>
+<div class="row"><b>Activo afectado:</b> 5 servicios</div>
+<div class="row">Estos servicios ejecutan binarios que no residen en Windows ni en Archivos de programa, lo que sugiere software desplegado sin instalador o fuera del proceso de gestion de cambios.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.19</span> <span class="tag">A.8.9</span></div>
+<div class="ev">cloudResetPwdAgent =&gt; C:\CloudResetPwdAgent\bin\wrapper.exe | cloudResetPwdUpdateAgent =&gt; C:\CloudResetPwdUpdateAgent\bin\wrapper.exe | MDCoreSvc =&gt; C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26070.9-0\MpDefenderCoreService.exe | WdNisSvc =&gt; C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26070.9-0\NisSrv.exe | WinDefend =&gt; C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26070.9-0\MsMpEng.exe</div>
+<div class="rec"><b>Recomendacion:</b> Correlacionar cada servicio con el inventario de software autorizado (colector L4-01) y confirmar su firma digital (colector L4-04).</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Tareas programadas de terceros activas en el servidor</span>
+<span class="id">L5-02-27B379B2</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L5</span> <b>Colector:</b> <code>L5-02</code> <b>Categoria:</b> Automatizacion</div>
+<div class="row"><b>Activo afectado:</b> 2 tareas</div>
+<div class="row">Cada tarea programada de terceros ejecuta codigo de forma automatica y desatendida. Constituyen tanto un mecanismo operativo legitimo como el vector de persistencia mas utilizado; deben estar inventariadas y aprobadas.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.19</span> <span class="tag">A.5.37</span> <span class="tag">A.8.16</span></div>
+<div class="ev">\OneDrive Per-Machine Standalone Update Task =&gt; C:\Program Files\Microsoft OneDrive\OneDriveStandaloneUpdater.exe | \OneDrive Reporting Task-S-1-5-21-2969368601-2643879877-1254880530-1019 =&gt; C:\Program Files\Microsoft OneDrive\OneDriveStandaloneUpdater.exe /reporting</div>
+<div class="rec"><b>Recomendacion:</b> Documentar cada tarea en el procedimiento operativo del servidor: proposito, responsable, cuenta de ejecucion y frecuencia. Deshabilitar las que no tengan dueno identificable.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Contrasenas sin rotacion por periodo prolongado</span>
+<span class="id">L6-01-73FA486D</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L6</span> <b>Colector:</b> <code>L6-01</code> <b>Categoria:</b> Autenticacion</div>
+<div class="row"><b>Activo afectado:</b> 7 cuentas</div>
+<div class="row">Cuentas cuya contrasena no cambia desde hace mas de 365 dias.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.5.17</span> <span class="tag">A.8.5</span></div>
+<div class="ev">Administrator (1107 dias); b1scswworkingshare (559 dias); B1_Tech_User (559 dias); conta.seno (768 dias); edson.cuque (799 dias); jefedesarrollo (1047 dias); rublan (1006 dias)</div>
+<div class="rec"><b>Recomendacion:</b> Forzar el cambio de contrasena y verificar el cumplimiento de la politica corporativa de credenciales.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Cuentas locales habilitadas sin uso reciente</span>
+<span class="id">L6-01-4D37F125</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L6</span> <b>Colector:</b> <code>L6-01</code> <b>Categoria:</b> Identidad</div>
+<div class="row"><b>Activo afectado:</b> 3 cuentas</div>
+<div class="row">Las siguientes cuentas siguen habilitadas pese a no registrar inicio de sesion en mas de 90 dias. Las cuentas latentes amplian la superficie de ataque sin aportar valor operativo.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.5.16</span> <span class="tag">A.5.18</span></div>
+<div class="ev">b1scswworkingshare (559 dias); edson.cuque (742 dias); jefedesarrollo (321 dias)</div>
+<div class="rec"><b>Recomendacion:</b> Ejecutar la revision periodica de derechos de acceso y deshabilitar las cuentas sin dueno o sin uso justificado.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Cuenta de administrador integrada habilitada</span>
+<span class="id">L6-01-8C334017</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L6</span> <b>Colector:</b> <code>L6-01</code> <b>Categoria:</b> Identidad</div>
+<div class="row"><b>Activo afectado:</b> Administrator</div>
+<div class="row">La cuenta con SID terminado en -500 esta habilitada. Es un objetivo conocido de ataques de fuerza bruta y no permite atribuir acciones a una persona concreta. Nombre actual: Administrator.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.2</span> <span class="tag">A.5.16</span> <span class="tag">A.5.17</span></div>
+<div class="ev">SID=S-1-5-21-2969368601-2643879877-1254880530-500 UltimoInicio=2026-08-11</div>
+<div class="rec"><b>Recomendacion:</b> Deshabilitar la cuenta integrada y operar con cuentas administrativas nominales sujetas a trazabilidad. Si debe permanecer activa, renombrarla y asignarle una contrasena larga custodiada en boveda.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Reglas de firewall entrantes sin restriccion de origen ni de puerto</span>
+<span class="id">L7-01-E56E5C19</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L7</span> <b>Colector:</b> <code>L7-01</code> <b>Categoria:</b> Red</div>
+<div class="row"><b>Activo afectado:</b> 80 reglas</div>
+<div class="row">Estas reglas permiten trafico entrante desde cualquier origen hacia cualquier puerto, anulando en la practica el filtrado de host para el programa o perfil que cubren.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.20</span> <span class="tag">A.8.21</span></div>
+<div class="ev">Core Networking - IPv6 (IPv6-In) [Any] | Cast to Device streaming server (RTCP-Streaming-In) [Domain] | Remote Desktop - Shadow (TCP-In) [Any] | AllJoyn Router (UDP-In) [Domain, Private] | Core Networking - Internet Group Management Protocol (IGMP-In) [Any] | Distributed Transaction Coordinator (TCP-In) [Any] | Your account [Domain, Private] | Work or school account [Domain, Private] | Start [Domain, Private] | Windows Search [Domain, Private] | Desktop App Web Viewer [Domain, Private, Public] | Your account [Domain, Private] | Work or school account [Domain, Private] | Start [Domain, Private] | Windows Search [Domain, Private]</div>
+<div class="rec"><b>Recomendacion:</b> Acotar cada regla al puerto y al rango de direcciones de origen estrictamente requeridos, y eliminar las reglas sin dueno identificable.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Espacio libre insuficiente en el volumen C:</span>
+<span class="id">L8-01-8A614855</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L8</span> <b>Colector:</b> <code>L8-01</code> <b>Categoria:</b> Capacidad</div>
+<div class="row"><b>Activo afectado:</b> C:</div>
+<div class="row">Espacio libre: 11.5% (40.33 GB de 349.9 GB). Umbral de advertencia: 15%, umbral critico: 8%. La falta de espacio compromete el registro de eventos, la aplicacion de parches y la disponibilidad del servicio.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.6</span> <span class="tag">A.8.15</span></div>
+<div class="rec"><b>Recomendacion:</b> Liberar espacio, ampliar el volumen y establecer alertas de capacidad con umbral preventivo en la plataforma de monitoreo.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Sin reenvio de registros a una plataforma centralizada</span>
+<span class="id">L8-01-54971D23</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L8</span> <b>Colector:</b> <code>L8-01</code> <b>Categoria:</b> Registro</div>
+<div class="row"><b>Activo afectado:</b> SRV-SAP</div>
+<div class="row">Los registros permanecen unicamente en el propio servidor. Un atacante con privilegios administrativos puede borrarlos, y la correlacion entre sistemas no es posible.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.15</span> <span class="tag">A.8.16</span> <span class="tag">A.5.28</span></div>
+<div class="rec"><b>Recomendacion:</b> Configurar Windows Event Forwarding o un agente de SIEM que remita los canales criticos a una plataforma centralizada con retencion e integridad protegidas.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Memoria disponible por debajo del umbral operativo</span>
+<span class="id">L9-01-07E6FBEB</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L9</span> <b>Colector:</b> <code>L9-01</code> <b>Categoria:</b> Capacidad</div>
+<div class="row"><b>Activo afectado:</b> SRV-SAP</div>
+<div class="row">Memoria disponible: 12725 MB de 131071 MB (9.7% libre). El umbral definido es 12%. La presion de memoria degrada el rendimiento y puede provocar interrupciones del servicio.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.6</span></div>
+<div class="rec"><b>Recomendacion:</b> Identificar los procesos con mayor consumo, evaluar la ampliacion de memoria y configurar alertas preventivas de capacidad.</div>
+</div>
+<div class="finding f-med">
+<div class="hd">
+<span class="badge sev-med">MEDIO</span>
+<span class="ttl">Apagados inesperados registrados en los ultimos 30 dias</span>
+<span class="id">L9-01-5AAE7F16</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L9</span> <b>Colector:</b> <code>L9-01</code> <b>Categoria:</b> Disponibilidad</div>
+<div class="row"><b>Activo afectado:</b> SRV-SAP</div>
+<div class="row">Se registraron 1 eventos de apagado inesperado (ID 6008). Indican fallas de hardware, energia o del sistema que afectan la disponibilidad del servicio.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.16</span> <span class="tag">A.5.30</span> <span class="tag">A.8.6</span></div>
+<div class="ev">2026-07-25 17:07</div>
+<div class="rec"><b>Recomendacion:</b> Investigar la causa raiz de cada evento y verificar la cobertura del sistema de alimentacion ininterrumpida y del plan de continuidad.</div>
+</div>
+<h3 class="sec">BAJO &mdash; 9 hallazgo(s)</h3>
+<div class="finding f-low">
+<div class="hd">
+<span class="badge sev-low">BAJO</span>
+<span class="ttl">Servidor fuera de dominio (workgroup)</span>
+<span class="id">L1-01-9E05F4AC</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L1</span> <b>Colector:</b> <code>L1-01</code> <b>Categoria:</b> Gobierno</div>
+<div class="row"><b>Activo afectado:</b> SRV-SAP</div>
+<div class="row">El equipo no pertenece a un dominio, por lo que no recibe politicas de grupo centralizadas.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.9</span> <span class="tag">A.5.15</span></div>
+<div class="rec"><b>Recomendacion:</b> Confirmar si el aislamiento es intencional. De no serlo, incorporar al dominio o aplicar una linea base local equivalente y auditable.</div>
+</div>
+<div class="finding f-low">
+<div class="hd">
+<span class="badge sev-low">BAJO</span>
+<span class="ttl">Artefactos sin ruta de instalacion determinable</span>
+<span class="id">L4-01-408BDE81</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L4</span> <b>Colector:</b> <code>L4-01</code> <b>Categoria:</b> LineaBaseEA</div>
+<div class="row"><b>Activo afectado:</b> 16 paquetes</div>
+<div class="row">No fue posible resolver la ubicacion fisica de 16 artefactos a partir de InstallLocation, UninstallString ni DisplayIcon. Sin ruta conocida no se puede verificar integridad, aplicar control de aplicaciones ni delimitar el respaldo.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.5.9</span> <span class="tag">A.8.19</span></div>
+<div class="ev">SAP Crystal Reports runtime engine for .NET Framework (64-bit); Microsoft Visual C++ 2005 Redistributable (x64); Microsoft VSS Writer for SQL Server 2019; vs_CoreEditorFonts; Microsoft SQL Server 2012 Native Client; Microsoft OLE DB Driver for SQL Server; Microsoft Visual C++ 2005 Redistributable; Microsoft ODBC Driver 17 for SQL Server; Microsoft SQL Server 2019 T-SQL Language Service; Microsoft Access database engine 2010 (English); Instalador; Browser for SQL Server 2019; Microsoft Visual C++ 2010  x64 Redistributable - 10.0.40219; Microsoft SQL Server 2019 Setup (English); SSO.TRF.InstaladorAsientosContables</div>
+<div class="rec"><b>Recomendacion:</b> Completar la ruta manualmente en el inventario de arquitectura para estos artefactos, o retirarlos si ya no estan efectivamente instalados.</div>
+</div>
+<div class="finding f-low">
+<div class="hd">
+<span class="badge sev-low">BAJO</span>
+<span class="ttl">Software sin actualizacion desde hace mas de dos anios</span>
+<span class="id">L4-01-3EA66EB7</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L4</span> <b>Colector:</b> <code>L4-01</code> <b>Categoria:</b> CicloDeVida</div>
+<div class="row"><b>Activo afectado:</b> 15 paquetes</div>
+<div class="row">15 paquetes no registran instalacion ni actualizacion en mas de 730 dias. Puede tratarse de software estable o de software abandonado sin mantenimiento de seguridad.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.8</span> <span class="tag">A.5.9</span></div>
+<div class="ev">VMware Tools 11.3.5.18557794 [2022-06-14]; Browser for SQL Server 2019 15.0.2000.5 [2023-03-08]; Microsoft SQL Server 2019 T-SQL Language Service 15.0.2000.5 [2023-03-08]; Microsoft VSS Writer for SQL Server 2019 15.0.2000.5 [2023-03-08]; Microsoft SQL Server 2019 Setup (English) 15.0.2000.5 [2023-03-08]; Microsoft SQL Server 2012 Native Client 11.4.7462.6 [2023-03-08]; Microsoft Access database engine 2010 (English) 14.0.7015.1000 [2023-05-24]; Microsoft Visual C++ 2010  x64 Redistributable - 10.0.40219 10.0.40219 [2023-05-25]; Microsoft Visual C++ 2005 Redistributable (x64) 8.0.61000 [2023-05-25]; Microsoft Visual C++ 2005 Redistributable 8.0.61001 [2023-05-25]; SAP Business One Client Agent 1.0.1.6 [2023-10-12]; BOERuntime For Business One (64 bit) 1.00.0000 [2023-10-19]; SAP Business One Crystal Report Integration Package 1.00.0000 [2023-10-23]; Azure Data Studio 1.47.0 [2023-12-09]; SSO.TRF.InstaladorAsientosContables 10.0.0 [2024-01-04]</div>
+<div class="rec"><b>Recomendacion:</b> Verificar para cada paquete si existe una version soportada mas reciente y si el proveedor mantiene el producto. Ver tambien el colector L4-05 de ciclo de vida.</div>
+</div>
+<div class="finding f-low">
+<div class="hd">
+<span class="badge sev-low">BAJO</span>
+<span class="ttl">Binarios firmados por publicadores no incluidos en la lista de confianza</span>
+<span class="id">L4-04-79188365</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L4</span> <b>Colector:</b> <code>L4-04</code> <b>Categoria:</b> Procedencia</div>
+<div class="row"><b>Activo afectado:</b> 8 binarios de 5 publicadores</div>
+<div class="row">Estos artefactos tienen firma valida pero su publicador no figura en la lista de proveedores aprobados de la configuracion. No es necesariamente una desviacion, pero requiere validacion del inventario autorizado.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.5.9</span> <span class="tag">A.8.19</span> <span class="tag">A.5.21</span></div>
+<div class="ev">CN=The Apache Software Foundation, OU=Apache Commons PMC, O=The Apache Software Foundation, L=Wilmington, S=Delaware, C=US, SERIALNUMBER=3022048, OID.1.3.6.1.4.1.311.60.2.1.2=Delaware, OID.1.3.6.1.4.1... | CN=Checkmk GmbH, O=Checkmk GmbH, S=Bayern, C=DE | CN=Tanuki Software Ltd., O=Tanuki Software Ltd., STREET=&quot;6-16-7-1001 Nishi-Kasai, Edogawa-ku&quot;, L=Tokyo, S=Tokyo, PostalCode=134-0088, C=JP | CN=SAP SE, OU=SAP Production CSA, O=SAP SE, L=Walldorf, S=Baden-Württemberg, C=DE | CN=&quot;Salesforce, Inc.&quot;, O=&quot;Salesforce, Inc.&quot;, L=San Francisco, S=California, C=US</div>
+<div class="rec"><b>Recomendacion:</b> Revisar cada publicador con el responsable del activo y actualizar la lista PublicadoresConfiables en Audit.config.psd1 para reducir el ruido en ejecuciones posteriores.</div>
+</div>
+<div class="finding f-low">
+<div class="hd">
+<span class="badge sev-low">BAJO</span>
+<span class="ttl">Coexistencia de multiples versiones del mismo producto</span>
+<span class="id">L4-05-4CB6CE83</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L4</span> <b>Colector:</b> <code>L4-05</code> <b>Categoria:</b> CicloDeVida</div>
+<div class="row"><b>Activo afectado:</b> 3 productos</div>
+<div class="row">La convivencia de varias versiones dificulta la gestion de parches: una version antigua puede permanecer vulnerable aunque la nueva ya este corregida.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.8</span> <span class="tag">A.5.9</span></div>
+<div class="ev">Microsoft Visual C++ 2013 Redistributable (x64) - 12.0.40664: 12.0.40664.0, 12.0.21005.1 | Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.40664: 12.0.40664.0, 12.0.21005.1, 12.0.30501.0 | Microsoft Visual Studio Tools for Applications 2019: 16.0.31110, 15.0.27520</div>
+<div class="rec"><b>Recomendacion:</b> Desinstalar las versiones obsoletas tras confirmar que ninguna aplicacion depende de ellas.</div>
+</div>
+<div class="finding f-low">
+<div class="hd">
+<span class="badge sev-low">BAJO</span>
+<span class="ttl">Servicios con inicio automatico que se encuentran detenidos</span>
+<span class="id">L5-01-E6541DEF</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L5</span> <b>Colector:</b> <code>L5-01</code> <b>Categoria:</b> Operacion</div>
+<div class="row"><b>Activo afectado:</b> 5 servicios</div>
+<div class="row">Un servicio configurado para iniciar automaticamente pero detenido puede indicar una falla no atendida o la desactivacion manual de un control de seguridad.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.16</span> <span class="tag">A.8.9</span></div>
+<div class="ev">cloudResetPwdAgent, edgeupdate, RemoteRegistry, Tableau Bridge worker(db_replica@SRV-SAP), VMTools</div>
+<div class="rec"><b>Recomendacion:</b> Revisar el registro de eventos del sistema para cada servicio y determinar si la interrupcion es intencional y esta documentada.</div>
+</div>
+<div class="finding f-low">
+<div class="hd">
+<span class="badge sev-low">BAJO</span>
+<span class="ttl">Entradas de autoarranque configuradas en el registro</span>
+<span class="id">L5-02-EE2C1310</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L5</span> <b>Colector:</b> <code>L5-02</code> <b>Categoria:</b> Automatizacion</div>
+<div class="row"><b>Activo afectado:</b> 10 entradas</div>
+<div class="row">Las claves Run ejecutan programas automaticamente al inicio de sesion. En un servidor deben ser minimas y estar justificadas.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.19</span> <span class="tag">A.8.9</span></div>
+<div class="ev">Maquina\SecurityHealth =&gt; C:\Windows\system32\SecurityHealthSystray.exe | Maquina\VMware User Process =&gt; &quot;C:\Program Files\VMware\VMware Tools\vmtoolsd.exe&quot; -n vmusr | Maquina\AzureArcSetup =&gt; C:\Windows\AzureArcSetup\Systray\AzureArcSysTray.exe | Maquina\SAP Business One Service Manager =&gt; c:\Program Files\SAP\SAP Business One ServerTools\Service Manager\B1_ServiceManager.exe | Maquina (una vez)\Delete Cached Update Binary =&gt; C:\Windows\system32\cmd.exe /q /c del /q &quot;C:\Program Files\Microsoft OneDrive\Update\OneDriveSetup.exe&quot; | Maquina (una vez)\Delete Cached Standalone Update Binary =&gt; C:\Windows\system32\cmd.exe /q /c del /q &quot;C:\Program Files\Microsoft OneDrive\StandaloneUpdater\OneDriveSetup.exe&quot; | Maquina (una vez)\msedge_cleanup_{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5} =&gt; &quot;C:\Program Files (x86)\Microsoft\EdgeWebView\Application\151.0.4129.78\Installer\setup.exe&quot; --msedgewebview --delete-old-versions --system-level --verbose-logging --on-logon | Usuario actual\OneDrive =&gt; &quot;C:\Program Files\Microsoft OneDrive\OneDrive.exe&quot; /background | Winlogon\Shell =&gt; explorer.exe | Winlogon\Userinit =&gt; C:\Windows\system32\userinit.exe,</div>
+<div class="rec"><b>Recomendacion:</b> Validar cada entrada contra el inventario de software autorizado y eliminar las que no correspondan a un producto aprobado.</div>
+</div>
+<div class="finding f-low">
+<div class="hd">
+<span class="badge sev-low">BAJO</span>
+<span class="ttl">Miembros con derecho de acceso por Escritorio remoto</span>
+<span class="id">L6-01-64FE068F</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L6</span> <b>Colector:</b> <code>L6-01</code> <b>Categoria:</b> AccesoRemoto</div>
+<div class="row"><b>Activo afectado:</b> Remote Desktop Users: 2 miembros</div>
+<div class="row">El acceso por RDP debe restringirse al personal estrictamente necesario y realizarse preferentemente a traves de un host de salto (jump server).</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.5.15</span> <span class="tag">A.8.5</span> <span class="tag">A.5.18</span></div>
+<div class="ev">SRV-SAP\db_replica; SRV-SAP\svalle</div>
+<div class="rec"><b>Recomendacion:</b> Revisar la membresia contra la matriz de accesos autorizada y exigir autenticacion multifactor en el punto de entrada remoto.</div>
+</div>
+<div class="finding f-low">
+<div class="hd">
+<span class="badge sev-low">BAJO</span>
+<span class="ttl">Cuentas habilitadas que nunca han iniciado sesion</span>
+<span class="id">L6-01-E9A779DF</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L6</span> <b>Colector:</b> <code>L6-01</code> <b>Categoria:</b> Identidad</div>
+<div class="row"><b>Activo afectado:</b> B1_Tech_User</div>
+<div class="row">Cuentas creadas y habilitadas sin uso registrado. Pueden ser cuentas de servicio (aceptable) o cuentas residuales de aprovisionamiento (a eliminar).</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.5.16</span></div>
+<div class="rec"><b>Recomendacion:</b> Clasificar cada cuenta como de servicio o nominal y eliminar las que no tengan proposito vigente.</div>
+</div>
+<h3 class="sec">INFO &mdash; 1 hallazgo(s)</h3>
+<div class="finding f-info">
+<div class="hd">
+<span class="badge sev-info">INFO</span>
+<span class="ttl">Instalaciones de software en los ultimos 30 dias</span>
+<span class="id">L4-01-47690CE4</span>
+</div>
+<div class="row"><b>Capa:</b> <span class="tag">L4</span> <b>Colector:</b> <code>L4-01</code> <b>Categoria:</b> GestionDeCambios</div>
+<div class="row"><b>Activo afectado:</b> 2 paquetes</div>
+<div class="row">Se registraron 2 instalaciones o actualizaciones recientes. Cada una debe corresponder a un cambio aprobado y trazable.</div>
+<div class="row"><b>Controles ISO 27001:</b> <span class="tag">A.8.32</span> <span class="tag">A.8.19</span></div>
+<div class="ev">Microsoft Edge 151.0.4129.78 [2026-08-11]; Microsoft Edge WebView2 Runtime 151.0.4129.78 [2026-08-11]</div>
+<div class="rec"><b>Recomendacion:</b> Contrastar esta lista contra los registros de cambio aprobados (RFC/tickets). Toda instalacion sin cambio asociado constituye una desviacion de A.8.19.</div>
+</div>
+</div>
+<div class="card">
+<h2>Inventario de artefactos de software (80)<span class="iso">A.5.9 &middot; A.8.19</span></h2>
+<p class="desc">Inventario consolidado desde el registro de desinstalacion en sus vistas de 64 y 32 bits, perfiles de usuario y paquetes Appx. Se excluye deliberadamente <code>Win32_Product</code> por su impacto sobre el sistema auditado. Mostrando hasta 500 filas; el conjunto completo esta en <code>csv\L4-01.csv</code>.</p>
+<div class="tbl-scroll"><table>
+<thead><tr><th>Producto</th><th>Version</th><th>Descripcion</th><th>Ruta de instalacion</th><th>Rol arquitectonico</th><th>Capa EA</th><th>Publicador</th><th>Instalado</th><th>Tam. MB</th><th>Riesgo</th></tr></thead><tbody>
+<tr><td><b>Archivo redistribuible del SDK .NET de la plataforma de BI de SAP BusinessObjects de 64 bits 4.3 SP2 Patch 4</b></td><td>14.3.2.4272</td><td>POR VALIDAR: componentes SAP. El nombre del servidor (SRV-SAP) sugiere que este es su proposito principal; confirmar que modulos y componentes residen aqui.</td><td><code>C:\Program Files (x86)\SAP BusinessObjects\setup\icons</code></td><td><span class="pill p-conf">Aplicacion de negocio</span></td><td>Aplicacion</td><td>SAP</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>BOERuntime For Business One (64 bit)</b></td><td>1.00.0000</td><td>SAP Business One</td><td><code>C:\Program Files\SAP\SAP Business One</code></td><td><span class="pill p-conf">Aplicacion de negocio</span></td><td>Aplicacion</td><td>SAP AG</td><td>2023-10-19</td><td>2</td><td></td></tr>
+<tr><td><b>SAP Business One Browser Access Server Gatekeeper (64-bit)</b></td><td>100</td><td>POR VALIDAR: componentes SAP. El nombre del servidor (SRV-SAP) sugiere que este es su proposito principal; confirmar que modulos y componentes residen aqui.</td><td><code>C:\Program Files\SAP\SAP Business One BAS GateKeeper</code></td><td><span class="pill p-conf">Aplicacion de negocio</span></td><td>Aplicacion</td><td>SAP</td><td>2025-01-29</td><td>161.6</td><td></td></tr>
+<tr><td><b>SAP Business One Client (64-bit)</b></td><td></td><td>SAP Business One</td><td><code>C:\Program Files\SAP\SAP Business One</code></td><td><span class="pill p-conf">Aplicacion de negocio</span></td><td>Aplicacion</td><td>SAP</td><td>2025-01-29</td><td>672.9</td><td></td></tr>
+<tr><td><b>SAP Business One Client Agent</b></td><td>1.0.1.6</td><td>SAP Business One Client Agent</td><td><code>C:\Program Files (x86)\SAP\SAP Business One Client Agent</code></td><td><span class="pill p-conf">Aplicacion de negocio</span></td><td>Aplicacion</td><td>SAP</td><td>2023-10-12</td><td>1.4</td><td></td></tr>
+<tr><td><b>SAP Business One Components Wizard</b></td><td>10.00.201.102</td><td>POR VALIDAR: componentes SAP. El nombre del servidor (SRV-SAP) sugiere que este es su proposito principal; confirmar que modulos y componentes residen aqui.</td><td><code>C:\Program Files\SAP</code></td><td><span class="pill p-conf">Aplicacion de negocio</span></td><td>Aplicacion</td><td>SAP</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>SAP Business One Crystal Report Integration Package</b></td><td>1.00.0000</td><td>Crystal Reports</td><td><code>C:\Program Files (x86)\SAP BusinessObjects\SAP BusinessObjects Enterprise XI 4.0\win64_x64</code></td><td><span class="pill p-conf">Aplicacion de negocio</span></td><td>Aplicacion</td><td>SAP AG</td><td>2023-10-23</td><td>1.4</td><td></td></tr>
+<tr><td><b>SAP Business One Data Transfer Workbench x64</b></td><td>1000.00.201</td><td>Your Comments</td><td><code>C:\Program Files\SAP\Data Transfer Workbench</code></td><td><span class="pill p-conf">Aplicacion de negocio</span></td><td>Aplicacion</td><td>SAP</td><td>2025-02-03</td><td>56.9</td><td></td></tr>
+<tr><td><b>SAP Business One DI API (64-bit)</b></td><td></td><td>POR VALIDAR: componentes SAP. El nombre del servidor (SRV-SAP) sugiere que este es su proposito principal; confirmar que modulos y componentes residen aqui.</td><td><code>C:\Program Files\SAP\SAP Business One DI API</code></td><td><span class="pill p-conf">Aplicacion de negocio</span></td><td>Aplicacion</td><td>SAP</td><td>2025-01-29</td><td>365.9</td><td></td></tr>
+<tr><td><b>SAP Crystal Reports for SAP Business One</b></td><td>14.3.2.4272</td><td>POR VALIDAR: componentes SAP. El nombre del servidor (SRV-SAP) sugiere que este es su proposito principal; confirmar que modulos y componentes residen aqui.</td><td><code>C:\Program Files (x86)\SAP BusinessObjects\setup\icons</code></td><td><span class="pill p-conf">Aplicacion de negocio</span></td><td>Aplicacion</td><td>SAP Business Objects</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>SAP Crystal Reports runtime engine for .NET Framework (64-bit)</b></td><td>13.0.32.4286</td><td>POR VALIDAR: componentes SAP. El nombre del servidor (SRV-SAP) sugiere que este es su proposito principal; confirmar que modulos y componentes residen aqui.</td><td><span class="pill p-na">no determinada</span></td><td><span class="pill p-conf">Aplicacion de negocio</span></td><td>Aplicacion</td><td>SAP</td><td>2025-01-29</td><td>353.1</td><td></td></tr>
+<tr><td><b>Tableau Bridge (20262.26.0603.1643)</b></td><td>26.2.783</td><td>Tableau Bridge (20262.26.0603.1643)</td><td><code>C:\ProgramData\Package Cache\{638474c3-dd80-4475-9a0b-e8a70e5801df}</code></td><td>Inteligencia de negocios y reporteria</td><td>Aplicacion</td><td>Salesforce, Inc</td><td></td><td>2546.4</td><td></td></tr>
+<tr><td><b>obs-browser-plus 3.23.9</b></td><td>3.23.9</td><td>obs-browser-plus</td><td><code>C:\Program Files\obs-browser-plus</code></td><td>Multimedia y entretenimiento</td><td>Aplicacion</td><td>OBS</td><td></td><td>349.3</td><td></td></tr>
+<tr><td><b>Microsoft Edge</b></td><td>151.0.4129.78</td><td>Microsoft Edge</td><td><code>C:\Program Files (x86)\Microsoft\Edge\Application</code></td><td>Navegador web</td><td>Aplicacion</td><td>Microsoft Corporation</td><td>2026-08-11</td><td>2071.2</td><td></td></tr>
+<tr><td><b>Microsoft Edge WebView2 Runtime</b></td><td>151.0.4129.78</td><td>Navegador de internet o motor de navegacion embebido.</td><td><code>C:\Program Files (x86)\Microsoft\EdgeWebView\Application</code></td><td>Navegador web</td><td>Aplicacion</td><td>Microsoft Corporation</td><td>2026-08-11</td><td>2066</td><td></td></tr>
+<tr><td><b>Microsoft.MicrosoftEdge.Stable</b></td><td>151.0.4129.78</td><td>Navegador de internet o motor de navegacion embebido.</td><td><code>C:\Program Files\WindowsApps\Microsoft.MicrosoftEdge.Stable_151.0.4129.78_neutral__8wekyb3d8bbwe</code></td><td>Navegador web</td><td>Aplicacion</td><td>CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Browser for SQL Server 2019</b></td><td>15.0.2000.5</td><td>Sistema gestor de bases de datos, sus componentes cliente y controladores de acceso a datos.</td><td><span class="pill p-na">no determinada</span></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td>2023-03-08</td><td>11</td><td></td></tr>
+<tr><td><b>Microsoft Access database engine 2010 (English)</b></td><td>14.0.7015.1000</td><td>Sistema gestor de bases de datos, sus componentes cliente y controladores de acceso a datos.</td><td><span class="pill p-na">no determinada</span></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td>2023-05-24</td><td>119.5</td><td></td></tr>
+<tr><td><b>Microsoft ODBC Driver 17 for SQL Server</b></td><td>17.10.6.1</td><td>Sistema gestor de bases de datos, sus componentes cliente y controladores de acceso a datos.</td><td><span class="pill p-na">no determinada</span></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td>2025-11-03</td><td>4.1</td><td></td></tr>
+<tr><td><b>Microsoft OLE DB Driver for SQL Server</b></td><td>18.7.4.0</td><td>Sistema gestor de bases de datos, sus componentes cliente y controladores de acceso a datos.</td><td><span class="pill p-na">no determinada</span></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td>2025-11-03</td><td>8.2</td><td></td></tr>
+<tr><td><b>Microsoft SQL Server 2012 Native Client</b></td><td>11.4.7462.6</td><td>Sistema gestor de bases de datos, sus componentes cliente y controladores de acceso a datos.</td><td><span class="pill p-na">no determinada</span></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td>2023-03-08</td><td>9.7</td><td></td></tr>
+<tr><td><b>Microsoft SQL Server 2019 (64-bit)</b></td><td></td><td>Sistema gestor de bases de datos, sus componentes cliente y controladores de acceso a datos.</td><td><code>C:\Program Files\Microsoft SQL Server\150\Setup Bootstrap\SQL2019\x64</code></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft SQL Server 2019 Setup (English)</b></td><td>15.0.2000.5</td><td>Sistema gestor de bases de datos, sus componentes cliente y controladores de acceso a datos.</td><td><span class="pill p-na">no determinada</span></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td>2023-03-08</td><td>40.4</td><td></td></tr>
+<tr><td><b>Microsoft SQL Server 2019 T-SQL Language Service</b></td><td>15.0.2000.5</td><td>Sistema gestor de bases de datos, sus componentes cliente y controladores de acceso a datos.</td><td><span class="pill p-na">no determinada</span></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td>2023-03-08</td><td>9.1</td><td></td></tr>
+<tr><td><b>Microsoft Visual C++ 2005 Redistributable</b></td><td>8.0.61001</td><td>Sistema gestor de bases de datos, sus componentes cliente y controladores de acceso a datos.</td><td><span class="pill p-na">no determinada</span></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td>2023-05-25</td><td>4.8</td><td></td></tr>
+<tr><td><b>Microsoft Visual C++ 2005 Redistributable (x64)</b></td><td>8.0.61000</td><td>Sistema gestor de bases de datos, sus componentes cliente y controladores de acceso a datos.</td><td><span class="pill p-na">no determinada</span></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td>2023-05-25</td><td>6.8</td><td></td></tr>
+<tr><td><b>Microsoft Visual C++ 2010  x64 Redistributable - 10.0.40219</b></td><td>10.0.40219</td><td>Caution. Removing this product might prevent some applications from running.</td><td><span class="pill p-na">no determinada</span></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td>2023-05-25</td><td>13.8</td><td></td></tr>
+<tr><td><b>Microsoft Visual C++ 2013 Redistributable (x64) - 12.0.21005</b></td><td>12.0.21005.1</td><td>Microsoft Visual C++ 2013 Redistributable (x64) - 12.0.21005</td><td><code>C:\ProgramData\Package Cache\{7f51bdb9-ee21-49ee-94d6-90afc321780e}</code></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft Visual C++ 2013 Redistributable (x64) - 12.0.40664</b></td><td>12.0.40664.0</td><td>Microsoft Visual C++ 2013 Redistributable (x64) - 12.0.40664</td><td><code>C:\ProgramData\Package Cache\{042d26ef-3dbe-4c25-95d3-4c1b11b235a7}</code></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td></td><td>20.6</td><td></td></tr>
+<tr><td><b>Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.21005</b></td><td>12.0.21005.1</td><td>Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.21005</td><td><code>C:\ProgramData\Package Cache\{ce085a78-074e-4823-8dc1-8a721b94b76d}</code></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.30501</b></td><td>12.0.30501.0</td><td>Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.30501</td><td><code>C:\ProgramData\Package Cache\{f65db027-aff3-4070-886a-0d87064aabb1}</code></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td></td><td>17.2</td><td></td></tr>
+<tr><td><b>Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.40664</b></td><td>12.0.40664.0</td><td>Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.40664</td><td><code>C:\ProgramData\Package Cache\{9dff3540-fc85-4ed5-ac84-9e3c7fd8bece}</code></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td></td><td>17.2</td><td></td></tr>
+<tr><td><b>Microsoft Visual C++ 2015-2022 Redistributable (x64) - 14.44.35211</b></td><td>14.44.35211.0</td><td>Microsoft Visual C++ 2015-2022 Redistributable (x64) - 14.44.35211</td><td><code>C:\ProgramData\Package Cache\{d8bbe9f9-7c5b-42c6-b715-9ee898a2e515}</code></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td></td><td>20.7</td><td></td></tr>
+<tr><td><b>Microsoft Visual C++ 2015-2022 Redistributable (x86) - 14.44.35211</b></td><td>14.44.35211.0</td><td>Microsoft Visual C++ 2015-2022 Redistributable (x86) - 14.44.35211</td><td><code>C:\ProgramData\Package Cache\{0b5169e3-39da-4313-808e-1f9c0407f3bf}</code></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td></td><td>18.2</td><td></td></tr>
+<tr><td><b>Microsoft VSS Writer for SQL Server 2019</b></td><td>15.0.2000.5</td><td>Sistema gestor de bases de datos, sus componentes cliente y controladores de acceso a datos.</td><td><span class="pill p-na">no determinada</span></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td>2023-03-08</td><td>2.1</td><td></td></tr>
+<tr><td><b>SQL Server Management Studio 21</b></td><td>21.6.17</td><td>Sistema gestor de bases de datos, sus componentes cliente y controladores de acceso a datos.</td><td><code>C:\Program Files\Microsoft SQL Server Management Studio 21\Release</code></td><td>Motor de base de datos</td><td>Datos</td><td>Microsoft Corporation</td><td>2025-11-03</td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft OneDrive</b></td><td>26.134.0713.0004</td><td>Microsoft OneDrive (64 bit) Setup</td><td><code>C:\Program Files\Microsoft OneDrive\26.134.0713.0004</code></td><td>Sincronizacion en nube</td><td>Datos</td><td>Microsoft Corporation</td><td></td><td>605.7</td><td></td></tr>
+<tr><td><b>VMware Tools</b></td><td>11.3.5.18557794</td><td>Build</td><td><code>C:\Program Files\VMware\VMware Tools</code></td><td>Controlador / firmware</td><td>Infraestructura</td><td>VMware, Inc.</td><td>2022-06-14</td><td>98.1</td><td></td></tr>
+<tr><td><b>Instalador</b></td><td>1.0.0</td><td>El artefacto no coincide con ningun rol de la taxonomia. Requiere clasificacion manual por el arquitecto.</td><td><span class="pill p-na">no determinada</span></td><td><span class="pill p-obs">Sin clasificar</span></td><td>No determinada</td><td>Default Company Name</td><td>2025-02-03</td><td>5.6</td><td></td></tr>
+<tr><td><b>SSO.TRF.InstaladorAsientosContables</b></td><td>10.0.0</td><td>Traslado Asientos Contables</td><td><span class="pill p-na">no determinada</span></td><td><span class="pill p-obs">Sin clasificar</span></td><td>No determinada</td><td>REVCOM</td><td>2024-01-04</td><td>314.2</td><td></td></tr>
+<tr><td><b>Checkmk Agent 2.3</b></td><td>2.3.0p40</td><td>Recoleccion de metricas, inventario, telemetria o gestion remota corporativa.</td><td><span class="pill p-na">no determinada</span></td><td>Agente de monitoreo y gestion</td><td>Tecnologia</td><td>Checkmk GmbH</td><td>2025-11-24</td><td>11</td><td></td></tr>
+<tr><td><b>1527c705-839a-4832-9118-54d4Bd6a0c89</b></td><td>10.0.19640.1000</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Windows.FilePicker_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>c5e2524a-ea46-4f67-841f-6a9465d9d515</b></td><td>10.0.20348.1</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Windows.FileExplorer_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>E2A4F912-2574-4A75-9BB0-0D023378592B</b></td><td>10.0.19640.1000</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Windows.AppResolverUX_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>F46D4000-FD22-4DB4-AC8E-4E1DDDE828FE</b></td><td>10.0.20348.1</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Windows.AddSuggestedFoldersToLibraryDialog_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.AAD.BrokerPlugin</b></td><td>1000.19580.1000.0</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.AccountsControl</b></td><td>10.0.20348.1</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.AccountsControl_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.AsyncTextService</b></td><td>10.0.20348.1</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.AsyncTextService_8wekyb3d8bbwe</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.BioEnrollment</b></td><td>10.0.19585.1001</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.BioEnrollment_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.CredDialogHost</b></td><td>10.0.19595.1001</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\microsoft.creddialoghost_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.ECApp</b></td><td>10.0.20348.2849</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.ECApp_8wekyb3d8bbwe</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.LockApp</b></td><td>10.0.20348.1</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.LockApp_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.Win32WebViewHost</b></td><td>10.0.20348.1</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Win32WebViewHost_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.Windows.Apprep.ChxApp</b></td><td>1000.20348.1.0</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Windows.AppRep.ChxApp_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.Windows.CapturePicker</b></td><td>10.0.19580.1000</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Windows.CapturePicker_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.Windows.CloudExperienceHost</b></td><td>10.0.20348.1</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.Windows.NarratorQuickStart</b></td><td>10.0.20348.1</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\microsoft.windows.narratorquickstart_8wekyb3d8bbwe</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.Windows.OOBENetworkCaptivePortal</b></td><td>10.0.19580.1000</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Windows.OOBENetworkCaptivePortal_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.Windows.OOBENetworkConnectionFlow</b></td><td>10.0.19581.1000</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Windows.OOBENetworkConnectionFlow_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.Windows.PeopleExperienceHost</b></td><td>10.0.20348.1</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Windows.PeopleExperienceHost_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.Windows.PinningConfirmationDialog</b></td><td>1000.20348.1.0</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Windows.PinningConfirmationDialog_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.Windows.Search</b></td><td>1.15.0.20348</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Windows.Search_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.Windows.SecHealthUI</b></td><td>10.0.20348.2849</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Windows.SecHealthUI_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.Windows.ShellExperienceHost</b></td><td>10.0.20348.1</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.Windows.StartMenuExperienceHost</b></td><td>10.0.20348.1</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft.Windows.XGpuEjectDialog</b></td><td>10.0.20348.1</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Microsoft.Windows.XGpuEjectDialog_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>MicrosoftWindows.Client.CBS</b></td><td>120.27512.10351.0</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>MicrosoftWindows.UndockedDevKit</b></td><td>10.0.20348.1</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\MicrosoftWindows.UndockedDevKit_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Windows.CBSPreview</b></td><td>10.0.19580.1000</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\SystemApps\Windows.CBSPreview_cw5n1h2txyewy</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>windows.immersivecontrolpanel</b></td><td>10.0.4.1000</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\ImmersiveControlPanel</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Windows.PrintDialog</b></td><td>6.2.1.0</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><code>C:\Windows\PrintDialog</code></td><td>Componente del sistema operativo</td><td>Tecnologia</td><td>CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Notepad++ (64-bit x64)</b></td><td>8.9.2</td><td>Notepad++</td><td><code>C:\Program Files\Notepad++</code></td><td>Herramienta de administracion</td><td>Tecnologia</td><td>Notepad++ Team</td><td></td><td>18.8</td><td></td></tr>
+<tr><td><b>WinRAR 6.24 (64-bit)</b></td><td>6.24.0</td><td>WinRAR archiver</td><td><code>C:\Program Files\WinRAR</code></td><td>Herramienta de administracion</td><td>Tecnologia</td><td>win.rar GmbH</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Azure Data Studio</b></td><td>1.47.0</td><td>Azure Data Studio</td><td><code>C:\Program Files\Azure Data Studio</code></td><td>Herramienta de desarrollo</td><td>Tecnologia</td><td>Microsoft Corporation</td><td>2023-12-09</td><td>649.5</td><td></td></tr>
+<tr><td><b>DevExpress Components 24.2</b></td><td>24.2.7</td><td>IDE, compilador, SDK, biblioteca de componentes o utilitario de construccion de software.</td><td><code>C:\Program Files\DevExpress 24.2\Components</code></td><td>Herramienta de desarrollo</td><td>Tecnologia</td><td>Developer Express Inc.</td><td></td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft Visual Studio Installer</b></td><td>3.14.2086.54749</td><td>Visual Studio Installer</td><td><code>C:\Program Files (x86)\Microsoft Visual Studio\Installer</code></td><td>Herramienta de desarrollo</td><td>Tecnologia</td><td>Microsoft Corporation</td><td>2025-11-03</td><td>0</td><td></td></tr>
+<tr><td><b>Microsoft Visual Studio Tools for Applications 2017</b></td><td>15.0.27520</td><td>Microsoft Visual Studio Tools for Applications 2017</td><td><code>C:\ProgramData\Package Cache\{f895a2f1-ae3f-4212-8af1-7fa1f8c212ea}</code></td><td>Herramienta de desarrollo</td><td>Tecnologia</td><td>Microsoft Corporation</td><td></td><td>19.2</td><td></td></tr>
+<tr><td><b>Microsoft Visual Studio Tools for Applications 2019</b></td><td>16.0.31110</td><td>Microsoft Visual Studio Tools for Applications 2019</td><td><code>C:\ProgramData\Package Cache\{f3fbabb4-bcfb-45eb-8fff-9b784fd68c38}</code></td><td>Herramienta de desarrollo</td><td>Tecnologia</td><td>Microsoft Corporation</td><td></td><td>14.2</td><td></td></tr>
+<tr><td><b>vs_CoreEditorFonts</b></td><td>17.7.40001</td><td>IDE, compilador, SDK, biblioteca de componentes o utilitario de construccion de software.</td><td><span class="pill p-na">no determinada</span></td><td>Herramienta de desarrollo</td><td>Tecnologia</td><td>Microsoft Corporation</td><td>2025-11-03</td><td>0.7</td><td></td></tr>
+<tr><td><b>SMS-Agent-Py3</b></td><td></td><td>Herramienta auxiliar de proposito general.</td><td><code>C:\SMS-Agent-Py3</code></td><td>Utilitario de sistema</td><td>Tecnologia</td><td>Huawei Technologies Co., Ltd.</td><td></td><td>0</td><td></td></tr>
+</tbody></table></div>
+</div>
+<div class="card">
+<h2>Linea base de Arquitectura Empresarial<span class="iso">A.5.9 &middot; A.8.9 &middot; A.8.19</span></h2>
+<p class="desc">Auditoria de sistemas: contrasta lo que el servidor <b>es</b> contra lo que la organizacion <b>declaro</b> que deberia ser en <code>Config\Arquitectura.psd1</code>. Cada artefacto se clasifica por rol y capa de arquitectura, y se evalua si corresponde al proposito declarado del activo.</p>
+<h3 class="sec">Declaracion del activo</h3>
+<div class="tbl-scroll"><table><tbody>
+<tr><th style="width:220px">Rol declarado</th><td>Servidor de aplicaciones de negocio</td></tr>
+<tr><th>Descripcion</th><td>POR VALIDAR: servidor que aloja aplicaciones de negocio corporativas. Confirmar con el responsable del activo antes de emitir el informe final.</td></tr>
+<tr><th>Entorno</th><td>Produccion</td></tr>
+<tr><th>Criticidad</th><td>Alta</td></tr>
+<tr><th>Clasificacion de datos</th><td>Confidencial</td></tr>
+<tr><th>Propietario</th><td>DEFINIR</td></tr>
+<tr><th>Responsable tecnico</th><td>DEFINIR</td></tr>
+<tr><th>Unidad de negocio</th><td>DEFINIR</td></tr>
+</tbody></table></div>
+<h3 class="sec">Distribucion de artefactos por capa de arquitectura</h3>
+<div class="grid g3">
+<div class="kpi"><div class="n">21</div><div class="l">Capa Datos</div></div>
+<div class="kpi"><div class="n">15</div><div class="l">Capa Aplicacion</div></div>
+<div class="kpi"><div class="n">10</div><div class="l">Capa Tecnologia</div></div>
+<div class="kpi"><div class="n">2</div><div class="l">Capa No determinada</div></div>
+<div class="kpi"><div class="n">1</div><div class="l">Capa Infraestructura</div></div>
+</div>
+<h3 class="sec">Conformidad con el rol declarado</h3>
+<div class="grid g5">
+<div class="kpi ok"><div class="n">37</div><div class="l">Alineados</div></div>
+<div class="kpi crit"><div class="n">10</div><div class="l">No alineados</div></div>
+<div class="kpi med"><div class="n">2</div><div class="l">Sin clasificar</div></div>
+<div class="kpi ok"><div class="n">0</div><div class="l">Rol no declarado</div></div>
+<div class="kpi"><div class="n">49</div><div class="l">Artefactos totales</div></div>
+</div>
+<h3 class="sec">Catalogo de aplicaciones de negocio</h3>
+<p class="desc">Aplicaciones declaradas en la linea base y su estado de deteccion en este servidor.</p>
+<div class="tbl-scroll"><table>
+<thead><tr><th>Aplicacion</th><th>Descripcion</th><th>Capa EA</th><th>Criticidad</th><th>Propietario</th><th>Estado</th></tr></thead><tbody>
+<tr><td><b>REPOFEL - Repositorio de Factura Electronica en Linea</b></td><td>POR VALIDAR: repositorio de documentos tributarios electronicos (FEL). Confirmar alcance, version y responsable con el area funcional antes de dar por buena esta descripcion.</td><td>Aplicacion</td><td>Alta</td><td><span class="pill p-obs">sin asignar</span></td><td><span class="pill p-noconf">Declarada, NO detectada</span></td></tr>
+<tr><td><b>SAP - Sistema de planificacion de recursos empresariales</b></td><td>POR VALIDAR: componentes SAP. El nombre del servidor (SRV-SAP) sugiere que este es su proposito principal; confirmar que modulos y componentes residen aqui.</td><td>Aplicacion</td><td>Alta</td><td><span class="pill p-obs">sin asignar</span></td><td><span class="pill p-conf">Declarada y detectada</span></td></tr>
+</tbody></table></div>
+<h3 class="sec">Artefactos activos: servicios y puertos que exponen</h3>
+<p class="desc">Correlacion entre el artefacto instalado, los servicios Windows que ejecuta desde su ruta y los puertos TCP que mantiene en escucha. Es el mapa operativo de la capa de aplicacion.</p>
+<div class="tbl-scroll"><table>
+<thead><tr><th>Artefacto</th><th>Rol</th><th>Ruta</th><th>Servicios</th><th>Puertos</th></tr></thead><tbody>
+<tr><td><b>SAP Business One Components Wizard</b></td><td>Aplicacion de negocio</td><td><code>C:\Program Files\SAP</code></td><td>b1s50000 [Running]; b1s50001 [Running]; b1s50002 [Running]; b1s50003 [Running]; b1s50004 [Running]; b1s50005 [Running]; b1s50006 [Running]; b1s50007 [Running]; b1s50008 [Running]; b1s50009 [Running]; b1s50010 [Running]; B1ServerToolsAuthentication [Running]; B1ServerTools64 [Running]; Gatekeeper64 [Running]; B1LicenseService [Running]; TAO_NT_Naming_Service [Running]; SLDAgentOP [Running]; SBOMail [Running]; SBODI_Server [Stopped]</td><td></td></tr>
+<tr><td><b>Microsoft OneDrive</b></td><td>Sincronizacion en nube</td><td><code>C:\Program Files\Microsoft OneDrive\26.134.0713.0004</code></td><td>FileSyncHelper [Stopped]; OneDrive Updater Service [Stopped]</td><td></td></tr>
+<tr><td><b>VMware Tools</b></td><td>Controlador / firmware</td><td><code>C:\Program Files\VMware\VMware Tools</code></td><td>VGAuthService [Running]; VMTools [Stopped]</td><td></td></tr>
+<tr><td><b>Microsoft Visual Studio Installer</b></td><td>Herramienta de desarrollo</td><td><code>C:\Program Files (x86)\Microsoft Visual Studio\Installer</code></td><td>VSInstallerElevationService [Stopped]</td><td></td></tr>
+<tr><td><b>SAP Business One Browser Access Server Gatekeeper (64-bit)</b></td><td>Aplicacion de negocio</td><td><code>C:\Program Files\SAP\SAP Business One BAS GateKeeper</code></td><td>Gatekeeper64 [Running]</td><td></td></tr>
+<tr><td><b>Microsoft Edge</b></td><td>Navegador web</td><td><code>C:\Program Files (x86)\Microsoft\Edge\Application</code></td><td>MicrosoftEdgeElevationService [Stopped]</td><td></td></tr>
+<tr><td><b>SAP Business One Client Agent</b></td><td>Aplicacion de negocio</td><td><code>C:\Program Files (x86)\SAP\SAP Business One Client Agent</code></td><td>SBOClientAgent [Running]</td><td></td></tr>
+</tbody></table></div>
+<h3 class="sec">Desviaciones arquitectonicas: artefactos no alineados al rol declarado</h3>
+<div class="tbl-scroll"><table>
+<thead><tr><th>Artefacto</th><th>Version</th><th>Rol detectado</th><th>Capa EA</th><th>Ruta</th></tr></thead><tbody>
+<tr><td><b>obs-browser-plus 3.23.9</b></td><td>3.23.9</td><td><span class="badge sev-high">Multimedia y entretenimiento</span></td><td>Aplicacion</td><td><code>C:\Program Files\obs-browser-plus</code></td></tr>
+<tr><td><b>Microsoft OneDrive</b></td><td>26.134.0713.0004</td><td><span class="badge sev-high">Sincronizacion en nube</span></td><td>Datos</td><td><code>C:\Program Files\Microsoft OneDrive\26.134.0713.0004</code></td></tr>
+<tr><td><b>Azure Data Studio</b></td><td>1.47.0</td><td><span class="badge sev-high">Herramienta de desarrollo</span></td><td>Tecnologia</td><td><code>C:\Program Files\Azure Data Studio</code></td></tr>
+<tr><td><b>Microsoft Visual Studio Installer</b></td><td>3.14.2086.54749</td><td><span class="badge sev-high">Herramienta de desarrollo</span></td><td>Tecnologia</td><td><code>C:\Program Files (x86)\Microsoft Visual Studio\Installer</code></td></tr>
+<tr><td><b>DevExpress Components 24.2</b></td><td>24.2.7</td><td><span class="badge sev-high">Herramienta de desarrollo</span></td><td>Tecnologia</td><td><code>C:\Program Files\DevExpress 24.2\Components</code></td></tr>
+<tr><td><b>Microsoft Edge</b></td><td>151.0.4129.78</td><td><span class="badge sev-high">Navegador web</span></td><td>Aplicacion</td><td><code>C:\Program Files (x86)\Microsoft\Edge\Application</code></td></tr>
+<tr><td><b>Microsoft Edge WebView2 Runtime</b></td><td>151.0.4129.78</td><td><span class="badge sev-high">Navegador web</span></td><td>Aplicacion</td><td><code>C:\Program Files (x86)\Microsoft\EdgeWebView\Application</code></td></tr>
+<tr><td><b>vs_CoreEditorFonts</b></td><td>17.7.40001</td><td><span class="badge sev-high">Herramienta de desarrollo</span></td><td>Tecnologia</td><td><code></code></td></tr>
+<tr><td><b>Microsoft Visual Studio Tools for Applications 2019</b></td><td>16.0.31110</td><td><span class="badge sev-high">Herramienta de desarrollo</span></td><td>Tecnologia</td><td><code>C:\ProgramData\Package Cache\{f3fbabb4-bcfb-45eb-8fff-9b784fd68c38}</code></td></tr>
+<tr><td><b>Microsoft Visual Studio Tools for Applications 2017</b></td><td>15.0.27520</td><td><span class="badge sev-high">Herramienta de desarrollo</span></td><td>Tecnologia</td><td><code>C:\ProgramData\Package Cache\{f895a2f1-ae3f-4212-8af1-7fa1f8c212ea}</code></td></tr>
+</tbody></table></div>
+<h3 class="sec">Artefactos pendientes de clasificacion arquitectonica</h3>
+<p class="desc">2 artefactos no coincidieron con ningun rol de la taxonomia. Requieren clasificacion manual: ampliar los patrones en <code>Arquitectura.psd1</code> o declararlos en el catalogo de aplicaciones.</p>
+<div class="tbl-scroll"><table>
+<thead><tr><th>Artefacto</th><th>Version</th><th>Publicador</th><th>Ruta</th></tr></thead><tbody>
+<tr><td>Instalador</td><td>1.0.0</td><td>Default Company Name</td><td><code></code></td></tr>
+<tr><td>SSO.TRF.InstaladorAsientosContables</td><td>10.0.0</td><td>REVCOM</td><td><code></code></td></tr>
+</tbody></table></div>
+</div>
+<div class="card">
+<h2>Trazabilidad de la ejecucion</h2>
+<p class="desc">Detalle de cada colector: alcance, controles que evidencia y resultado de la ejecucion. Sustenta la reproducibilidad exigida por la clausula 9.2 (auditoria interna).</p>
+<div class="tbl-scroll"><table>
+<thead><tr><th>Id</th><th>Capa</th><th>Colector</th><th>Controles ISO</th><th>Estado</th><th>Registros</th><th>Hallazgos</th><th>Duracion</th></tr></thead><tbody>
+<tr><td><code>L1-01</code></td><td><span class="tag">L1</span></td><td>Inventario de hardware y plataforma fisica</td><td><span class="tag">A.5.9</span> <span class="tag">A.7.9</span> <span class="tag">A.7.10</span> <span class="tag">A.8.1</span></td><td><span class="pill p-conf">Completado</span></td><td>23</td><td>2</td><td>1.65 s</td></tr>
+<tr><td><code>L2-01</code></td><td><span class="tag">L2</span></td><td>Linea base del sistema operativo</td><td><span class="tag">A.5.9</span> <span class="tag">A.8.9</span> <span class="tag">A.8.17</span></td><td><span class="pill p-conf">Completado</span></td><td>12</td><td>1</td><td>2.87 s</td></tr>
+<tr><td><code>L2-02</code></td><td><span class="tag">L2</span></td><td>Nivel de parcheo y actualizaciones</td><td><span class="tag">A.8.8</span> <span class="tag">A.8.32</span></td><td><span class="pill p-conf">Completado</span></td><td>9</td><td>2</td><td>4.83 s</td></tr>
+<tr><td><code>L2-03</code></td><td><span class="tag">L2</span></td><td>Configuracion de seguridad del sistema operativo</td><td><span class="tag">A.8.7</span> <span class="tag">A.8.9</span> <span class="tag">A.8.15</span> <span class="tag">A.8.20</span> <span class="tag">A.8.24</span> <span class="tag">A.7.9</span> <span class="tag">A.8.1</span></td><td><span class="pill p-conf">Completado</span></td><td>31</td><td>3</td><td>3.46 s</td></tr>
+<tr><td><code>L3-01</code></td><td><span class="tag">L3</span></td><td>Runtimes, motores y middleware</td><td><span class="tag">A.5.9</span> <span class="tag">A.8.8</span> <span class="tag">A.8.9</span> <span class="tag">A.8.31</span></td><td><span class="pill p-conf">Completado</span></td><td>83</td><td>1</td><td>1.43 s</td></tr>
+<tr><td><code>L4-01</code></td><td><span class="tag">L4</span></td><td>Inventario consolidado de software instalado</td><td><span class="tag">A.5.9</span> <span class="tag">A.8.19</span> <span class="tag">A.5.10</span> <span class="tag">A.5.23</span> <span class="tag">A.8.12</span> <span class="tag">A.8.32</span></td><td><span class="pill p-conf">Completado</span></td><td>80</td><td>3</td><td>8.32 s</td></tr>
+<tr><td><code>L4-02</code></td><td><span class="tag">L4</span></td><td>Software gestionado por gestores de paquetes</td><td><span class="tag">A.5.9</span> <span class="tag">A.8.19</span> <span class="tag">A.8.25</span> <span class="tag">A.8.31</span></td><td><span class="pill p-conf">Completado</span></td><td>7</td><td>0</td><td>15.39 s</td></tr>
+<tr><td><code>L4-03</code></td><td><span class="tag">L4</span></td><td>Binarios y scripts no gestionados (shadow IT)</td><td><span class="tag">A.8.19</span> <span class="tag">A.5.10</span> <span class="tag">A.8.18</span> <span class="tag">A.8.28</span></td><td><span class="pill p-conf">Completado</span></td><td>24</td><td>2</td><td>18.41 s</td></tr>
+<tr><td><code>L4-04</code></td><td><span class="tag">L4</span></td><td>Integridad y procedencia de binarios en ejecucion</td><td><span class="tag">A.8.19</span> <span class="tag">A.8.9</span> <span class="tag">A.8.7</span> <span class="tag">A.8.32</span></td><td><span class="pill p-conf">Completado</span></td><td>83</td><td>2</td><td>16.97 s</td></tr>
+<tr><td><code>L4-05</code></td><td><span class="tag">L4</span></td><td>Ciclo de vida y soporte del software instalado</td><td><span class="tag">A.8.8</span> <span class="tag">A.5.9</span> <span class="tag">A.8.19</span> <span class="tag">A.5.21</span></td><td><span class="pill p-conf">Completado</span></td><td>66</td><td>3</td><td>2.07 s</td></tr>
+<tr><td><code>L4-06</code></td><td><span class="tag">L4</span></td><td>Linea base de arquitectura empresarial y conformidad de roles</td><td><span class="tag">A.5.9</span> <span class="tag">A.8.19</span> <span class="tag">A.8.9</span> <span class="tag">A.5.10</span> <span class="tag">A.8.31</span></td><td><span class="pill p-conf">Completado</span></td><td>51</td><td>4</td><td>8.3 s</td></tr>
+<tr><td><code>L5-01</code></td><td><span class="tag">L5</span></td><td>Servicios Windows y configuracion de ejecucion</td><td><span class="tag">A.8.9</span> <span class="tag">A.8.2</span> <span class="tag">A.8.19</span> <span class="tag">A.8.18</span></td><td><span class="pill p-conf">Completado</span></td><td>290</td><td>4</td><td>0.47 s</td></tr>
+<tr><td><code>L5-02</code></td><td><span class="tag">L5</span></td><td>Tareas programadas y puntos de autoarranque</td><td><span class="tag">A.8.19</span> <span class="tag">A.8.16</span> <span class="tag">A.5.37</span> <span class="tag">A.8.9</span></td><td><span class="pill p-conf">Completado</span></td><td>133</td><td>4</td><td>1.23 s</td></tr>
+<tr><td><code>L6-01</code></td><td><span class="tag">L6</span></td><td>Identidades locales y control de acceso</td><td><span class="tag">A.5.15</span> <span class="tag">A.5.16</span> <span class="tag">A.5.17</span> <span class="tag">A.5.18</span> <span class="tag">A.8.2</span> <span class="tag">A.8.5</span></td><td><span class="pill p-conf">Completado</span></td><td>30</td><td>8</td><td>0.43 s</td></tr>
+<tr><td><code>L7-01</code></td><td><span class="tag">L7</span></td><td>Exposicion de red y servicios accesibles</td><td><span class="tag">A.8.20</span> <span class="tag">A.8.21</span> <span class="tag">A.8.22</span> <span class="tag">A.8.3</span> <span class="tag">A.5.15</span></td><td><span class="pill p-conf">Completado</span></td><td>139</td><td>3</td><td>43.57 s</td></tr>
+<tr><td><code>L8-01</code></td><td><span class="tag">L8</span></td><td>Registro de eventos, respaldo y resiliencia</td><td><span class="tag">A.8.15</span> <span class="tag">A.8.16</span> <span class="tag">A.8.13</span> <span class="tag">A.5.30</span> <span class="tag">A.8.10</span> <span class="tag">A.7.10</span></td><td><span class="pill p-conf">Completado</span></td><td>17</td><td>3</td><td>0.64 s</td></tr>
+<tr><td><code>L9-01</code></td><td><span class="tag">L9</span></td><td>Estadisticas de rendimiento y capacidad del servidor</td><td><span class="tag">A.8.6</span> <span class="tag">A.8.16</span> <span class="tag">A.8.34</span></td><td><span class="pill p-conf">Completado</span></td><td>55</td><td>2</td><td>18.69 s</td></tr>
+</tbody></table></div></div>
+<div class="card">
+<h2>Brechas de evidencia (8)</h2>
+<p class="desc">Limitaciones encontradas durante la recoleccion. Declararlas de forma explicita es parte del alcance honesto de la auditoria: indican donde la conclusion tecnica NO puede sostenerse solo con esta evidencia.</p>
+<div class="tbl-scroll"><table><thead><tr><th>Colector</th><th>Capa</th><th>Limitacion</th></tr></thead><tbody>
+<tr><td><code>L2-03</code></td><td><span class="tag">L2</span></td><td>Get-BitLockerVolume no disponible (caracteristica no instalada o falta de privilegios).</td></tr>
+<tr><td><code>L2-03</code></td><td><span class="tag">L2</span></td><td>Get-WindowsOptionalFeature requiere privilegios elevados; no se verifico SMBv1 como caracteristica.</td></tr>
+<tr><td><code>L2-03</code></td><td><span class="tag">L2</span></td><td>auditpol requiere privilegios elevados; no se evaluo la directiva de auditoria.</td></tr>
+<tr><td><code>L3-01</code></td><td><span class="tag">L3</span></td><td>Modulo WebAdministration no disponible; no se enumeraron los grupos de aplicaciones de IIS.</td></tr>
+<tr><td><code>L4-04</code></td><td><span class="tag">L4</span></td><td>No se pudo resolver la ruta de 365 procesos (habitual sin privilegios elevados: procesos de sistema y de otras sesiones).</td></tr>
+<tr><td><code>L8-01</code></td><td><span class="tag">L8</span></td><td>No se pudo consultar el registro de seguridad (requiere privilegios administrativos).</td></tr>
+<tr><td><code>L8-01</code></td><td><span class="tag">L8</span></td><td>Win32_ShadowCopy no accesible (puede requerir elevacion).</td></tr>
+<tr><td><code>L8-01</code></td><td><span class="tag">L8</span></td><td>Sin registros de Windows Server Backup en los ultimos 30 dias. Si el respaldo lo realiza una herramienta de terceros, verificarlo por fuera de esta auditoria.</td></tr>
+</tbody></table></div></div>
+<div class="card" id="glosario">
+<h2>Anexo &mdash; Glosario de controles ISO/IEC 27001:2022 citados (39)</h2>
+<p class="desc">Descripcion de cada control del Anexo A referenciado en este informe: que exige la norma y que verifica esta auditoria respecto de ese control. El <b>nivel de cobertura</b> indica hasta donde llega la evidencia automatizada.</p>
+<h3 class="sec">Tema Organizacional &mdash; 12 control(es)</h3>
+<div class="tbl-scroll"><table>
+<thead><tr><th style="width:78px">Control</th><th style="width:210px">Titulo</th><th>Que exige la norma</th><th>Que verifica esta auditoria</th><th style="width:78px">Cobertura</th><th style="width:80px">Capas</th></tr></thead><tbody>
+<tr><td><span class="tag">A.5.10</span></td><td><b>Uso aceptable de la informacion y otros activos asociados</b></td><td>Deben identificarse, documentarse e implementarse reglas para el uso aceptable y los procedimientos de manejo de la informacion y de los activos asociados.</td><td>Detectar software fuera de politica instalado en el servidor y artefactos sin proposito declarado.</td><td><span class="pill p-obs">Parcial</span></td><td>L4</td></tr>
+<tr><td><span class="tag">A.5.15</span></td><td><b>Control de acceso</b></td><td>Deben establecerse e implementarse reglas para controlar el acceso fisico y logico a la informacion y a los activos asociados, con base en los requisitos de seguridad y de negocio.</td><td>Verificar reglas de acceso logico a sistemas y recursos compartidos.</td><td><span class="pill p-obs">Parcial</span></td><td>L6, L7</td></tr>
+<tr><td><span class="tag">A.5.16</span></td><td><b>Gestion de identidad</b></td><td>El ciclo de vida completo de las identidades debe gestionarse: alta, modificacion y baja oportuna de identidades de personas y de sistemas, evitando identidades duplicadas o huerfanas.</td><td>Identificar cuentas locales, huerfanas o inactivas.</td><td><span class="pill p-obs">Parcial</span></td><td>L6</td></tr>
+<tr><td><span class="tag">A.5.17</span></td><td><b>Informacion de autenticacion</b></td><td>La asignacion y gestion de la informacion de autenticacion debe controlarse mediante un proceso que incluya asesorar al personal sobre su manejo apropiado, su confidencialidad y su rotacion.</td><td>Evaluar politica de contrasenas, caducidad y almacenamiento de credenciales.</td><td><span class="pill p-obs">Parcial</span></td><td>L6</td></tr>
+<tr><td><span class="tag">A.5.18</span></td><td><b>Derechos de acceso</b></td><td>Los derechos de acceso a la informacion y a otros activos deben aprovisionarse, revisarse, modificarse y retirarse conforme a la politica de control de acceso de la organizacion.</td><td>Revisar membresias de grupos privilegiados locales y su vigencia.</td><td><span class="pill p-obs">Parcial</span></td><td>L6</td></tr>
+<tr><td><span class="tag">A.5.21</span></td><td><b>Gestion de la seguridad en la cadena de suministro de TIC</b></td><td>Deben definirse e implementarse procesos y procedimientos para gestionar los riesgos de seguridad asociados a la cadena de suministro de productos y servicios de tecnologia de la informacion y las comunicaciones.</td><td>Identificar repositorios de paquetes de terceros marcados como confiables y la dependencia de proveedores.</td><td><span class="pill p-na">Indicio</span></td><td>L4</td></tr>
+<tr><td><span class="tag">A.5.23</span></td><td><b>Seguridad de la informacion en servicios en la nube</b></td><td>Los procesos de adquisicion, uso, gestion y salida de servicios en la nube deben establecerse conforme a los requisitos de seguridad de la organizacion.</td><td>Detectar agentes de sincronizacion en nube no autorizados que constituyan canales de datos fuera de control.</td><td><span class="pill p-na">Indicio</span></td><td>L4</td></tr>
+<tr><td><span class="tag">A.5.25</span></td><td><b>Evaluacion y decision sobre eventos de seguridad de la informacion</b></td><td>La organizacion debe evaluar los eventos de seguridad de la informacion y decidir si se clasifican como incidentes de seguridad de la informacion.</td><td>Senalar indicadores de compromiso que deben escalarse al proceso de gestion de incidentes.</td><td><span class="pill p-na">Indicio</span></td><td>L4, L5, L8</td></tr>
+<tr><td><span class="tag">A.5.28</span></td><td><b>Recoleccion de evidencia</b></td><td>La organizacion debe establecer e implementar procedimientos para la identificacion, recoleccion, adquisicion y preservacion de evidencia relacionada con eventos de seguridad de la informacion.</td><td>Verificar retencion e integridad de los registros que constituirian evidencia ante un incidente.</td><td><span class="pill p-obs">Parcial</span></td><td>L8</td></tr>
+<tr><td><span class="tag">A.5.30</span></td><td><b>Preparacion de las TIC para la continuidad de negocio</b></td><td>La preparacion de las tecnologias de informacion y comunicacion debe planificarse, implementarse, mantenerse y probarse con base en los objetivos de continuidad de negocio y los requisitos de continuidad de las TIC.</td><td>Verificar existencia de respaldos, instantaneas y capacidad de recuperacion.</td><td><span class="pill p-obs">Parcial</span></td><td>L8</td></tr>
+<tr><td><span class="tag">A.5.37</span></td><td><b>Procedimientos operativos documentados</b></td><td>Los procedimientos operativos para las instalaciones de procesamiento de informacion deben documentarse y ponerse a disposicion del personal que los necesite.</td><td>Identificar automatizaciones no documentadas (tareas programadas y autoarranque sin dueno).</td><td><span class="pill p-na">Indicio</span></td><td>L5</td></tr>
+<tr><td><span class="tag">A.5.9</span></td><td><b>Inventario de informacion y otros activos asociados</b></td><td>Debe elaborarse y mantenerse un inventario de la informacion y de los demas activos asociados, incluidos sus propietarios. El inventario debe ser exacto, estar actualizado y ser coherente con los demas inventarios de la organizacion.</td><td>Identificar y mantener un inventario de activos, incluido el software instalado, con su ubicacion, descripcion y propietario.</td><td><span class="pill p-conf">Total</span></td><td>L1, L2, L3, L4</td></tr>
+</tbody></table></div>
+<h3 class="sec">Tema Fisico &mdash; 2 control(es)</h3>
+<div class="tbl-scroll"><table>
+<thead><tr><th style="width:78px">Control</th><th style="width:210px">Titulo</th><th>Que exige la norma</th><th>Que verifica esta auditoria</th><th style="width:78px">Cobertura</th><th style="width:80px">Capas</th></tr></thead><tbody>
+<tr><td><span class="tag">A.7.10</span></td><td><b>Medios de almacenamiento</b></td><td>Los medios de almacenamiento deben gestionarse a lo largo de su ciclo de vida de adquisicion, uso, transporte y disposicion, conforme al esquema de clasificacion y a los requisitos de manejo de la organizacion.</td><td>Inventariar volumenes y detectar medios extraibles conectados al servidor.</td><td><span class="pill p-obs">Parcial</span></td><td>L1, L8</td></tr>
+<tr><td><span class="tag">A.7.9</span></td><td><b>Seguridad de los activos fuera de las instalaciones</b></td><td>Los activos situados fuera de las instalaciones de la organizacion deben protegerse considerando los distintos riesgos derivados de operar fuera del perimetro fisico controlado.</td><td>Verificar cifrado de volumenes para activos moviles o alojados fuera del centro de datos propio.</td><td><span class="pill p-na">Indicio</span></td><td>L1, L2</td></tr>
+</tbody></table></div>
+<h3 class="sec">Tema Tecnologico &mdash; 25 control(es)</h3>
+<div class="tbl-scroll"><table>
+<thead><tr><th style="width:78px">Control</th><th style="width:210px">Titulo</th><th>Que exige la norma</th><th>Que verifica esta auditoria</th><th style="width:78px">Cobertura</th><th style="width:80px">Capas</th></tr></thead><tbody>
+<tr><td><span class="tag">A.8.1</span></td><td><b>Dispositivos finales de usuario</b></td><td>La informacion almacenada, procesada o accesible a traves de dispositivos finales de usuario debe protegerse mediante configuraciones y controles apropiados.</td><td>Verificar la configuracion de proteccion del dispositivo y su firmware.</td><td><span class="pill p-obs">Parcial</span></td><td>L1, L2</td></tr>
+<tr><td><span class="tag">A.8.10</span></td><td><b>Eliminacion de informacion</b></td><td>La informacion almacenada en sistemas de informacion, dispositivos o en cualquier otro medio debe eliminarse cuando ya no sea requerida.</td><td>Verificar politica de retencion de registros y acumulacion de archivos temporales.</td><td><span class="pill p-na">Indicio</span></td><td>L8</td></tr>
+<tr><td><span class="tag">A.8.12</span></td><td><b>Prevencion de fuga de datos</b></td><td>Deben aplicarse medidas de prevencion de fuga de datos a los sistemas, redes y demas dispositivos que procesen, almacenen o transmitan informacion sensible.</td><td>Detectar canales potenciales de exfiltracion: nube personal, P2P, medios extraibles y comparticiones abiertas.</td><td><span class="pill p-na">Indicio</span></td><td>L4, L7</td></tr>
+<tr><td><span class="tag">A.8.13</span></td><td><b>Respaldo de la informacion</b></td><td>Deben mantenerse y probarse regularmente copias de respaldo de la informacion, del software y de los sistemas, conforme a la politica de respaldo acordada.</td><td>Verificar configuracion, ultima ejecucion y disponibilidad de respaldos e instantaneas.</td><td><span class="pill p-obs">Parcial</span></td><td>L8</td></tr>
+<tr><td><span class="tag">A.8.15</span></td><td><b>Registro de eventos (logging)</b></td><td>Deben producirse, almacenarse, protegerse y analizarse registros que documenten actividades, excepciones, fallas y otros eventos relevantes.</td><td>Verificar tamano, modo de retencion, proteccion y cobertura de la politica de auditoria de los registros de eventos.</td><td><span class="pill p-conf">Total</span></td><td>L8, L2</td></tr>
+<tr><td><span class="tag">A.8.16</span></td><td><b>Actividades de monitoreo</b></td><td>Las redes, sistemas y aplicaciones deben monitorearse para detectar comportamientos anomalos y adoptar acciones apropiadas para evaluar potenciales incidentes de seguridad.</td><td>Verificar presencia de agentes de monitoreo, reenvio de eventos y anomalias operativas registradas.</td><td><span class="pill p-obs">Parcial</span></td><td>L8, L9, L5</td></tr>
+<tr><td><span class="tag">A.8.17</span></td><td><b>Sincronizacion de relojes</b></td><td>Los relojes de los sistemas de procesamiento de informacion deben sincronizarse con fuentes de tiempo aprobadas.</td><td>Verificar el servicio de tiempo y que apunte a una fuente NTP autorizada.</td><td><span class="pill p-conf">Total</span></td><td>L2</td></tr>
+<tr><td><span class="tag">A.8.18</span></td><td><b>Uso de programas utilitarios privilegiados</b></td><td>El uso de programas utilitarios capaces de anular los controles del sistema y de las aplicaciones debe restringirse y controlarse estrictamente.</td><td>Detectar utilitarios capaces de eludir controles del sistema y su ubicacion.</td><td><span class="pill p-obs">Parcial</span></td><td>L4, L5</td></tr>
+<tr><td><span class="tag">A.8.19</span></td><td><b>Instalacion de software en sistemas operativos</b></td><td>Deben implementarse procedimientos y medidas para gestionar de forma segura la instalacion de software en los sistemas operativos, asegurando que solo se instale software autorizado y que su origen sea verificable.</td><td>CONTROL EJE DE ESTA AUDITORIA. Inventario, procedencia, ubicacion, firma digital, integridad y rol arquitectonico de todo artefacto de software instalado.</td><td><span class="pill p-conf">Total</span></td><td>L4</td></tr>
+<tr><td><span class="tag">A.8.2</span></td><td><b>Derechos de acceso privilegiado</b></td><td>La asignacion y el uso de derechos de acceso privilegiado deben restringirse y gestionarse, otorgandose solo cuando sea necesario y sujetos a revision periodica.</td><td>Enumerar administradores locales, cuentas de servicio privilegiadas y tareas con privilegio maximo.</td><td><span class="pill p-conf">Total</span></td><td>L6, L5</td></tr>
+<tr><td><span class="tag">A.8.20</span></td><td><b>Seguridad de redes</b></td><td>Las redes y los dispositivos de red deben asegurarse, gestionarse y controlarse para proteger la informacion que transita por los sistemas y aplicaciones.</td><td>Verificar el estado del firewall por perfil y la superficie de escucha del servidor.</td><td><span class="pill p-conf">Total</span></td><td>L7, L2</td></tr>
+<tr><td><span class="tag">A.8.21</span></td><td><b>Seguridad de los servicios de red</b></td><td>Deben identificarse, implementarse y monitorearse los mecanismos de seguridad, los niveles de servicio y los requisitos de los servicios de red, tanto propios como contratados.</td><td>Identificar servicios de red expuestos y protocolos heredados o sin cifrado habilitados.</td><td><span class="pill p-obs">Parcial</span></td><td>L7</td></tr>
+<tr><td><span class="tag">A.8.22</span></td><td><b>Segregacion de redes</b></td><td>Los grupos de servicios de informacion, usuarios y sistemas de informacion deben segregarse en las redes de la organizacion.</td><td>Revisar interfaces, perfiles de red y alcance de escucha de los servicios sensibles.</td><td><span class="pill p-na">Indicio</span></td><td>L7</td></tr>
+<tr><td><span class="tag">A.8.24</span></td><td><b>Uso de criptografia</b></td><td>Deben definirse e implementarse reglas para el uso efectivo de la criptografia, incluida la gestion de claves criptograficas.</td><td>Verificar cifrado de volumenes, protocolos TLS/SChannel habilitados y presencia de algoritmos debiles.</td><td><span class="pill p-obs">Parcial</span></td><td>L2</td></tr>
+<tr><td><span class="tag">A.8.25</span></td><td><b>Ciclo de vida de desarrollo seguro</b></td><td>Deben establecerse y aplicarse reglas para el desarrollo seguro de software y sistemas a lo largo de todo su ciclo de vida.</td><td>Identificar dependencias y gestores de paquetes de desarrollo instalados en un servidor productivo.</td><td><span class="pill p-na">Indicio</span></td><td>L4</td></tr>
+<tr><td><span class="tag">A.8.28</span></td><td><b>Codificacion segura</b></td><td>Deben aplicarse principios de codificacion segura al desarrollo de software, incluyendo la proteccion e integridad del codigo desplegado.</td><td>Detectar scripts operativos sin firma ni control de versiones, y la politica de ejecucion de PowerShell.</td><td><span class="pill p-na">Indicio</span></td><td>L4</td></tr>
+<tr><td><span class="tag">A.8.3</span></td><td><b>Restriccion de acceso a la informacion</b></td><td>El acceso a la informacion y a otros activos asociados debe restringirse conforme a la politica de control de acceso establecida por la organizacion.</td><td>Revisar permisos de recursos compartidos de red y su alcance.</td><td><span class="pill p-obs">Parcial</span></td><td>L7</td></tr>
+<tr><td><span class="tag">A.8.31</span></td><td><b>Separacion de entornos de desarrollo, prueba y produccion</b></td><td>Los entornos de desarrollo, prueba y produccion deben estar separados y asegurados, evitando que herramientas o datos de un entorno comprometan a otro.</td><td>Detectar SDK, compiladores o herramientas de desarrollo presentes en un servidor declarado como productivo.</td><td><span class="pill p-na">Indicio</span></td><td>L3, L4</td></tr>
+<tr><td><span class="tag">A.8.32</span></td><td><b>Gestion de cambios</b></td><td>Los cambios en las instalaciones de procesamiento de informacion y en los sistemas de informacion deben estar sujetos a procedimientos de gestion de cambios.</td><td>Establecer la trazabilidad de instalaciones y actualizaciones recientes contra cambios aprobados.</td><td><span class="pill p-obs">Parcial</span></td><td>L4, L2</td></tr>
+<tr><td><span class="tag">A.8.34</span></td><td><b>Proteccion de sistemas de informacion durante auditorias</b></td><td>Las pruebas de auditoria y demas actividades de aseguramiento que impliquen la evaluacion de sistemas operativos deben planificarse y acordarse entre el auditor y la direccion, minimizando su impacto sobre los procesos de negocio.</td><td>La suite opera en modo de solo lectura, evita clases WMI de efecto colateral y registra su propio impacto sobre el sistema auditado.</td><td><span class="pill p-conf">Total</span></td><td>L9</td></tr>
+<tr><td><span class="tag">A.8.5</span></td><td><b>Autenticacion segura</b></td><td>Deben implementarse tecnologias y procedimientos de autenticacion segura acordes con las restricciones de acceso y con la politica de control de acceso.</td><td>Verificar NLA en RDP, bloqueo de cuentas, longitud de contrasena y cifrado del canal de administracion.</td><td><span class="pill p-obs">Parcial</span></td><td>L6, L7</td></tr>
+<tr><td><span class="tag">A.8.6</span></td><td><b>Gestion de la capacidad</b></td><td>El uso de los recursos debe monitorearse y ajustarse conforme a los requisitos de capacidad actuales y proyectados, para asegurar el desempeno requerido de los sistemas.</td><td>Medir uso de CPU, memoria y almacenamiento frente a umbrales definidos.</td><td><span class="pill p-conf">Total</span></td><td>L9, L8</td></tr>
+<tr><td><span class="tag">A.8.7</span></td><td><b>Proteccion contra codigo malicioso</b></td><td>Debe implementarse proteccion contra codigo malicioso, respaldada por una adecuada concienciacion de los usuarios.</td><td>Verificar estado del antimalware, vigencia de firmas, proteccion en tiempo real y alcance de las exclusiones.</td><td><span class="pill p-conf">Total</span></td><td>L2</td></tr>
+<tr><td><span class="tag">A.8.8</span></td><td><b>Gestion de vulnerabilidades tecnicas</b></td><td>Debe obtenerse informacion sobre las vulnerabilidades tecnicas de los sistemas de informacion en uso, evaluarse la exposicion de la organizacion a dichas vulnerabilidades y tomarse las medidas apropiadas.</td><td>Evaluar latencia de parcheo del SO y detectar software y componentes fuera de soporte del proveedor.</td><td><span class="pill p-obs">Parcial</span></td><td>L2, L3, L4</td></tr>
+<tr><td><span class="tag">A.8.9</span></td><td><b>Gestion de la configuracion</b></td><td>Las configuraciones, incluidas las de seguridad, del hardware, software, servicios y redes deben establecerse, documentarse, implementarse, monitorearse y revisarse.</td><td>Contrastar la configuracion del sistema y sus servicios contra una linea base segura documentada.</td><td><span class="pill p-conf">Total</span></td><td>L2, L3, L5</td></tr>
+</tbody></table></div>
+</div>
+<div class="card">
+<h2>Anexo &mdash; Taxonomia de roles arquitectonicos</h2>
+<p class="desc">Roles con los que se clasifica cada artefacto de software y su ubicacion en el modelo de capas de arquitectura empresarial. La columna <b>Esperado</b> indica si el rol corresponde al proposito declarado de este servidor.</p>
+<div class="tbl-scroll"><table>
+<thead><tr><th>Rol</th><th>Capa EA</th><th>Descripcion</th><th>Esperado en este servidor</th></tr></thead><tbody>
+<tr><td><b>Agente de seguridad</b></td><td>Tecnologia</td><td>Antimalware, EDR, DLP, cifrado o agente de cumplimiento.</td><td><span class="pill p-conf">Si</span></td></tr>
+<tr><td><b>Agente de monitoreo y gestion</b></td><td>Tecnologia</td><td>Recoleccion de metricas, inventario, telemetria o gestion remota corporativa.</td><td><span class="pill p-conf">Si</span></td></tr>
+<tr><td><b>Agente de respaldo y continuidad</b></td><td>Tecnologia</td><td>Software de copia de seguridad, replicacion o recuperacion ante desastres.</td><td><span class="pill p-conf">Si</span></td></tr>
+<tr><td><b>Motor de base de datos</b></td><td>Datos</td><td>Sistema gestor de bases de datos, sus componentes cliente y controladores de acceso a datos.</td><td><span class="pill p-conf">Si</span></td></tr>
+<tr><td><b>Inteligencia de negocios y reporteria</b></td><td>Aplicacion</td><td>Plataforma de analitica, tableros o generacion de reportes sobre datos de negocio.</td><td><span class="pill p-conf">Si</span></td></tr>
+<tr><td><b>Servidor de aplicaciones / web</b></td><td>Tecnologia</td><td>Contenedor de ejecucion de aplicaciones o servidor HTTP.</td><td><span class="pill p-conf">Si</span></td></tr>
+<tr><td><b>Middleware e integracion</b></td><td>Tecnologia</td><td>Colas de mensajes, ESB, integracion de sistemas y conectores.</td><td><span class="pill p-conf">Si</span></td></tr>
+<tr><td><b>Runtime / framework de ejecucion</b></td><td>Tecnologia</td><td>Maquinas virtuales de lenguaje, frameworks y bibliotecas redistribuibles.</td><td><span class="pill p-conf">Si</span></td></tr>
+<tr><td><b>Herramienta de desarrollo</b></td><td>Tecnologia</td><td>IDE, compilador, SDK, biblioteca de componentes o utilitario de construccion de software.</td><td><span class="pill p-noconf">No</span></td></tr>
+<tr><td><b>Acceso remoto de terceros</b></td><td>Tecnologia</td><td>Herramienta de control remoto no corporativa. Canal de acceso fuera del perimetro gestionado.</td><td><span class="pill p-noconf">No</span></td></tr>
+<tr><td><b>Sincronizacion en nube</b></td><td>Datos</td><td>Cliente de sincronizacion de archivos hacia almacenamiento externo.</td><td><span class="pill p-noconf">No</span></td></tr>
+<tr><td><b>Navegador web</b></td><td>Aplicacion</td><td>Navegador de internet o motor de navegacion embebido.</td><td><span class="pill p-noconf">No</span></td></tr>
+<tr><td><b>Ofimatica y productividad</b></td><td>Aplicacion</td><td>Suite de productividad de usuario final.</td><td><span class="pill p-noconf">No</span></td></tr>
+<tr><td><b>Multimedia y entretenimiento</b></td><td>Aplicacion</td><td>Reproductores, editores multimedia, captura de pantalla o software de entretenimiento.</td><td><span class="pill p-noconf">No</span></td></tr>
+<tr><td><b>Controlador / firmware</b></td><td>Infraestructura</td><td>Driver de dispositivo, utilitario de fabricante o herramienta de gestion de hardware.</td><td><span class="pill p-conf">Si</span></td></tr>
+<tr><td><b>Herramienta de administracion</b></td><td>Tecnologia</td><td>Utilitario de administracion de sistemas, red o infraestructura.</td><td><span class="pill p-conf">Si</span></td></tr>
+<tr><td><b>Componente del sistema operativo</b></td><td>Tecnologia</td><td>Actualizacion, caracteristica, paquete Appx o componente propio de Windows.</td><td><span class="pill p-conf">Si</span></td></tr>
+<tr><td><b>Utilitario de sistema</b></td><td>Tecnologia</td><td>Herramienta auxiliar de proposito general.</td><td><span class="pill p-conf">Si</span></td></tr>
+<tr><td><b>Sin clasificar</b></td><td>No determinada</td><td>El artefacto no coincide con ningun rol de la taxonomia. Requiere clasificacion manual por el arquitecto.</td><td><span class="pill p-obs">Requiere clasificacion</span></td></tr>
+</tbody></table></div></div>
+<div class="card">
+<h2>Aporte al cuerpo normativo (clausulas 4-10)</h2>
+<p class="desc">Como se integra esta evidencia tecnica al expediente del sistema de gestion.</p>
+<div class="tbl-scroll"><table><thead><tr><th>Clausula</th><th>Titulo</th><th>Aporte de esta auditoria</th></tr></thead><tbody>
+<tr><td><span class="tag">6.1.2</span></td><td>Apreciacion de riesgos de seguridad de la informacion</td><td>Los hallazgos con severidad y capa constituyen entradas al registro de riesgos.</td></tr>
+<tr><td><span class="tag">8.1</span></td><td>Planificacion y control operacional</td><td>Evidencia de que los controles operativos estan implementados en el activo.</td></tr>
+<tr><td><span class="tag">9.1</span></td><td>Seguimiento, medicion, analisis y evaluacion</td><td>Metricas de capacidad y cobertura de controles por ejecucion.</td></tr>
+<tr><td><span class="tag">9.2</span></td><td>Auditoria interna</td><td>Salida reproducible con marca de tiempo y hash de integridad por artefacto.</td></tr>
+<tr><td><span class="tag">10.1</span></td><td>Mejora continua y no conformidades</td><td>Comparativa entre ejecuciones para demostrar tendencia de remediacion.</td></tr>
+</tbody></table></div></div>
+<footer>
+Generado el 2026-08-11 18:51:44 &middot; Ejecucion <code>20260811-184912</code> &middot; Servidor SRV-SAP<br>
+Suite de auditoria de solo lectura. La integridad de los archivos de evidencia se registra en <code>MANIFIESTO-INTEGRIDAD.json</code>.<br>
+Documento de trabajo para el SGSI. Su contenido no sustituye la revision de un auditor competente.
+</footer>
+</div></body></html>

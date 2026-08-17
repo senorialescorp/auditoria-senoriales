@@ -1,0 +1,442 @@
+﻿[
+    {
+        "Grupo":  "Disco",
+        "Metrica":  "% disk time",
+        "Valor":  0.16,
+        "Unidad":  "",
+        "Detalle":  "min=0.03 max=0.62 muestras=5",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "CPU",
+        "Metrica":  "% processor time",
+        "Valor":  2.97,
+        "Unidad":  "",
+        "Detalle":  "min=1.71 max=4.01 muestras=5",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "CPU",
+        "Metrica":  "processor queue length",
+        "Valor":  0,
+        "Unidad":  "",
+        "Detalle":  "min=0 max=0 muestras=5",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "Sistema",
+        "Metrica":  "context switches/sec",
+        "Valor":  28323.16,
+        "Unidad":  "",
+        "Detalle":  "min=25008.45 max=33279.02 muestras=5",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "Memoria",
+        "Metrica":  "% committed bytes in use",
+        "Valor":  85.79,
+        "Unidad":  "",
+        "Detalle":  "min=85.77 max=85.8 muestras=5",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "Memoria",
+        "Metrica":  "available mbytes",
+        "Valor":  9392.6,
+        "Unidad":  "",
+        "Detalle":  "min=9366 max=9412 muestras=5",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "Disco",
+        "Metrica":  "avg. disk queue length",
+        "Valor":  0.01,
+        "Unidad":  "",
+        "Detalle":  "min=0 max=0.04 muestras=5",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "Memoria",
+        "Metrica":  "TotalFisica",
+        "Valor":  131071,
+        "Unidad":  "MB",
+        "Detalle":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "Memoria",
+        "Metrica":  "EnUso",
+        "Valor":  121707,
+        "Unidad":  "MB",
+        "Detalle":  "92.9% del total",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "Memoria",
+        "Metrica":  "Disponible",
+        "Valor":  9364,
+        "Unidad":  "MB",
+        "Detalle":  "7.1% libre",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Grupo":  "Memoria",
+        "Metrica":  "ArchivoPaginacion",
+        "Valor":  19456,
+        "Unidad":  "MB",
+        "Detalle":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopMemoria",
+        "Metrica":  "sqlservr",
+        "Valor":  99248.9,
+        "Unidad":  "MB",
+        "Detalle":  "PID=5608 Hilos=173 Compania= Ruta=",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopMemoria",
+        "Metrica":  "tomcat8",
+        "Valor":  1217.8,
+        "Unidad":  "MB",
+        "Detalle":  "PID=3504 Hilos=274 Compania= Ruta=",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopMemoria",
+        "Metrica":  "SSMS",
+        "Valor":  859.4,
+        "Unidad":  "MB",
+        "Detalle":  "PID=24864 Hilos=67 Compania= Ruta=",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopMemoria",
+        "Metrica":  "SSMS",
+        "Valor":  774,
+        "Unidad":  "MB",
+        "Detalle":  "PID=39092 Hilos=57 Compania= Ruta=",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopMemoria",
+        "Metrica":  "java",
+        "Valor":  660.4,
+        "Unidad":  "MB",
+        "Detalle":  "PID=10328 Hilos=110 Compania= Ruta=",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopMemoria",
+        "Metrica":  "SAP Business One",
+        "Valor":  637.7,
+        "Unidad":  "MB",
+        "Detalle":  "PID=50608 Hilos=48 Compania= Ruta=",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopMemoria",
+        "Metrica":  "SAP Business One",
+        "Valor":  610.1,
+        "Unidad":  "MB",
+        "Detalle":  "PID=65824 Hilos=35 Compania= Ruta=",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopMemoria",
+        "Metrica":  "POSIngresoPagos2023",
+        "Valor":  540.7,
+        "Unidad":  "MB",
+        "Detalle":  "PID=53884 Hilos=26 Compania= Ruta=",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopMemoria",
+        "Metrica":  "SAP Business One",
+        "Valor":  523.4,
+        "Unidad":  "MB",
+        "Detalle":  "PID=61512 Hilos=36 Compania= Ruta=",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopMemoria",
+        "Metrica":  "claude",
+        "Valor":  520.6,
+        "Unidad":  "MB",
+        "Detalle":  "PID=63464 Hilos=36 Compania=Anthropic PBC Ruta=C:\\Users\\svalle\\.local\\bin\\claude.exe",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopMemoria",
+        "Metrica":  "SAP Business One",
+        "Valor":  517.2,
+        "Unidad":  "MB",
+        "Detalle":  "PID=16232 Hilos=37 Compania= Ruta=",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopMemoria",
+        "Metrica":  "SAP Business One",
+        "Valor":  509.6,
+        "Unidad":  "MB",
+        "Detalle":  "PID=57864 Hilos=35 Compania= Ruta=",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopMemoria",
+        "Metrica":  "SAP Business One",
+        "Valor":  509.1,
+        "Unidad":  "MB",
+        "Detalle":  "PID=6716 Hilos=51 Compania= Ruta=",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopMemoria",
+        "Metrica":  "SAP Business One",
+        "Valor":  506.7,
+        "Unidad":  "MB",
+        "Detalle":  "PID=27292 Hilos=47 Compania= Ruta=",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopMemoria",
+        "Metrica":  "SAP Business One",
+        "Valor":  490.4,
+        "Unidad":  "MB",
+        "Detalle":  "PID=59036 Hilos=38 Compania= Ruta=",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopCPU",
+        "Metrica":  "claude",
+        "Valor":  135.9,
+        "Unidad":  "seg CPU acumulados",
+        "Detalle":  "PID=63464 Ruta=C:\\Users\\svalle\\.local\\bin\\claude.exe",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopCPU",
+        "Metrica":  "conhost",
+        "Valor":  104.9,
+        "Unidad":  "seg CPU acumulados",
+        "Detalle":  "PID=18480 Ruta=C:\\Windows\\system32\\conhost.exe",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopCPU",
+        "Metrica":  "explorer",
+        "Valor":  99.6,
+        "Unidad":  "seg CPU acumulados",
+        "Detalle":  "PID=18692 Ruta=C:\\Windows\\Explorer.EXE",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopCPU",
+        "Metrica":  "powershell",
+        "Valor":  84.5,
+        "Unidad":  "seg CPU acumulados",
+        "Detalle":  "PID=33060 Ruta=C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopCPU",
+        "Metrica":  "msedge",
+        "Valor":  57.5,
+        "Unidad":  "seg CPU acumulados",
+        "Detalle":  "PID=56580 Ruta=C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopCPU",
+        "Metrica":  "msedge",
+        "Valor":  28.8,
+        "Unidad":  "seg CPU acumulados",
+        "Detalle":  "PID=34068 Ruta=C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopCPU",
+        "Metrica":  "msedge",
+        "Valor":  23.2,
+        "Unidad":  "seg CPU acumulados",
+        "Detalle":  "PID=53608 Ruta=C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopCPU",
+        "Metrica":  "msedge",
+        "Valor":  15.2,
+        "Unidad":  "seg CPU acumulados",
+        "Detalle":  "PID=30992 Ruta=C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopCPU",
+        "Metrica":  "SearchApp",
+        "Valor":  12.9,
+        "Unidad":  "seg CPU acumulados",
+        "Detalle":  "PID=59208 Ruta=C:\\Windows\\SystemApps\\Microsoft.Windows.Search_cw5n1h2txyewy\\SearchApp.exe",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopCPU",
+        "Metrica":  "RuntimeBroker",
+        "Valor":  10.2,
+        "Unidad":  "seg CPU acumulados",
+        "Detalle":  "PID=59240 Ruta=C:\\Windows\\System32\\RuntimeBroker.exe",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopCPU",
+        "Metrica":  "OneDrive",
+        "Valor":  5.7,
+        "Unidad":  "seg CPU acumulados",
+        "Detalle":  "PID=59820 Ruta=C:\\Program Files\\Microsoft OneDrive\\OneDrive.exe",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopCPU",
+        "Metrica":  "TabTip",
+        "Valor":  5,
+        "Unidad":  "seg CPU acumulados",
+        "Detalle":  "PID=57816 Ruta=",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopCPU",
+        "Metrica":  "msedge",
+        "Valor":  4.2,
+        "Unidad":  "seg CPU acumulados",
+        "Detalle":  "PID=17740 Ruta=C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopCPU",
+        "Metrica":  "msedge",
+        "Valor":  3.2,
+        "Unidad":  "seg CPU acumulados",
+        "Detalle":  "PID=59348 Ruta=C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "TopCPU",
+        "Metrica":  "rdpclip",
+        "Valor":  3,
+        "Unidad":  "seg CPU acumulados",
+        "Detalle":  "PID=55648 Ruta=C:\\Windows\\System32\\rdpclip.exe",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "Sistema",
+        "Metrica":  "ProcesosActivos",
+        "Valor":  407,
+        "Unidad":  "",
+        "Detalle":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "Sistema",
+        "Metrica":  "HilosTotales",
+        "Valor":  5387,
+        "Unidad":  "",
+        "Detalle":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "Sistema",
+        "Metrica":  "Identificadores",
+        "Valor":  197985,
+        "Unidad":  "",
+        "Detalle":  "",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "Disco",
+        "Metrica":  "Volumen C:",
+        "Valor":  11.8,
+        "Unidad":  "% libre",
+        "Detalle":  "41.34 GB libres de 349.9 GB",
+        "Estado":  "ADVERTENCIA"
+    },
+    {
+        "Grupo":  "Disco",
+        "Metrica":  "Volumen D:",
+        "Valor":  79.3,
+        "Unidad":  "% libre",
+        "Detalle":  "7.92 GB libres de 10 GB",
+        "Estado":  "OK"
+    },
+    {
+        "Grupo":  "Disco",
+        "Metrica":  "Volumen E:",
+        "Valor":  26.3,
+        "Unidad":  "% libre",
+        "Detalle":  "210.01 GB libres de 800 GB",
+        "Estado":  "OK"
+    },
+    {
+        "Grupo":  "Disco",
+        "Metrica":  "Volumen F:",
+        "Valor":  60.9,
+        "Unidad":  "% libre",
+        "Detalle":  "103.59 GB libres de 170 GB",
+        "Estado":  "OK"
+    },
+    {
+        "Grupo":  "Disco",
+        "Metrica":  "Volumen G:",
+        "Valor":  30.5,
+        "Unidad":  "% libre",
+        "Detalle":  "152.73 GB libres de 500 GB",
+        "Estado":  "OK"
+    },
+    {
+        "Grupo":  "Disco",
+        "Metrica":  "Volumen I:",
+        "Valor":  91.8,
+        "Unidad":  "% libre",
+        "Detalle":  "41.32 GB libres de 45 GB",
+        "Estado":  "OK"
+    },
+    {
+        "Grupo":  "Disco",
+        "Metrica":  "LatenciaPromedio",
+        "Valor":  0.7,
+        "Unidad":  "ms",
+        "Detalle":  "Referencia: \u003e 25 ms indica saturacion de E/S",
+        "Estado":  "OK"
+    },
+    {
+        "Grupo":  "Red",
+        "Metrica":  "Ethernet",
+        "Valor":  100,
+        "Unidad":  "Gbps",
+        "Detalle":  "MAC=FA-16-3E-DC-DE-E5 Driver=62.6.101.58000",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "Red",
+        "Metrica":  "Ethernet - trafico",
+        "Valor":  889.22,
+        "Unidad":  "GB recibidos",
+        "Detalle":  "Enviados: 1473.87 GB | Descartes entrada: 0",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "Sistema",
+        "Metrica":  "TiempoActividad",
+        "Valor":  18.67,
+        "Unidad":  "dias",
+        "Detalle":  "Ultimo arranque: 2026-07-25 17:20",
+        "Estado":  "Info"
+    },
+    {
+        "Grupo":  "Sistema",
+        "Metrica":  "ApagadosInesperados30d",
+        "Valor":  1,
+        "Unidad":  "",
+        "Detalle":  "2026-07-25 17:07",
+        "Estado":  "ADVERTENCIA"
+    }
+]

@@ -1,0 +1,309 @@
+﻿{
+    "RunId":  "20260817-110307",
+    "Servidor":  "SRV-SAP",
+    "GeneradoEl":  "2026-08-17T11:06:27",
+    "GeneradoPor":  "SRV-SAP\\svalle",
+    "Marco":  "Marco propio de criterios de auditoria de sistemas",
+    "Artefactos":  [
+                       {
+                           "File":  "L1-01.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L1-01.json",
+                           "SHA256":  "2E93C728D223ECDE8205E1299E1D6D0A98A1C79A1037DA577E90BD76E79EC93E",
+                           "Bytes":  6027
+                       },
+                       {
+                           "File":  "L1-01.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L1-01.csv",
+                           "SHA256":  "7FCC3176209CE0A9EFE5D925BC8EAEB906FF093669CC5BD7879E65D3EADD9727",
+                           "Bytes":  1608
+                       },
+                       {
+                           "File":  "L2-01.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L2-01.json",
+                           "SHA256":  "7351BD9B326576C7A4DA833A8300731B69BA31B777BA6B1EF52571FE05862089",
+                           "Bytes":  2243
+                       },
+                       {
+                           "File":  "L2-01.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L2-01.csv",
+                           "SHA256":  "0119ECAC01B990F12313D662313182DC7A9F16E2F8A1191B5166CAFDB6241F49",
+                           "Bytes":  1056
+                       },
+                       {
+                           "File":  "L2-02.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L2-02.json",
+                           "SHA256":  "1005BC8A16975B4BEE6C6FE318CD5ED7093853E7238F54E5A58A12B55E403582",
+                           "Bytes":  3105
+                       },
+                       {
+                           "File":  "L2-02.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L2-02.csv",
+                           "SHA256":  "0E19B054395A1A73C4383DDA148D420B11123E43092E836D6F5702D31F8DA968",
+                           "Bytes":  1393
+                       },
+                       {
+                           "File":  "L2-03.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L2-03.json",
+                           "SHA256":  "0C6D06E5C3F676660C231D1D1BB28ABCF8442233ACBE9115BB4BF036D0F3B698",
+                           "Bytes":  5664
+                       },
+                       {
+                           "File":  "L2-03.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L2-03.csv",
+                           "SHA256":  "25F1E5EB53945010FE59D74DEDA03D13984F66AFE08590936558ADD403F11A8F",
+                           "Bytes":  1919
+                       },
+                       {
+                           "File":  "L3-01.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L3-01.json",
+                           "SHA256":  "E466C22FEB00D177FBEE53B1B7ECB419BD1EF1BF015039D7D0328F3AACF852C5",
+                           "Bytes":  20461
+                       },
+                       {
+                           "File":  "L3-01.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L3-01.csv",
+                           "SHA256":  "795C944110F3A8AFFDA02180ECA2332FAAC34F1F7CFDAC34E5C05F241D977D73",
+                           "Bytes":  8832
+                       },
+                       {
+                           "File":  "L4-01.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L4-01.json",
+                           "SHA256":  "3959332F9FA88319BDC653A43F515C3C2C4E8A2AB9ACDF033F85BABDD53D2CCA",
+                           "Bytes":  94568
+                       },
+                       {
+                           "File":  "L4-01.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L4-01.csv",
+                           "SHA256":  "EBBA8BC2984DF8181914BE18E784FCE8951A3FC3A976D3C9A13B1A42FDB6E1FB",
+                           "Bytes":  39716
+                       },
+                       {
+                           "File":  "L4-02.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L4-02.json",
+                           "SHA256":  "82275964B8733334F95776F4B1A954DC466CF39AB6E301DCB3A057B7D3A174CE",
+                           "Bytes":  2004
+                       },
+                       {
+                           "File":  "L4-02.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L4-02.csv",
+                           "SHA256":  "5C3458312BDA4D30F6CB1E08E173A1D083AB78BEA5D5E4733AD71D5CAA2394D1",
+                           "Bytes":  1063
+                       },
+                       {
+                           "File":  "L4-03.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L4-03.json",
+                           "SHA256":  "9824B9F30F5D199D5396846CB620DCB2B45A383F4D9F823B5B52130B73E99354",
+                           "Bytes":  245458
+                       },
+                       {
+                           "File":  "L4-03.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L4-03.csv",
+                           "SHA256":  "91CC3E670703D9001D4B0193FB6E7AB7D1BD68424EC8A900960A1642BDA25ACC",
+                           "Bytes":  106620
+                       },
+                       {
+                           "File":  "L4-04.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L4-04.json",
+                           "SHA256":  "0AA2DA44467C5ED01FF0BD6E7C3F27CC20A1F3C79B09508C5648E0EA1F9363A8",
+                           "Bytes":  71094
+                       },
+                       {
+                           "File":  "L4-04.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L4-04.csv",
+                           "SHA256":  "E2C113E19F744D2A8E4119C27F858BEB4AAB3FDB9A80CEC0617EF2DC65601A7D",
+                           "Bytes":  41533
+                       },
+                       {
+                           "File":  "L4-05.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L4-05.json",
+                           "SHA256":  "5E099EE66856AD787D590CA538DB027B55EF1EC8246799A8AA512082170AEDF2",
+                           "Bytes":  23825
+                       },
+                       {
+                           "File":  "L4-05.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L4-05.csv",
+                           "SHA256":  "2410F2213F6D36401F2DA245729530B6C273C95AB63B4565A1DE19F81106F190",
+                           "Bytes":  8305
+                       },
+                       {
+                           "File":  "L4-06.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L4-06.json",
+                           "SHA256":  "6E3653A20EFE56DF2CDDEE3CF4A4ED2F0A2A24F5CA326EEBD284798624727F6A",
+                           "Bytes":  45937
+                       },
+                       {
+                           "File":  "L4-06.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L4-06.csv",
+                           "SHA256":  "D79A93DB117A131DBE8413B5452EAFC5CDD58066089E3C1A58A20CCAB457AF33",
+                           "Bytes":  19348
+                       },
+                       {
+                           "File":  "L5-01.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L5-01.json",
+                           "SHA256":  "4C3AB4EA8CD162270EF5E03949A83CBCD390A96AF107BAAFF6EA1A2B6AC6E378",
+                           "Bytes":  185047
+                       },
+                       {
+                           "File":  "L5-01.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L5-01.csv",
+                           "SHA256":  "F9F367B93639D24007CA02251E6268C00B367CE893A48E8812A5D78307EEE275",
+                           "Bytes":  102746
+                       },
+                       {
+                           "File":  "L5-02.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L5-02.json",
+                           "SHA256":  "0DDDCF3801B523F455AE837C05E977275C6947376D1380A3ECBECFA5AAC6F7A3",
+                           "Bytes":  49517
+                       },
+                       {
+                           "File":  "L5-02.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L5-02.csv",
+                           "SHA256":  "707D65700A5EB4FDBECF58F42D514D3A60273A959E4FFC98948262160E84C372",
+                           "Bytes":  27374
+                       },
+                       {
+                           "File":  "L6-01.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L6-01.json",
+                           "SHA256":  "4E534B37CD5F2064D2B1F1E29B2ADBFC37DD07C6EA3179E40F28F4EB8BA741C1",
+                           "Bytes":  14960
+                       },
+                       {
+                           "File":  "L6-01.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L6-01.csv",
+                           "SHA256":  "582E54DDD1E43C1E682B972FCF7D0B7A427650A06769BD07E741FDB55C9B6739",
+                           "Bytes":  4194
+                       },
+                       {
+                           "File":  "L7-01.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L7-01.json",
+                           "SHA256":  "50DB4B9A3782AE75B6E3625137C6E6C9C1B3D6B2C9E8C53D637F58A73BB316C9",
+                           "Bytes":  51645
+                       },
+                       {
+                           "File":  "L7-01.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L7-01.csv",
+                           "SHA256":  "5F725597088B097F17CB38159AF799ACEC7324FB1A1F6DFAE925972C3BAE0442",
+                           "Bytes":  12531
+                       },
+                       {
+                           "File":  "L8-01.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L8-01.json",
+                           "SHA256":  "02D15B987882F172044E4B1A0F9E2CB6F93E2B518A3BB482159FD5D4F1EB96D2",
+                           "Bytes":  3784
+                       },
+                       {
+                           "File":  "L8-01.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L8-01.csv",
+                           "SHA256":  "405F6A307F4F4BA5FB0B0D5FA47EDED2C908583319480B31E26A0DAC8A5D5D0D",
+                           "Bytes":  1733
+                       },
+                       {
+                           "File":  "L9-01.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\L9-01.json",
+                           "SHA256":  "EB355C29493BE616592C07429ECB19F063467E33D22CB610929DFDA32585D4AB",
+                           "Bytes":  12546
+                       },
+                       {
+                           "File":  "L9-01.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\L9-01.csv",
+                           "SHA256":  "1BDEC827AC34D56A491F9680312A85D7E5BA304272EF21F74225BECD8EC37136",
+                           "Bytes":  4995
+                       },
+                       {
+                           "File":  "HALLAZGOS.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\HALLAZGOS.json",
+                           "SHA256":  "DA23617F3C0C5C260B27603B510EBF1C79D027EE7D77CEE94A08B40D7F7E7095",
+                           "Bytes":  58525
+                       },
+                       {
+                           "File":  "HALLAZGOS.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\HALLAZGOS.csv",
+                           "SHA256":  "46CF7FEC2B76A1A9467B3EE8B1192938D7C452EC8C0770F3DFA1D812E42A746D",
+                           "Bytes":  36317
+                       },
+                       {
+                           "File":  "COBERTURA-CRITERIOS.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\COBERTURA-CRITERIOS.json",
+                           "SHA256":  "F0F53D94227B9A43553172C39CD7A9ECC79AC72E3844AC3024FED82F17835031",
+                           "Bytes":  21640
+                       },
+                       {
+                           "File":  "COBERTURA-CRITERIOS.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\COBERTURA-CRITERIOS.csv",
+                           "SHA256":  "170F65FF341CC324BD9DFC747775B950E5F642FB841C65247D4D9B5B8770F453",
+                           "Bytes":  9811
+                       },
+                       {
+                           "File":  "RESUMEN-CAPAS.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\RESUMEN-CAPAS.json",
+                           "SHA256":  "8DC3163AF2260290318840560DBBFEE66CE93769FCBDD619F601B18BD760C389",
+                           "Bytes":  4277
+                       },
+                       {
+                           "File":  "RESUMEN-CAPAS.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\RESUMEN-CAPAS.csv",
+                           "SHA256":  "8BEDAD0A62E3E55088D33DA088ADAD9947CA3C5058BFA940FFAF338C69874E72",
+                           "Bytes":  1652
+                       },
+                       {
+                           "File":  "BRECHAS-EVIDENCIA.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\BRECHAS-EVIDENCIA.json",
+                           "SHA256":  "24439CBEABF32DB7A4599691B7F2858AAA21B20A0EDFA9944F875DF9988DFAF4",
+                           "Bytes":  1527
+                       },
+                       {
+                           "File":  "BRECHAS-EVIDENCIA.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\BRECHAS-EVIDENCIA.csv",
+                           "SHA256":  "A6147CEC526CDF387608129B6C3C454762654E033D035043035A4033B170FE15",
+                           "Bytes":  944
+                       },
+                       {
+                           "File":  "RESUMEN.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\RESUMEN.json",
+                           "SHA256":  "2524EB1CF66100D4825D560A89290E301C3F5FB9BA5C20222E9E0B73C0CB7513",
+                           "Bytes":  7365
+                       },
+                       {
+                           "File":  "RESUMEN.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\RESUMEN.csv",
+                           "SHA256":  "E4F15BD93C4AEB60B72A890507860EE8F083453CDEA1830CDFF8AAC5F04F445D",
+                           "Bytes":  686
+                       },
+                       {
+                           "File":  "INVENTARIO-SOFTWARE.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\INVENTARIO-SOFTWARE.json",
+                           "SHA256":  "3959332F9FA88319BDC653A43F515C3C2C4E8A2AB9ACDF033F85BABDD53D2CCA",
+                           "Bytes":  94568
+                       },
+                       {
+                           "File":  "INVENTARIO-SOFTWARE.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\INVENTARIO-SOFTWARE.csv",
+                           "SHA256":  "EBBA8BC2984DF8181914BE18E784FCE8951A3FC3A976D3C9A13B1A42FDB6E1FB",
+                           "Bytes":  39716
+                       },
+                       {
+                           "File":  "LINEA-BASE-ARQUITECTURA.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\LINEA-BASE-ARQUITECTURA.json",
+                           "SHA256":  "6E3653A20EFE56DF2CDDEE3CF4A4ED2F0A2A24F5CA326EEBD284798624727F6A",
+                           "Bytes":  45937
+                       },
+                       {
+                           "File":  "LINEA-BASE-ARQUITECTURA.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\LINEA-BASE-ARQUITECTURA.csv",
+                           "SHA256":  "D79A93DB117A131DBE8413B5452EAFC5CDD58066089E3C1A58A20CCAB457AF33",
+                           "Bytes":  19348
+                       },
+                       {
+                           "File":  "GLOSARIO-CRITERIOS.json",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\raw\\GLOSARIO-CRITERIOS.json",
+                           "SHA256":  "A7F519944608B6112438D85ACD3F15E00A6CD5474CBB8251BAB9BAB997E15D46",
+                           "Bytes":  18301
+                       },
+                       {
+                           "File":  "GLOSARIO-CRITERIOS.csv",
+                           "Path":  "C:\\Scripts\\Audit\\Output\\20260817-110307\\csv\\GLOSARIO-CRITERIOS.csv",
+                           "SHA256":  "2FD068B8A00C2633BF35A4AD395404F9C00FDED8C8CF5DCE43DB11BCD3C120A8",
+                           "Bytes":  12083
+                       }
+                   ]
+}

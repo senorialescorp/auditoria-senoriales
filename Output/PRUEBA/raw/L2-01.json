@@ -1,0 +1,74 @@
+﻿[
+    {
+        "Categoria":  "SistemaOperativo",
+        "Elemento":  "Version",
+        "Valor":  "Microsoft Windows Server 2022 Standard",
+        "Detalle":  "Build 20348 / Version 10.0.20348"
+    },
+    {
+        "Categoria":  "SistemaOperativo",
+        "Elemento":  "Arquitectura",
+        "Valor":  "64-bit",
+        "Detalle":  "ServicePack 0.0"
+    },
+    {
+        "Categoria":  "SistemaOperativo",
+        "Elemento":  "FechaInstalacion",
+        "Valor":  "2023-03-10",
+        "Detalle":  "1250 dias de antiguedad"
+    },
+    {
+        "Categoria":  "SistemaOperativo",
+        "Elemento":  "UltimoArranque",
+        "Valor":  "2026-07-25 17:20",
+        "Detalle":  "17.9 dias de actividad continua"
+    },
+    {
+        "Categoria":  "SistemaOperativo",
+        "Elemento":  "DirectorioSistema",
+        "Valor":  "C:\\Windows\\system32",
+        "Detalle":  "Idioma 1033"
+    },
+    {
+        "Categoria":  "SistemaOperativo",
+        "Elemento":  "Instalacion",
+        "Valor":  "Server con Experiencia de Escritorio",
+        "Detalle":  "Mayor superficie de ataque que una instalacion Server Core."
+    },
+    {
+        "Categoria":  "Licenciamiento",
+        "Elemento":  "EstadoActivacion",
+        "Valor":  "Con licencia",
+        "Detalle":  "Windows(R) Operating System, VOLUME_MAK channel"
+    },
+    {
+        "Categoria":  "Tiempo",
+        "Elemento":  "ZonaHoraria",
+        "Valor":  "(UTC-06:00) Central America",
+        "Detalle":  "Bias -360 min"
+    },
+    {
+        "Categoria":  "Tiempo",
+        "Elemento":  "ServicioW32Time",
+        "Valor":  "Running / Automatic",
+        "Detalle":  "Tipo=NTP Servidor=time.windows.com,0x8"
+    },
+    {
+        "Categoria":  "Plataforma",
+        "Elemento":  "PowerShell",
+        "Valor":  "5.1.20348.4294",
+        "Detalle":  "Edicion Desktop"
+    },
+    {
+        "Categoria":  "Plataforma",
+        "Elemento":  "ExecutionPolicy",
+        "Valor":  "LocalMachine=RemoteSigned",
+        "Detalle":  "CurrentUser=Undefined"
+    },
+    {
+        "Categoria":  "Estado",
+        "Elemento":  "ReinicioPendiente",
+        "Valor":  "Si",
+        "Detalle":  "PendingFileRename"
+    }
+]
