@@ -1,0 +1,533 @@
+Collectors/README.md
+  s_8297ffe90bdabd::t_90b8334033926c 1
+Config/Arquitectura.psd1
+  s_8297ffe90bdabd::t_adbe4c6b348d4e 1-255
+Config/Audit.config.psd1
+  s_8297ffe90bdabd::t_3cdea6906ab886 1-163
+Config/Criterios.Auditoria.psd1
+  s_8297ffe90bdabd::t_256165091fc63f 1-257
+Invoke-Audit.ps1
+  s_8297ffe90bdabd::t_0ef4fbe0027637 1-564
+Logs/audit-20260811-141348.log
+  s_8297ffe90bdabd::t_718e345ee4f50e 1-27
+Logs/audit-20260811-184912.log
+  s_8297ffe90bdabd::t_0a1aae3a05a46d 1-28
+Logs/audit-20260817-110240.log
+  s_8297ffe90bdabd::t_249e266438acea 1-3
+Logs/audit-20260817-110307.log
+  s_8297ffe90bdabd::t_ecbe2f9e8c5b59 1-28
+Logs/audit-LINEA-BASE-20260813.log
+  s_8297ffe90bdabd::t_ae737f97c8aecd 1-28
+Logs/audit-PRUEBA.log
+  s_8297ffe90bdabd::t_bddf5169c115fa 1-30
+Logs/audit-PRUEBA2.log
+  s_8297ffe90bdabd::t_7747262472c319 1-22
+Modules/AuditCore/AuditCore.psm1
+  s_8297ffe90bdabd::t_1be3c1d80709a4 1-758
+Modules/AuditCore/ExcelWriter.psm1
+  s_8297ffe90bdabd::t_98a4e6d30f7757 1-325
+Modules/AuditCore/WordWriter.psm1
+  s_8297ffe90bdabd::t_107000ffe75887 1-593
+Output/20260811-184912/MANIFIESTO-INTEGRIDAD.json
+  s_8297ffe90bdabd::t_502fcc43011f10 1-309
+Output/20260811-184912/Reporte-Auditoria.html
+  s_8297ffe90bdabd::t_e8d2cf5098ac18 1-1182
+Output/20260811-184912/csv/BRECHAS-EVIDENCIA.csv
+  s_8297ffe90bdabd::t_b4f9ee19b2b604 1-9
+Output/20260811-184912/csv/COBERTURA-ISO.csv
+  s_8297ffe90bdabd::t_cfc72aa9fac401 1-41
+Output/20260811-184912/csv/GLOSARIO-CONTROLES-ISO.csv
+  s_8297ffe90bdabd::t_632eddeef1307b 1-40
+Output/20260811-184912/csv/HALLAZGOS.csv
+  s_8297ffe90bdabd::t_e85732f07d9f0f 1-48
+Output/20260811-184912/csv/INVENTARIO-SOFTWARE.csv
+  s_8297ffe90bdabd::t_72cecfb8168617 1-81
+Output/20260811-184912/csv/L1-01.csv
+  s_8297ffe90bdabd::t_300eefd7fd7d42 1-24
+Output/20260811-184912/csv/L2-01.csv
+  s_8297ffe90bdabd::t_6b40b4cb1944ac 1-13
+Output/20260811-184912/csv/L2-02.csv
+  s_8297ffe90bdabd::t_642a9b33ac4691 1-10
+Output/20260811-184912/csv/L2-03.csv
+  s_8297ffe90bdabd::t_ba03c239bb9167 1-32
+Output/20260811-184912/csv/L3-01.csv
+  s_8297ffe90bdabd::t_ecb7d7f52dc885 1-84
+Output/20260811-184912/csv/L4-01.csv
+  s_8297ffe90bdabd::t_28840150a894ba 1-81
+Output/20260811-184912/csv/L4-02.csv
+  s_8297ffe90bdabd::t_272e33e488271c 1-8
+Output/20260811-184912/csv/L4-03.csv
+  s_8297ffe90bdabd::t_d6a8e922620144 1-25
+Output/20260811-184912/csv/L4-04.csv
+  s_8297ffe90bdabd::t_a0e8b6bab0ae11 1-84
+Output/20260811-184912/csv/L4-05.csv
+  s_8297ffe90bdabd::t_b715d49af6e3c7 1-67
+Output/20260811-184912/csv/L4-06.csv
+  s_8297ffe90bdabd::t_54a1d6642d6525 1-52
+Output/20260811-184912/csv/L5-01.csv
+  s_8297ffe90bdabd::t_6469acc4f797b8 1-291
+Output/20260811-184912/csv/L5-02.csv
+  s_8297ffe90bdabd::t_d06ba6c3787605 1-134
+Output/20260811-184912/csv/L6-01.csv
+  s_8297ffe90bdabd::t_b388a2db9e96ce 1-31
+Output/20260811-184912/csv/L7-01.csv
+  s_8297ffe90bdabd::t_14652161503f99 1-140
+Output/20260811-184912/csv/L8-01.csv
+  s_8297ffe90bdabd::t_ebae5430b108ae 1-18
+Output/20260811-184912/csv/L9-01.csv
+  s_8297ffe90bdabd::t_b16f95fe4b626f 1-56
+Output/20260811-184912/csv/LINEA-BASE-ARQUITECTURA.csv
+  s_8297ffe90bdabd::t_668157c2dbf8cb 1-52
+Output/20260811-184912/csv/RESUMEN-CAPAS.csv
+  s_8297ffe90bdabd::t_22c11c94b045f2 1-10
+Output/20260811-184912/csv/RESUMEN.csv
+  s_8297ffe90bdabd::t_71c2ffc1199af9 1-2
+Output/20260811-184912/raw/BRECHAS-EVIDENCIA.json
+  s_8297ffe90bdabd::t_fb95964780281e 1-42
+Output/20260811-184912/raw/COBERTURA-ISO.json
+  s_8297ffe90bdabd::t_2d5f85158c6f29 1-602
+Output/20260811-184912/raw/GLOSARIO-CONTROLES-ISO.json
+  s_8297ffe90bdabd::t_ff6bedcf5dd58b 1-392
+Output/20260811-184912/raw/HALLAZGOS.json
+  s_8297ffe90bdabd::t_bd5d99c71f46d6 1-952
+Output/20260811-184912/raw/INVENTARIO-SOFTWARE.json
+  s_8297ffe90bdabd::t_98dec8c17fe3c1 1-2242
+Output/20260811-184912/raw/L1-01.json
+  s_8297ffe90bdabd::t_70c177f1a181fd 1-217
+Output/20260811-184912/raw/L2-01.json
+  s_8297ffe90bdabd::t_f4ee7c74382613 1-74
+Output/20260811-184912/raw/L2-02.json
+  s_8297ffe90bdabd::t_ad06516221555c 1-83
+Output/20260811-184912/raw/L2-03.json
+  s_8297ffe90bdabd::t_a7a68bccc7d540 1-219
+Output/20260811-184912/raw/L3-01.json
+  s_8297ffe90bdabd::t_8bc06be3685a3d 1-666
+Output/20260811-184912/raw/L4-01.json
+  s_8297ffe90bdabd::t_a3ceac8e733464 1-2242
+Output/20260811-184912/raw/L4-02.json
+  s_8297ffe90bdabd::t_64f8f9d622d71a 1-58
+Output/20260811-184912/raw/L4-03.json
+  s_8297ffe90bdabd::t_9a7e7570b72000 1-386
+Output/20260811-184912/raw/L4-04.json
+  s_8297ffe90bdabd::t_2d519f239ee8bc 1-1330
+Output/20260811-184912/raw/L4-05.json
+  s_8297ffe90bdabd::t_446cff94dd36d6 1-728
+Output/20260811-184912/raw/L4-06.json
+  s_8297ffe90bdabd::t_a7a5d43bb58425 1-1073
+Output/20260811-184912/raw/L5-01.json
+  s_8297ffe90bdabd::t_720b30b204a07e 1-3772
+Output/20260811-184912/raw/L5-02.json
+  s_8297ffe90bdabd::t_176ec897fb248f 1-1199
+Output/20260811-184912/raw/L6-01.json
+  s_8297ffe90bdabd::t_9b9eb123cd1467 1-422
+Output/20260811-184912/raw/L7-01.json
+  s_8297ffe90bdabd::t_e1419756d3e0d1 1-1670
+Output/20260811-184912/raw/L8-01.json
+  s_8297ffe90bdabd::t_49a044c890228d 1-121
+Output/20260811-184912/raw/L9-01.json
+  s_8297ffe90bdabd::t_7f39548efd8fd9 1-442
+Output/20260811-184912/raw/LINEA-BASE-ARQUITECTURA.json
+  s_8297ffe90bdabd::t_61b18e9f705225 1-1073
+Output/20260811-184912/raw/RESUMEN-CAPAS.json
+  s_8297ffe90bdabd::t_12e8865b6b3533 1-146
+Output/20260811-184912/raw/RESUMEN.json
+  s_8297ffe90bdabd::t_00f3875803da16 1-147
+Output/20260817-110240/csv/COBERTURA-CRITERIOS.csv
+  s_8297ffe90bdabd::t_02da13bb45eb2a 1-38
+Output/20260817-110240/csv/HALLAZGOS.csv
+  s_8297ffe90bdabd::t_1c1d6841ad225f 1-3
+Output/20260817-110240/csv/L1-01.csv
+  s_8297ffe90bdabd::t_42da90b85f31c6 1-24
+Output/20260817-110240/csv/RESUMEN-CAPAS.csv
+  s_8297ffe90bdabd::t_7061e48b5300f6 1-10
+Output/20260817-110240/raw/COBERTURA-CRITERIOS.json
+  s_8297ffe90bdabd::t_220d75fbf04e3f 1-557
+Output/20260817-110240/raw/HALLAZGOS.json
+  s_8297ffe90bdabd::t_429ba7da6b2314 1-42
+Output/20260817-110240/raw/L1-01.json
+  s_8297ffe90bdabd::t_d2afbb924e82cd 1-217
+Output/20260817-110240/raw/RESUMEN-CAPAS.json
+  s_8297ffe90bdabd::t_c69e5deefe42ff 1-146
+Output/20260817-110307/Ficha-SRV-SAP-20260817-110307.html
+  s_8297ffe90bdabd::t_79407ae5223fea 1-191
+Output/20260817-110307/MANIFIESTO-INTEGRIDAD.json
+  s_8297ffe90bdabd::t_4251b9d1a34137 1-309
+Output/20260817-110307/csv/BRECHAS-EVIDENCIA.csv
+  s_8297ffe90bdabd::t_07156037439f03 1-9
+Output/20260817-110307/csv/COBERTURA-CRITERIOS.csv
+  s_8297ffe90bdabd::t_af5d324b9257d5 1-38
+Output/20260817-110307/csv/GLOSARIO-CRITERIOS.csv
+  s_8297ffe90bdabd::t_97a4c0331dbcb2 1-33
+Output/20260817-110307/csv/HALLAZGOS.csv
+  s_8297ffe90bdabd::t_3268028d611df2 1-49
+Output/20260817-110307/csv/INVENTARIO-SOFTWARE.csv
+  s_8297ffe90bdabd::t_fcebca0a68fa08 1-81
+Output/20260817-110307/csv/L1-01.csv
+  s_8297ffe90bdabd::t_ee22d6b90089c5 1-24
+Output/20260817-110307/csv/L2-01.csv
+  s_8297ffe90bdabd::t_7c5f8bf4f083cd 1-13
+Output/20260817-110307/csv/L2-02.csv
+  s_8297ffe90bdabd::t_f88c6baf20cf30 1-11
+Output/20260817-110307/csv/L2-03.csv
+  s_8297ffe90bdabd::t_dedeeac79ce01a 1-32
+Output/20260817-110307/csv/L3-01.csv
+  s_8297ffe90bdabd::t_c116219a3f3ba7 1-84
+Output/20260817-110307/csv/L4-01.csv
+  s_8297ffe90bdabd::t_a1af2519d90663 1-81
+Output/20260817-110307/csv/L4-02.csv
+  s_8297ffe90bdabd::t_ad0983018439a1 1-8
+Output/20260817-110307/csv/L4-03.csv
+  s_8297ffe90bdabd::t_d9cbfcbdad3602 1-391
+Output/20260817-110307/csv/L4-04.csv
+  s_8297ffe90bdabd::t_b1d13a7406ef2b 1-84
+Output/20260817-110307/csv/L4-05.csv
+  s_8297ffe90bdabd::t_b2287b04b10f21 1-67
+Output/20260817-110307/csv/L4-06.csv
+  s_8297ffe90bdabd::t_d032a71172c7ab 1-52
+Output/20260817-110307/csv/L5-01.csv
+  s_8297ffe90bdabd::t_095216bc2e5792 1-291
+Output/20260817-110307/csv/L5-02.csv
+  s_8297ffe90bdabd::t_d30cdc84e105e8 1-135
+Output/20260817-110307/csv/L6-01.csv
+  s_8297ffe90bdabd::t_f79d4c58616baf 1-32
+Output/20260817-110307/csv/L7-01.csv
+  s_8297ffe90bdabd::t_fdc85913f9ecaa 1-160
+Output/20260817-110307/csv/L8-01.csv
+  s_8297ffe90bdabd::t_fc068664dbd0b5 1-18
+Output/20260817-110307/csv/L9-01.csv
+  s_8297ffe90bdabd::t_d814db43417a38 1-56
+Output/20260817-110307/csv/LINEA-BASE-ARQUITECTURA.csv
+  s_8297ffe90bdabd::t_f9ed921bc36566 1-52
+Output/20260817-110307/csv/RESUMEN-CAPAS.csv
+  s_8297ffe90bdabd::t_7a2c318e09efaf 1-10
+Output/20260817-110307/csv/RESUMEN.csv
+  s_8297ffe90bdabd::t_403ecaa44590d5 1-2
+Output/20260817-110307/raw/BRECHAS-EVIDENCIA.json
+  s_8297ffe90bdabd::t_dab6d220ba5767 1-42
+Output/20260817-110307/raw/COBERTURA-CRITERIOS.json
+  s_8297ffe90bdabd::t_35b9181c4b5216 1-557
+Output/20260817-110307/raw/GLOSARIO-CRITERIOS.json
+  s_8297ffe90bdabd::t_10ffca4850c548 1-322
+Output/20260817-110307/raw/HALLAZGOS.json
+  s_8297ffe90bdabd::t_f2652a6fb757ac 1-972
+Output/20260817-110307/raw/INVENTARIO-SOFTWARE.json
+  s_8297ffe90bdabd::t_ab319a0a5fb6ec 1-2242
+Output/20260817-110307/raw/L1-01.json
+  s_8297ffe90bdabd::t_a8c2441422b745 1-217
+Output/20260817-110307/raw/L2-01.json
+  s_8297ffe90bdabd::t_2273948e750ac1 1-74
+Output/20260817-110307/raw/L2-02.json
+  s_8297ffe90bdabd::t_5914a1d4581e89 1-92
+Output/20260817-110307/raw/L2-03.json
+  s_8297ffe90bdabd::t_ab4dfd25cb1efe 1-219
+Output/20260817-110307/raw/L3-01.json
+  s_8297ffe90bdabd::t_fe37c8fbb01e80 1-666
+Output/20260817-110307/raw/L4-01.json
+  s_8297ffe90bdabd::t_1eeaeeeaf52b2a 1-2242
+Output/20260817-110307/raw/L4-02.json
+  s_8297ffe90bdabd::t_8db1a2ae200686 1-58
+Output/20260817-110307/raw/L4-03.json
+  s_8297ffe90bdabd::t_680b194bf8dfd5 1-6242
+Output/20260817-110307/raw/L4-04.json
+  s_8297ffe90bdabd::t_526e917885b93b 1-1330
+Output/20260817-110307/raw/L4-05.json
+  s_8297ffe90bdabd::t_ab93306ab2888a 1-728
+Output/20260817-110307/raw/L4-06.json
+  s_8297ffe90bdabd::t_dbde777e0a4a87 1-1073
+Output/20260817-110307/raw/L5-01.json
+  s_8297ffe90bdabd::t_beecf3aa0736b9 1-3772
+Output/20260817-110307/raw/L5-02.json
+  s_8297ffe90bdabd::t_32ae688d6c7532 1-1208
+Output/20260817-110307/raw/L6-01.json
+  s_8297ffe90bdabd::t_ab59eeed3135ba 1-436
+Output/20260817-110307/raw/L7-01.json
+  s_8297ffe90bdabd::t_9d64b538a602aa 1-1910
+Output/20260817-110307/raw/L8-01.json
+  s_8297ffe90bdabd::t_973f29bc3d8c21 1-121
+Output/20260817-110307/raw/L9-01.json
+  s_8297ffe90bdabd::t_450e7d3afbbcc8 1-442
+Output/20260817-110307/raw/LINEA-BASE-ARQUITECTURA.json
+  s_8297ffe90bdabd::t_14eff878aea9bc 1-1073
+Output/20260817-110307/raw/RESUMEN-CAPAS.json
+  s_8297ffe90bdabd::t_fe2a56339a72b8 1-146
+Output/20260817-110307/raw/RESUMEN.json
+  s_8297ffe90bdabd::t_fc385f6c96458c 1-147
+Output/LINEA-BASE-20260813/Ficha-SRV-SAP-LINEA-BASE-20260813.html
+  s_8297ffe90bdabd::t_1cdc40812c6e81 1-191
+Output/LINEA-BASE-20260813/MANIFIESTO-INTEGRIDAD.json
+  s_8297ffe90bdabd::t_3a0f50b94c5901 1-309
+Output/LINEA-BASE-20260813/csv/BRECHAS-EVIDENCIA.csv
+  s_8297ffe90bdabd::t_581d48a782989d 1-9
+Output/LINEA-BASE-20260813/csv/COBERTURA-CRITERIOS.csv
+  s_8297ffe90bdabd::t_c3c54b1d91a2cc 1-38
+Output/LINEA-BASE-20260813/csv/GLOSARIO-CRITERIOS.csv
+  s_8297ffe90bdabd::t_4a5c7af2af4e89 1-33
+Output/LINEA-BASE-20260813/csv/HALLAZGOS.csv
+  s_8297ffe90bdabd::t_f006140e46882c 1-49
+Output/LINEA-BASE-20260813/csv/INVENTARIO-SOFTWARE.csv
+  s_8297ffe90bdabd::t_e5d18cc4f4df7d 1-81
+Output/LINEA-BASE-20260813/csv/L1-01.csv
+  s_8297ffe90bdabd::t_2ab13e011c285a 1-24
+Output/LINEA-BASE-20260813/csv/L2-01.csv
+  s_8297ffe90bdabd::t_c2d35b6eec1195 1-13
+Output/LINEA-BASE-20260813/csv/L2-02.csv
+  s_8297ffe90bdabd::t_535040396f0f28 1-10
+Output/LINEA-BASE-20260813/csv/L2-03.csv
+  s_8297ffe90bdabd::t_4d563a6d47f083 1-32
+Output/LINEA-BASE-20260813/csv/L3-01.csv
+  s_8297ffe90bdabd::t_77680ae8400fa5 1-84
+Output/LINEA-BASE-20260813/csv/L4-01.csv
+  s_8297ffe90bdabd::t_c9172d5f2785d4 1-81
+Output/LINEA-BASE-20260813/csv/L4-02.csv
+  s_8297ffe90bdabd::t_ca5c574a78a4e8 1-8
+Output/LINEA-BASE-20260813/csv/L4-03.csv
+  s_8297ffe90bdabd::t_9bb9d5910772d0 1-390
+Output/LINEA-BASE-20260813/csv/L4-04.csv
+  s_8297ffe90bdabd::t_195875abdd9ed2 1-84
+Output/LINEA-BASE-20260813/csv/L4-05.csv
+  s_8297ffe90bdabd::t_f05756e9d576dc 1-67
+Output/LINEA-BASE-20260813/csv/L4-06.csv
+  s_8297ffe90bdabd::t_2408669e8f63de 1-52
+Output/LINEA-BASE-20260813/csv/L5-01.csv
+  s_8297ffe90bdabd::t_47f1b269646e87 1-291
+Output/LINEA-BASE-20260813/csv/L5-02.csv
+  s_8297ffe90bdabd::t_8299cca350ad2d 1-134
+Output/LINEA-BASE-20260813/csv/L6-01.csv
+  s_8297ffe90bdabd::t_d7e028e66b2b19 1-32
+Output/LINEA-BASE-20260813/csv/L7-01.csv
+  s_8297ffe90bdabd::t_99e6a6d0ed41d1 1-160
+Output/LINEA-BASE-20260813/csv/L8-01.csv
+  s_8297ffe90bdabd::t_fb1dd73998ce5f 1-18
+Output/LINEA-BASE-20260813/csv/L9-01.csv
+  s_8297ffe90bdabd::t_00b6285382e739 1-56
+Output/LINEA-BASE-20260813/csv/LINEA-BASE-ARQUITECTURA.csv
+  s_8297ffe90bdabd::t_51b829c98831ae 1-52
+Output/LINEA-BASE-20260813/csv/RESUMEN-CAPAS.csv
+  s_8297ffe90bdabd::t_15339de1e2dcee 1-10
+Output/LINEA-BASE-20260813/csv/RESUMEN.csv
+  s_8297ffe90bdabd::t_73649e5f43bf5c 1-2
+Output/LINEA-BASE-20260813/raw/BRECHAS-EVIDENCIA.json
+  s_8297ffe90bdabd::t_a2ad29bf33003e 1-42
+Output/LINEA-BASE-20260813/raw/COBERTURA-CRITERIOS.json
+  s_8297ffe90bdabd::t_c338dc54829637 1-557
+Output/LINEA-BASE-20260813/raw/GLOSARIO-CRITERIOS.json
+  s_8297ffe90bdabd::t_accb86d90c6a5b 1-322
+Output/LINEA-BASE-20260813/raw/HALLAZGOS.json
+  s_8297ffe90bdabd::t_96e1b1e9aa5046 1-972
+Output/LINEA-BASE-20260813/raw/INVENTARIO-SOFTWARE.json
+  s_8297ffe90bdabd::t_200661e6d51c66 1-2242
+Output/LINEA-BASE-20260813/raw/L1-01.json
+  s_8297ffe90bdabd::t_9eee31dfd1fccd 1-217
+Output/LINEA-BASE-20260813/raw/L2-01.json
+  s_8297ffe90bdabd::t_8c8f01ca5b029c 1-74
+Output/LINEA-BASE-20260813/raw/L2-02.json
+  s_8297ffe90bdabd::t_07a1f1734dedcc 1-83
+Output/LINEA-BASE-20260813/raw/L2-03.json
+  s_8297ffe90bdabd::t_b19c52202c9b37 1-219
+Output/LINEA-BASE-20260813/raw/L3-01.json
+  s_8297ffe90bdabd::t_05460c9c301688 1-666
+Output/LINEA-BASE-20260813/raw/L4-01.json
+  s_8297ffe90bdabd::t_ffc278beb75b66 1-2242
+Output/LINEA-BASE-20260813/raw/L4-02.json
+  s_8297ffe90bdabd::t_2874203217bbd7 1-58
+Output/LINEA-BASE-20260813/raw/L4-03.json
+  s_8297ffe90bdabd::t_e5e160fc1d6036 1-6226
+Output/LINEA-BASE-20260813/raw/L4-04.json
+  s_8297ffe90bdabd::t_3e5788aaefe4f9 1-1330
+Output/LINEA-BASE-20260813/raw/L4-05.json
+  s_8297ffe90bdabd::t_a0ba95b7877133 1-728
+Output/LINEA-BASE-20260813/raw/L4-06.json
+  s_8297ffe90bdabd::t_c04636a30176e0 1-1073
+Output/LINEA-BASE-20260813/raw/L5-01.json
+  s_8297ffe90bdabd::t_fef5cb7851b13c 1-3772
+Output/LINEA-BASE-20260813/raw/L5-02.json
+  s_8297ffe90bdabd::t_2ac4a5bebc6b96 1-1199
+Output/LINEA-BASE-20260813/raw/L6-01.json
+  s_8297ffe90bdabd::t_97e2fbb9a931ab 1-436
+Output/LINEA-BASE-20260813/raw/L7-01.json
+  s_8297ffe90bdabd::t_7d276754df9377 1-1910
+Output/LINEA-BASE-20260813/raw/L8-01.json
+  s_8297ffe90bdabd::t_d0a7d7208a1bff 1-121
+Output/LINEA-BASE-20260813/raw/L9-01.json
+  s_8297ffe90bdabd::t_ac3bb8d9e60d40 1-442
+Output/LINEA-BASE-20260813/raw/LINEA-BASE-ARQUITECTURA.json
+  s_8297ffe90bdabd::t_b3e8fdfa161d56 1-1073
+Output/LINEA-BASE-20260813/raw/RESUMEN-CAPAS.json
+  s_8297ffe90bdabd::t_a2e3841c0429e6 1-146
+Output/LINEA-BASE-20260813/raw/RESUMEN.json
+  s_8297ffe90bdabd::t_787aad6e08bc68 1-147
+Output/PRUEBA/Ficha-SRV-SAP-PRUEBA.html
+  s_8297ffe90bdabd::t_4b796bc8f1c81b 1-188
+Output/PRUEBA/MANIFIESTO-INTEGRIDAD.json
+  s_8297ffe90bdabd::t_faa71705fff720 1-285
+Output/PRUEBA/csv/BRECHAS-EVIDENCIA.csv
+  s_8297ffe90bdabd::t_69e3328b59cf46 1-9
+Output/PRUEBA/csv/COBERTURA-CRITERIOS.csv
+  s_8297ffe90bdabd::t_4ca59e1643382e 1-38
+Output/PRUEBA/csv/GLOSARIO-CRITERIOS.csv
+  s_8297ffe90bdabd::t_c19f8f7e96e8da 1-32
+Output/PRUEBA/csv/HALLAZGOS.csv
+  s_8297ffe90bdabd::t_61ca0550a7d1cf 1-44
+Output/PRUEBA/csv/INVENTARIO-SOFTWARE.csv
+  s_8297ffe90bdabd::t_6c0673eb2b5f92 1-81
+Output/PRUEBA/csv/L1-01.csv
+  s_8297ffe90bdabd::t_5d762c1536944e 1-24
+Output/PRUEBA/csv/L2-01.csv
+  s_8297ffe90bdabd::t_6371b8aa303354 1-13
+Output/PRUEBA/csv/L2-02.csv
+  s_8297ffe90bdabd::t_6b081f398b696a 1-11
+Output/PRUEBA/csv/L2-03.csv
+  s_8297ffe90bdabd::t_9cc4f8c8abe6eb 1-32
+Output/PRUEBA/csv/L3-01.csv
+  s_8297ffe90bdabd::t_bf037cdef00dcb 1-84
+Output/PRUEBA/csv/L4-01.csv
+  s_8297ffe90bdabd::t_57edb14e4521aa 1-81
+Output/PRUEBA/csv/L4-02.csv
+  s_8297ffe90bdabd::t_045a473c86d0ce 1-8
+Output/PRUEBA/csv/L4-04.csv
+  s_8297ffe90bdabd::t_9ab2eb4bf5cf14 1-85
+Output/PRUEBA/csv/L4-05.csv
+  s_8297ffe90bdabd::t_3038f4ca61b231 1-67
+Output/PRUEBA/csv/L4-06.csv
+  s_8297ffe90bdabd::t_72ba816203adfd 1-52
+Output/PRUEBA/csv/L5-01.csv
+  s_8297ffe90bdabd::t_951dcdf93205e4 1-291
+Output/PRUEBA/csv/L5-02.csv
+  s_8297ffe90bdabd::t_9ab7d7d7346cdd 1-134
+Output/PRUEBA/csv/L6-01.csv
+  s_8297ffe90bdabd::t_23e933ab065683 1-31
+Output/PRUEBA/csv/L7-01.csv
+  s_8297ffe90bdabd::t_8f43a8edd1a334 1-160
+Output/PRUEBA/csv/L8-01.csv
+  s_8297ffe90bdabd::t_14282cb87c6b40 1-18
+Output/PRUEBA/csv/LINEA-BASE-ARQUITECTURA.csv
+  s_8297ffe90bdabd::t_8a1c276aab3efc 1-52
+Output/PRUEBA/csv/RESUMEN-CAPAS.csv
+  s_8297ffe90bdabd::t_57c3ca66935050 1-10
+Output/PRUEBA/csv/RESUMEN.csv
+  s_8297ffe90bdabd::t_ddc49680d8f792 1-2
+Output/PRUEBA/raw/BRECHAS-EVIDENCIA.json
+  s_8297ffe90bdabd::t_de1c75dd550a8f 1-42
+Output/PRUEBA/raw/COBERTURA-CRITERIOS.json
+  s_8297ffe90bdabd::t_7b7b7601dfb930 1-557
+Output/PRUEBA/raw/GLOSARIO-CRITERIOS.json
+  s_8297ffe90bdabd::t_77938d1a448551 1-312
+Output/PRUEBA/raw/HALLAZGOS.json
+  s_8297ffe90bdabd::t_db388034da7edf 1-870
+Output/PRUEBA/raw/INVENTARIO-SOFTWARE.json
+  s_8297ffe90bdabd::t_c8364868df3828 1-2242
+Output/PRUEBA/raw/L1-01.json
+  s_8297ffe90bdabd::t_a3cb160447d3a9 1-217
+Output/PRUEBA/raw/L2-01.json
+  s_8297ffe90bdabd::t_253c18f758b75c 1-74
+Output/PRUEBA/raw/L2-02.json
+  s_8297ffe90bdabd::t_573b25e258b8c8 1-92
+Output/PRUEBA/raw/L2-03.json
+  s_8297ffe90bdabd::t_81eabbbe4a99c0 1-219
+Output/PRUEBA/raw/L3-01.json
+  s_8297ffe90bdabd::t_bde947187971dd 1-666
+Output/PRUEBA/raw/L4-01.json
+  s_8297ffe90bdabd::t_29fe46d7b18552 1-2242
+Output/PRUEBA/raw/L4-02.json
+  s_8297ffe90bdabd::t_1290aee479f28e 1-58
+Output/PRUEBA/raw/L4-04.json
+  s_8297ffe90bdabd::t_880bedbc16e20a 1-1346
+Output/PRUEBA/raw/L4-05.json
+  s_8297ffe90bdabd::t_da8f5a2cec0bdd 1-728
+Output/PRUEBA/raw/L4-06.json
+  s_8297ffe90bdabd::t_fec6ebec18af17 1-1073
+Output/PRUEBA/raw/L5-01.json
+  s_8297ffe90bdabd::t_d6f6e75e83579e 1-3772
+Output/PRUEBA/raw/L5-02.json
+  s_8297ffe90bdabd::t_b0f9fc7a1c04e6 1-1199
+Output/PRUEBA/raw/L6-01.json
+  s_8297ffe90bdabd::t_e97c9e79f89176 1-422
+Output/PRUEBA/raw/L7-01.json
+  s_8297ffe90bdabd::t_d65801fb55e1a9 1-1910
+Output/PRUEBA/raw/L8-01.json
+  s_8297ffe90bdabd::t_fc150e6387dd40 1-121
+Output/PRUEBA/raw/LINEA-BASE-ARQUITECTURA.json
+  s_8297ffe90bdabd::t_0b65d80eeee3c7 1-1073
+Output/PRUEBA/raw/RESUMEN-CAPAS.json
+  s_8297ffe90bdabd::t_c38b45b2b5b87e 1-146
+Output/PRUEBA/raw/RESUMEN.json
+  s_8297ffe90bdabd::t_0d1b334df920c3 1-130
+Output/PRUEBA2/csv/L1-01.csv
+  s_8297ffe90bdabd::t_2b5a5365a0136b 1-24
+Output/PRUEBA2/csv/L2-01.csv
+  s_8297ffe90bdabd::t_60999aa224635e 1-13
+Output/PRUEBA2/csv/L2-02.csv
+  s_8297ffe90bdabd::t_4102ccae719f4c 1-11
+Output/PRUEBA2/csv/L2-03.csv
+  s_8297ffe90bdabd::t_e6d73a81db606a 1-32
+Output/PRUEBA2/csv/L3-01.csv
+  s_8297ffe90bdabd::t_94452dabf4fdfe 1-84
+Output/PRUEBA2/csv/L4-01.csv
+  s_8297ffe90bdabd::t_2c40b0b2a6e871 1-81
+Output/PRUEBA2/csv/L4-02.csv
+  s_8297ffe90bdabd::t_726b8675ee450a 1-8
+Output/PRUEBA2/csv/L4-04.csv
+  s_8297ffe90bdabd::t_27d6d0a570823e 1-84
+Output/PRUEBA2/csv/L4-05.csv
+  s_8297ffe90bdabd::t_2bd72ac4119be6 1-67
+Output/PRUEBA2/csv/L4-06.csv
+  s_8297ffe90bdabd::t_595b972d37c60f 1-52
+Output/PRUEBA2/csv/L5-01.csv
+  s_8297ffe90bdabd::t_39cc71437e30cf 1-291
+Output/PRUEBA2/csv/L5-02.csv
+  s_8297ffe90bdabd::t_73852a5932d18c 1-134
+Output/PRUEBA2/csv/L6-01.csv
+  s_8297ffe90bdabd::t_07bfb14a53cebb 1-31
+Output/PRUEBA2/raw/L1-01.json
+  s_8297ffe90bdabd::t_6b9ef596de8883 1-217
+Output/PRUEBA2/raw/L2-01.json
+  s_8297ffe90bdabd::t_22d9960c5f14b6 1-74
+Output/PRUEBA2/raw/L2-02.json
+  s_8297ffe90bdabd::t_b2519848bfc7ef 1-92
+Output/PRUEBA2/raw/L2-03.json
+  s_8297ffe90bdabd::t_3d2d486ebbdcc0 1-219
+Output/PRUEBA2/raw/L3-01.json
+  s_8297ffe90bdabd::t_25b0dcfa24c196 1-666
+Output/PRUEBA2/raw/L4-01.json
+  s_8297ffe90bdabd::t_6d812fd2d1c9d0 1-2242
+Output/PRUEBA2/raw/L4-02.json
+  s_8297ffe90bdabd::t_9d0d27bc204d52 1-58
+Output/PRUEBA2/raw/L4-04.json
+  s_8297ffe90bdabd::t_86e25b969e0d0d 1-1330
+Output/PRUEBA2/raw/L4-05.json
+  s_8297ffe90bdabd::t_e9f9e53a078ee7 1-728
+Output/PRUEBA2/raw/L4-06.json
+  s_8297ffe90bdabd::t_5c7237ebd24a53 1-1073
+Output/PRUEBA2/raw/L5-01.json
+  s_8297ffe90bdabd::t_d891b1fca29cf0 1-3772
+Output/PRUEBA2/raw/L5-02.json
+  s_8297ffe90bdabd::t_cf4142f001ab4e 1-1199
+Output/PRUEBA2/raw/L6-01.json
+  s_8297ffe90bdabd::t_278c9355f1025c 1-422
+README.md
+  s_8297ffe90bdabd::t_06d67a762522e8 1-282
+Reports/New-AuditExcel.ps1
+  s_8297ffe90bdabd::t_da61950c0b7320 1-261
+Reports/New-AuditFicha.ps1
+  s_8297ffe90bdabd::t_add32e9a2fb776 1-305
+Reports/New-AuditFichaDocx.ps1
+  s_8297ffe90bdabd::t_f633e857fedc9d 1-341
+bootstrap.ps1
+  s_8297ffe90bdabd::t_222b9f5cdd170b 1-110
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "1d59be049921687f33c7076a998e6bf9b028c932",
+  "prompts": {},
+  "sessions": {
+    "s_8297ffe90bdabd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "db3b5aa0-cd5a-4160-9232-7689f2936255",
+        "model": "claude-opus-5"
+      },
+      "human_author": "vallit0 <evallecyt@gmail.com>"
+    }
+  }
+}
