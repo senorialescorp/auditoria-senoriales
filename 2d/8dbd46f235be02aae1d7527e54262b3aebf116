@@ -1,0 +1,33 @@
+docs/repofel/Auditoria-Permisos-REPOFEL.md
+  s_8297ffe90bdabd::t_0aad9207953a1c 1-374
+docs/repofel/Auditoria-Permisos-Usuarios.md
+  s_8297ffe90bdabd::t_8173180cc6eedd 1-204
+docs/repofel/Conectores-CFDI.md
+  s_8297ffe90bdabd::t_9ea7e61347ac48 1-159
+docs/repofel/Consultas-RENAP.md
+  s_8297ffe90bdabd::t_ae89518092c3d8 1-119
+docs/repofel/DEPENDENCIAS.md
+  s_8297ffe90bdabd::t_40fada57eaaf49 1-219
+docs/repofel/REPOFEL.md
+  s_8297ffe90bdabd::t_03c864734b80ab 1-658
+docs/repofel/SSO-Asientos-Contables.md
+  s_8297ffe90bdabd::t_2702d3868b405e 1-287
+docs/repofel/Suite-Auditoria.md
+  s_8297ffe90bdabd::t_12598358f0a5e1 1-235
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "2d8dbd46f235be02aae1d7527e54262b3aebf116",
+  "prompts": {},
+  "sessions": {
+    "s_8297ffe90bdabd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "db3b5aa0-cd5a-4160-9232-7689f2936255",
+        "model": "claude-opus-5"
+      },
+      "human_author": "vallit0 <evallecyt@gmail.com>"
+    }
+  }
+}
