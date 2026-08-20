@@ -1,0 +1,112 @@
+linux/collectors/L6-01_identity-access.sh
+  s_4bbe827932fdc5::t_73e5b2921d042d 1-529
+linux/README.md
+  s_4bbe827932fdc5::t_7d8f641676148d 1-310
+linux/collectors/L4-01_installed-software.sh
+  s_4bbe827932fdc5::t_8d172686c353ea 53-57
+  s_4bbe827932fdc5::t_7628d2785c3b21 1-52,58-311
+linux/reports/new_audit_ficha.sh
+  s_4bbe827932fdc5::t_f0be66373b737e 1-223,225-241,243-268,270-286,288-313,315-338
+  s_4bbe827932fdc5::t_85c34c87c99909 224,242,269,287,314
+linux/config/arquitectura.json
+  s_4bbe827932fdc5::t_520f811f5d4279 165
+  s_4bbe827932fdc5::t_899bbfc3e3337a 1-164,166-250
+linux/collectors/L4-06_ea-baseline.sh
+  s_4bbe827932fdc5::t_f1dacd6c8add0c 55-64
+  s_4bbe827932fdc5::t_3d5023a1322427 182
+  s_4bbe827932fdc5::t_270e421a338c27 186
+  s_4bbe827932fdc5::t_b634c75f2ef021 1-54,65-181,183-185,187-398
+linux/config/criterios.auditoria.json
+  s_4bbe827932fdc5::t_16d6cc1c2bbcc3 1-238
+linux/collectors/L2-01_os-baseline.sh
+  s_4bbe827932fdc5::t_db90c2052c547d 1-297
+linux/collectors/L2-03_security-config.sh
+  s_4bbe827932fdc5::t_0d5a7225a3b32d 508
+  s_4bbe827932fdc5::t_ec5bef5aa0aae3 1-507,509-511
+linux/collectors/L5-01_services.sh
+  s_4bbe827932fdc5::t_0490f5481fbd6b 1-247
+linux/collectors/L4-04_software-integrity.sh
+  s_4bbe827932fdc5::t_b214b0ccf19142 1-230
+linux/reports/new_audit_excel.sh
+  s_4bbe827932fdc5::t_1b92a7f76aeda4 1-218
+linux/collectors/L2-02_patch-level.sh
+  s_4bbe827932fdc5::t_547d8f79273939 1-319
+linux/lib/xlsx_writer.sh
+  s_4bbe827932fdc5::t_daf0106294349d 1-226
+linux/collectors/L9-01_server-stats.sh
+  s_4bbe827932fdc5::t_863e459496db83 1-352
+linux/collectors/L8-01_logging-backup.sh
+  s_4bbe827932fdc5::t_a16abb87e9239a 1-342
+linux/collectors/L4-02_package-managers.sh
+  s_4bbe827932fdc5::t_2e006fe2fbd8ff 1-327
+linux/audit.sh
+  s_4bbe827932fdc5::t_458c8d440156fb 1-90,107-196,198-216,218-220,222,226-232,234-235,237-251,253-260,262-288,290-329,331-407,410-413,416-421,423-497,501-504,506-572,574-595
+  s_4bbe827932fdc5::t_e291a0a696be96 95-99,197,217,221,223-225,233,236,252,408-409,414-415,498-500
+  s_4bbe827932fdc5::t_85c34c87c99909 573
+  s_4bbe827932fdc5::t_e4849049eb9cdb 91-94,100-106,261,289,330,422,505
+linux/config/audit.config.json
+  s_4bbe827932fdc5::t_1728a12613f68c 1-228
+linux/collectors/L3-01_runtimes-middleware.sh
+  s_4bbe827932fdc5::t_c931995c78bdf7 1-310,312-313
+  s_4bbe827932fdc5::t_0d5a7225a3b32d 311
+linux/collectors/L4-03_unmanaged-binaries.sh
+  s_4bbe827932fdc5::t_3f57a5a7e713b6 149-152,156
+  s_4bbe827932fdc5::t_b12b54a9af7e23 1-115,124-148,153-155,157-286
+  s_4bbe827932fdc5::t_a279910b1c2dc9 116-123
+linux/collectors/L1-01_hardware-inventory.sh
+  s_4bbe827932fdc5::t_634c1645e87dd5 1-307,309-310
+  s_4bbe827932fdc5::t_0d5a7225a3b32d 308
+linux/reports/new_audit_ficha_docx.sh
+  s_4bbe827932fdc5::t_4d82c064c923bd 1-279
+linux/lib/docx_writer.sh
+  s_4bbe827932fdc5::t_0ffddf990437d7 1-168,171-222,224-258,260-412
+  s_4bbe827932fdc5::t_85c34c87c99909 169-170,223,259
+windows/Output/20260817-110307/.~lock.Ficha-SRV-SAP-20260817-110307.docx#
+  s_4bbe827932fdc5::t_f45e784b456376 1
+linux/preflight.sh
+  s_4bbe827932fdc5::t_04fc9b5cfb0394 1-181
+linux/lib/audit_core.sh
+  s_4bbe827932fdc5::t_c8eebc8256b1b7 374-382
+  s_4bbe827932fdc5::t_ac7b26c515ac53 895-916,925-929,931-947,949-1007,1015-1020
+  s_4bbe827932fdc5::t_b513204696dce5 1125-1126,1140-1141
+  s_4bbe827932fdc5::t_d7e3168b15e466 1059
+  s_4bbe827932fdc5::t_7f88c9646b7599 195-196
+  s_4bbe827932fdc5::t_5e9a6dde834160 917-924,930
+  s_4bbe827932fdc5::t_c6bef8c78891fb 36-40,1087-1095
+  s_4bbe827932fdc5::t_bdd40d06b09521 1123,1138
+  s_4bbe827932fdc5::t_0d5a7225a3b32d 400-406
+  s_4bbe827932fdc5::t_60618adc0bada5 1099-1105
+  s_4bbe827932fdc5::t_5a2ce268fe37c8 1269-1274,1281-1283,1287-1290,1297,1299-1304
+  s_4bbe827932fdc5::t_f958bd5f5cee63 1276-1277,1279-1280,1291,1298
+  s_4bbe827932fdc5::t_590fa2fd827542 1-35,41-194,197-373,383-399,407-894,948,1008-1014,1021-1058,1060-1086,1096-1098,1106-1122,1124,1127-1137,1139,1142-1268,1275,1278,1284-1286,1292-1296,1305-1329
+linux/collectors/L4-05_software-lifecycle.sh
+  s_4bbe827932fdc5::t_dcf32e67759da6 1-244
+linux/lib/classify.awk
+  s_4bbe827932fdc5::t_bb3167b61aa230 71
+  s_4bbe827932fdc5::t_0cce88e1bca2cc 1-50,52-53,60-61,63-70,72-81
+  s_4bbe827932fdc5::t_16307130aedbf1 51,54-59,62
+linux/collectors/L7-01_network-exposure.sh
+  s_4bbe827932fdc5::t_e4253fa08852b7 1-391
+linux/.gitignore
+  s_4bbe827932fdc5::t_63c61f7848181f 1-4
+linux/collectors/L5-02_autoruns-tasks.sh
+  s_4bbe827932fdc5::t_54f6379604f1a4 1-359
+linux/bootstrap.sh
+  s_4bbe827932fdc5::t_06530000502a0b 1-168
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "ea6ed3246ece9ad70e33e31751b2eb1f71dfed3e",
+  "prompts": {},
+  "sessions": {
+    "s_4bbe827932fdc5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2356b2ea-a6c4-4df4-87d8-9eff8ea75140",
+        "model": "claude-opus-5"
+      },
+      "human_author": "vallit0 <evallecyt@gmail.com>"
+    }
+  }
+}
