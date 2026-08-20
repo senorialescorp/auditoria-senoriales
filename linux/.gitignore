@@ -1,0 +1,4 @@
+# Expedientes de auditoria y registros: son evidencia de una corrida concreta,
+# no codigo. Se conservan fuera del repositorio segun la politica de retencion.
+Output/
+Logs/

@@ -1,0 +1,228 @@
+{
+  "_comment": [
+    "audit.config.json",
+    "Configuracion central de la suite de auditoria (equivalente Linux de Config/Audit.config.psd1).",
+    "Editable sin tocar el codigo de los colectores. Se lee con jq desde lib/audit_core.sh."
+  ],
+
+  "Scope": {
+    "Organizacion": "DEFINIR",
+    "Responsable": "DEFINIR",
+    "Area": "DEFINIR",
+    "Clasificacion": "Interno / Confidencial",
+    "Marco": "Marco propio de criterios de auditoria de sistemas"
+  },
+
+  "_comment_layers": [
+    "Modelo de capas. El peso alimenta el calculo de riesgo agregado.",
+    "La capa L4 (artefactos de software) tiene el peso mas alto por",
+    "requerimiento explicito del alcance de esta auditoria."
+  ],
+  "Layers": [
+    { "Id": "L1", "Nombre": "Infraestructura fisica y hardware", "Peso": 0.8, "Orden": 1,
+      "Descripcion": "Chasis, CPU, memoria, almacenamiento, firmware/BIOS, virtualizacion." },
+    { "Id": "L2", "Nombre": "Sistema operativo y hardening", "Peso": 1.2, "Orden": 2,
+      "Descripcion": "Version de SO, parches, configuracion de seguridad, antimalware, cifrado." },
+    { "Id": "L3", "Nombre": "Plataforma, runtimes y middleware", "Peso": 1.5, "Orden": 3,
+      "Descripcion": ".NET, Java, Python, Node, Apache/nginx, bases de datos, servidores de aplicacion." },
+    { "Id": "L4", "Nombre": "Artefactos de software (PRIORIDAD)", "Peso": 2.0, "Orden": 4,
+      "Descripcion": "Inventario de paquetes instalados, gestores de paquetes, binarios no gestionados, integridad y ciclo de vida." },
+    { "Id": "L5", "Nombre": "Servicios, procesos y persistencia", "Peso": 1.5, "Orden": 5,
+      "Descripcion": "Unidades systemd/OpenRC, temporizadores, cron, autoarranque, procesos activos." },
+    { "Id": "L6", "Nombre": "Identidad y control de acceso", "Peso": 1.4, "Orden": 6,
+      "Descripcion": "Cuentas locales, sudoers, politica de contrasenas, SSH, privilegios." },
+    { "Id": "L7", "Nombre": "Red y exposicion", "Peso": 1.3, "Orden": 7,
+      "Descripcion": "Puertos en escucha, firewall, exportaciones NFS/Samba, protocolos heredados." },
+    { "Id": "L8", "Nombre": "Datos, registro y resiliencia", "Peso": 1.1, "Orden": 8,
+      "Descripcion": "auditd, journald/rsyslog, respaldos, instantaneas LVM/Btrfs/ZFS, capacidad de disco." },
+    { "Id": "L9", "Nombre": "Rendimiento y capacidad", "Peso": 0.9, "Orden": 9,
+      "Descripcion": "Estadisticas del servidor: CPU, memoria, disco, red, top de procesos." }
+  ],
+
+  "_comment_thresholds": "Umbrales de evaluacion",
+  "Thresholds": {
+    "DiasMaxSinParche": 45,
+    "DiasMaxSinReinicio": 60,
+
+    "PorcentajeDiscoLibreMin": 15,
+    "PorcentajeDiscoLibreCrit": 8,
+    "PorcentajeMemoriaLibreMin": 12,
+    "PorcentajeCpuSostenidoMax": 85,
+
+    "DiasSoftwareSinActualizar": 730,
+    "TamMinBinarioPortableKB": 64,
+
+    "DiasCuentaInactiva": 90,
+    "MaxAdministradoresLocales": 5,
+    "EdadMaxContrasenaDias": 365
+  },
+
+  "_comment_unmanaged": [
+    "Escaneo de binarios no gestionados (shadow IT) - capa L4.",
+    "En Linux 'no gestionado' significa: el archivo no pertenece a ningun paquete",
+    "de dpkg/rpm/apk, es decir fue copiado a mano y escapa al control de instalacion."
+  ],
+  "UnmanagedScan": {
+    "Habilitado": true,
+    "Rutas": [
+      "/opt",
+      "/srv",
+      "/usr/local/bin",
+      "/usr/local/sbin",
+      "/usr/local/lib",
+      "/root",
+      "/home",
+      "/tmp",
+      "/var/tmp",
+      "/var/www",
+      "/data"
+    ],
+    "RutasExcluidas": [
+      "/proc",
+      "/sys",
+      "/dev",
+      "/run",
+      "/var/lib/docker",
+      "/var/lib/containers",
+      "/var/lib/snapd",
+      "/var/lib/flatpak",
+      "/snap",
+      "/usr/local/lib/python*/dist-packages",
+      "/home/*/.cache",
+      "/home/*/.local/share/Trash",
+      "/home/*/.npm",
+      "/home/*/.cargo/registry"
+    ],
+    "Extensiones": [".sh", ".bash", ".py", ".pl", ".rb", ".jar", ".war", ".bin", ".run", ".so", ".ko", ".php"],
+    "IncluirSinExtension": true,
+    "ProfundidadMax": 4,
+    "MaxArchivos": 3000,
+    "CalcularHash": true
+  },
+
+  "_comment_eol": [
+    "Catalogo de fin de soporte (EOL). Alimenta L4-05 y L3-01.",
+    "Mantener actualizado: es la base de los criterios SW-02 y VUL-01.",
+    "Formato: patron de nombre (regex extendida POSIX, evaluada sin distinguir",
+    "mayusculas), fecha EOL, severidad y nota."
+  ],
+  "EndOfLife": [
+    { "Patron": "^centos.*(6|7|8)($|[^0-9])", "EOL": "2024-06-30", "Severidad": "Critical",
+      "Nota": "CentOS Linux fuera de soporte. Migrar a Rocky/Alma/RHEL o CentOS Stream." },
+    { "Patron": "^(red hat enterprise linux|rhel).*(5|6)($|[^0-9])", "EOL": "2024-06-30", "Severidad": "Critical",
+      "Nota": "RHEL 5/6 fuera de soporte estandar; requiere ELS de pago." },
+    { "Patron": "^ubuntu.*(14\\.04|16\\.04|18\\.04)", "EOL": "2023-05-31", "Severidad": "High",
+      "Nota": "Version de Ubuntu fuera de soporte estandar; requiere Ubuntu Pro/ESM." },
+    { "Patron": "^debian.*(8|9|10)($|[^0-9])", "EOL": "2024-06-30", "Severidad": "High",
+      "Nota": "Version de Debian fuera de soporte estandar y LTS." },
+    { "Patron": "^(sles|suse linux enterprise).*(11|12)($|[^0-9])", "EOL": "2024-10-31", "Severidad": "High",
+      "Nota": "SLES 11/12 fuera de soporte general; requiere LTSS." },
+
+    { "Patron": "^python2|python.*\\b2\\.[0-9]", "EOL": "2020-01-01", "Severidad": "Critical",
+      "Nota": "Python 2 sin soporte ni parches de seguridad." },
+    { "Patron": "^python3\\.([0-7])($|[^0-9])", "EOL": "2023-06-27", "Severidad": "High",
+      "Nota": "Python 3.7 o inferior sin soporte upstream." },
+    { "Patron": "^(php|php[57])[0-9.]*\\b(5\\.|7\\.[0-4])", "EOL": "2022-11-28", "Severidad": "High",
+      "Nota": "PHP 5.x / 7.0-7.4 sin soporte de seguridad." },
+    { "Patron": "(openjdk|java|jre|jdk).*\\b(6|7|8)\\b", "EOL": "2019-01-31", "Severidad": "High",
+      "Nota": "Java 6/7/8 requiere soporte extendido de pago." },
+    { "Patron": "^nodejs.*\\bv?(0|4|6|8|10|12|14|16)\\b", "EOL": "2023-09-11", "Severidad": "High",
+      "Nota": "Rama de Node.js sin soporte LTS." },
+    { "Patron": "^(libssl|openssl)1\\.", "EOL": "2023-09-11", "Severidad": "High",
+      "Nota": "OpenSSL 1.x fuera de soporte." },
+    { "Patron": "^(apache2|httpd).*\\b2\\.2", "EOL": "2018-01-01", "Severidad": "High",
+      "Nota": "Apache HTTPD 2.2 fuera de soporte." },
+    { "Patron": "tomcat[- ]?(7|8)($|[^0-9])", "EOL": "2024-03-31", "Severidad": "High",
+      "Nota": "Rama de Tomcat sin soporte." },
+    { "Patron": "^(mysql|mysql-server).*\\b5\\.(5|6|7)", "EOL": "2023-10-31", "Severidad": "High",
+      "Nota": "MySQL 5.x fuera de soporte." },
+    { "Patron": "^(postgresql|postgres).*\\b(9\\.|10|11)($|[^0-9])", "EOL": "2023-11-09", "Severidad": "High",
+      "Nota": "Rama de PostgreSQL fuera de soporte." },
+    { "Patron": "^(mongodb).*\\b(3\\.|4\\.[02])", "EOL": "2024-04-30", "Severidad": "Medium",
+      "Nota": "Rama de MongoDB fuera de soporte." },
+    { "Patron": "^samba.*\\b(3\\.|4\\.[0-9]($|[^0-9]))", "EOL": "2023-01-01", "Severidad": "Medium",
+      "Nota": "Rama de Samba sin mantenimiento de seguridad." },
+    { "Patron": "^(dotnet|aspnetcore)-runtime-([12]\\.|3\\.[01])", "EOL": "2022-12-13", "Severidad": "High",
+      "Nota": ".NET Core 1.x-3.1 sin soporte. Migrar a una version LTS vigente." },
+    { "Patron": "^docker(-ce)?.*\\b(1[0-8])\\.", "EOL": "2022-01-01", "Severidad": "Medium",
+      "Nota": "Version antigua de Docker Engine sin correcciones de seguridad." }
+  ],
+
+  "_comment_nopermitido": [
+    "Software que NO deberia estar presente en un servidor de produccion.",
+    "Alimenta hallazgos del criterio SW-03 (control de instalacion de software)."
+  ],
+  "SoftwareNoPermitido": [
+    { "Patron": "(transmission|deluge|qbittorrent|rtorrent|aria2|amule|frostwire)", "Severidad": "Critical",
+      "Categoria": "P2P / Intercambio de archivos" },
+    { "Patron": "(teamviewer|anydesk|rustdesk|nomachine|x11vnc|tigervnc|tightvnc|realvnc|vino|remmina|logmein|supremo|splashtop)", "Severidad": "High",
+      "Categoria": "Acceso remoto de terceros" },
+    { "Patron": "(nmap|zenmap|wireshark|tshark|ettercap|aircrack|hashcat|john|hydra|metasploit|sqlmap|responder|mimikatz|bettercap|nikto|masscan)", "Severidad": "High",
+      "Categoria": "Herramienta ofensiva / analisis" },
+    { "Patron": "(steam|lutris|wine|playonlinux|minecraft|retroarch)", "Severidad": "Medium",
+      "Categoria": "Entretenimiento" },
+    { "Patron": "(dropbox|megasync|insync|onedrive|rclone-browser|nextcloud-desktop|owncloud-client|pcloud)", "Severidad": "Medium",
+      "Categoria": "Sincronizacion en nube no corporativa" },
+    { "Patron": "(vlc|mpv|audacity|spotify|rhythmbox|banshee|clementine|obs-studio)", "Severidad": "Low",
+      "Categoria": "Multimedia" },
+    { "Patron": "(netcat-traditional|ncat|socat|proxychains|tor\\b|torsocks|openvpn-unmanaged)", "Severidad": "Medium",
+      "Categoria": "Tunelizacion / evasion de perimetro" }
+  ],
+
+  "_comment_publicadores": [
+    "Origenes de paquete confiables. Un binario provisto por estos no genera",
+    "hallazgo de 'software no gestionado' (reduce ruido en SW-03).",
+    "En Linux el equivalente al publicador Authenticode es el mantenedor/vendor",
+    "declarado por el gestor de paquetes y el repositorio firmado del que proviene."
+  ],
+  "PublicadoresConfiables": [
+    "Debian",
+    "Ubuntu",
+    "Canonical",
+    "Red Hat",
+    "Fedora Project",
+    "Rocky Enterprise Software Foundation",
+    "AlmaLinux",
+    "CentOS",
+    "SUSE",
+    "openSUSE",
+    "Alpine Linux",
+    "Oracle America",
+    "VMware, Inc.",
+    "Dell Inc.",
+    "Hewlett Packard Enterprise",
+    "Intel Corporation",
+    "Broadcom",
+    "Docker Inc.",
+    "The PostgreSQL Global Development Group",
+    "Elastic",
+    "Grafana Labs"
+  ],
+
+  "_comment_repos": [
+    "Repositorios de paquetes considerados oficiales de la distribucion.",
+    "Un repositorio fuera de esta lista se reporta como fuente de terceros (SW-04)."
+  ],
+  "RepositoriosOficiales": [
+    "deb.debian.org",
+    "security.debian.org",
+    "archive.ubuntu.com",
+    "security.ubuntu.com",
+    "ports.ubuntu.com",
+    "cdn.redhat.com",
+    "mirror.stream.centos.org",
+    "dl.rockylinux.org",
+    "repo.almalinux.org",
+    "download.opensuse.org",
+    "updates.suse.com",
+    "dl-cdn.alpinelinux.org"
+  ],
+
+  "_comment_report": "Reporte",
+  "Report": {
+    "Titulo": "Auditoria de Sistemas y Arquitectura Empresarial",
+    "IncluirInventario": true,
+    "MaxFilasTabla": 500,
+    "RetencionDias": 180
+  }
+}

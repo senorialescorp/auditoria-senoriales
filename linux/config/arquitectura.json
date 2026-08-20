@@ -1,0 +1,250 @@
+{
+  "_comment": [
+    "arquitectura.json",
+    "",
+    "LINEA BASE DE ARQUITECTURA EMPRESARIAL",
+    "",
+    "Este archivo declara COMO DEBERIA SER el servidor. Los colectores levantan",
+    "COMO ES. La diferencia entre ambos es el hallazgo de auditoria de sistemas.",
+    "",
+    "Tres bloques:",
+    "  1. RolServidor  -> proposito declarado del activo y roles de software admisibles",
+    "  2. Roles        -> taxonomia de clasificacion automatica de artefactos",
+    "  3. Aplicaciones -> catalogo de aplicaciones de negocio conocidas (autoridad",
+    "                     maxima sobre descripcion, propietario y criticidad)",
+    "",
+    "Mantener este archivo actualizado ES el ejercicio de arquitectura: cada",
+    "artefacto que el colector no logre clasificar o que no figure en el catalogo",
+    "aparece como brecha de linea base.",
+    "",
+    "Los patrones son expresiones regulares extendidas (ERE) evaluadas SIN",
+    "distinguir mayusculas de minusculas."
+  ],
+
+  "_comment_rolservidor": [
+    "1. ROL DECLARADO DEL SERVIDOR",
+    "   Ajustar a la realidad del activo. Este bloque determina que artefactos",
+    "   se consideran alineados y cuales constituyen desviacion arquitectonica."
+  ],
+  "RolServidor": {
+    "Nombre": "SRV-SAP",
+    "RolDeclarado": "Servidor de aplicaciones de negocio",
+    "Descripcion": "POR VALIDAR: servidor que aloja aplicaciones de negocio corporativas. Confirmar con el responsable del activo antes de emitir el informe final.",
+    "Entorno": "Produccion",
+    "Criticidad": "Alta",
+    "Propietario": "DEFINIR",
+    "ResponsableTecnico": "DEFINIR",
+    "UnidadNegocio": "DEFINIR",
+    "ClasificacionDatos": "Confidencial",
+
+    "RolesEsperados": [
+      "AplicacionNegocio",
+      "MotorBaseDatos",
+      "HerramientaBI",
+      "ServidorAplicaciones",
+      "Middleware",
+      "Runtime",
+      "AgenteSeguridad",
+      "AgenteMonitoreo",
+      "AgenteRespaldo",
+      "HerramientaAdministracion",
+      "ControladorFirmware",
+      "UtilitarioSistema",
+      "ComponenteSO",
+      "Contenedores"
+    ],
+
+    "RolesNoEsperados": [
+      "HerramientaDesarrollo",
+      "Ofimatica",
+      "Multimedia",
+      "NavegadorWeb",
+      "AccesoRemotoTerceros",
+      "AlmacenamientoNube",
+      "EntornoEscritorio"
+    ]
+  },
+
+  "_comment_roles": [
+    "2. TAXONOMIA DE ROLES ARQUITECTONICOS",
+    "   Clasificacion automatica de cada artefacto de software.",
+    "   Se evalua en orden: la primera coincidencia gana. Ordenar de lo mas",
+    "   especifico a lo mas general.",
+    "",
+    "   CapaEA sigue el modelo de capas de arquitectura empresarial:",
+    "     Negocio | Aplicacion | Datos | Tecnologia | Infraestructura"
+  ],
+  "Roles": [
+    { "Id": "AgenteSeguridad", "Nombre": "Agente de seguridad", "CapaEA": "Tecnologia",
+      "Descripcion": "Antimalware, EDR, DLP, cifrado, control de acceso obligatorio o agente de cumplimiento.",
+      "Patron": "(clamav|freshclam|rkhunter|chkrootkit|aide|tripwire|ossec|wazuh|falco|crowdstrike|falcon-sensor|sentinelone|carbon-black|cb-|mcafee|trellix|symantec|trend-?micro|kaspersky|eset|sophos|cylance|tanium|qualys|nessus|rapid7|selinux|apparmor|auditd|fail2ban|cryptsetup|libpam-|firejail)",
+      "EsperadoEnServidor": true },
+
+    { "Id": "AgenteMonitoreo", "Nombre": "Agente de monitoreo y gestion", "CapaEA": "Tecnologia",
+      "Descripcion": "Recoleccion de metricas, inventario, telemetria o gestion remota corporativa.",
+      "Patron": "(zabbix|nagios|nrpe|icinga|datadog|dd-agent|dynatrace|oneagent|appdynamics|newrelic|new-relic|solarwinds|prtg|splunk|elastic-agent|filebeat|metricbeat|winlogbeat|auditbeat|nxlog|fluentd|fluent-bit|td-agent|telegraf|prometheus|node-exporter|grafana|collectd|munin|netdata|centreon|check-?mk|salt-minion|puppet|chef|ansible|cfengine|osquery|glpi-agent|ocsinventory|rudder)",
+      "EsperadoEnServidor": true },
+
+    { "Id": "AgenteRespaldo", "Nombre": "Agente de respaldo y continuidad", "CapaEA": "Tecnologia",
+      "Descripcion": "Software de copia de seguridad, replicacion o recuperacion ante desastres.",
+      "Patron": "(veeam|commvault|networker|netbackup|acronis|arcserve|bacula|bareos|amanda|borgbackup|borgmatic|restic|duplicity|rsnapshot|rubrik|cohesity|veritas|zerto|urbackup|tsm|dsmc)",
+      "EsperadoEnServidor": true },
+
+    { "Id": "MotorBaseDatos", "Nombre": "Motor de base de datos", "CapaEA": "Datos",
+      "Descripcion": "Sistema gestor de bases de datos, sus componentes cliente y controladores de acceso a datos.",
+      "Patron": "(mysql|mariadb|percona|postgresql|postgres|pgbouncer|oracle-|oracledb|instantclient|mongodb|mongo-|redis|memcached|db2|sybase|sqlite|cassandra|influxdb|timescale|clickhouse|elasticsearch|opensearch|couchdb|neo4j|etcd|hana|saphana|firebird|informix|odbc|unixodbc|freetds|libpq|mssql|sqlcmd)",
+      "EsperadoEnServidor": true },
+
+    { "Id": "HerramientaBI", "Nombre": "Inteligencia de negocios y reporteria", "CapaEA": "Aplicacion",
+      "Descripcion": "Plataforma de analitica, tableros o generacion de reportes sobre datos de negocio.",
+      "Patron": "(tableau|power-?bi|qlik|cognos|crystal-?report|businessobjects|business-objects|microstrategy|pentaho|jasper|birt|looker|superset|metabase|redash|knime)",
+      "EsperadoEnServidor": true },
+
+    { "Id": "ServidorAplicaciones", "Nombre": "Servidor de aplicaciones / web", "CapaEA": "Tecnologia",
+      "Descripcion": "Contenedor de ejecucion de aplicaciones o servidor HTTP.",
+      "Patron": "(apache2|httpd|nginx|lighttpd|caddy|haproxy|traefik|varnish|tomcat|jboss|wildfly|weblogic|websphere|glassfish|payara|jetty|undertow|gunicorn|uwsgi|unicorn|puma|passenger|php-fpm|fastcgi|mod_)",
+      "EsperadoEnServidor": true },
+
+    { "Id": "Middleware", "Nombre": "Middleware e integracion", "CapaEA": "Tecnologia",
+      "Descripcion": "Colas de mensajes, ESB, integracion de sistemas y conectores.",
+      "Patron": "(rabbitmq|activemq|artemis|kafka|zookeeper|pulsar|nats|mosquitto|mqtt|biztalk|mulesoft|tibco|ibmmq|websphere-?mq|nservicebus|camel|boomi|kong|apigee|sap.*(connector|gateway|router)|saprfc|rfcsdk|celery)",
+      "EsperadoEnServidor": true },
+
+    { "Id": "Contenedores", "Nombre": "Plataforma de contenedores y orquestacion", "CapaEA": "Tecnologia",
+      "Descripcion": "Motor de contenedores, runtime OCI u orquestador de cargas de trabajo.",
+      "Patron": "(docker|containerd|runc|crun|podman|buildah|skopeo|cri-o|kubelet|kubeadm|kubectl|k3s|microk8s|rancher|lxc|lxd|systemd-nspawn)",
+      "EsperadoEnServidor": true },
+
+    { "Id": "Runtime", "Nombre": "Runtime / framework de ejecucion", "CapaEA": "Tecnologia",
+      "Descripcion": "Maquinas virtuales de lenguaje, frameworks e interpretes.",
+      "Patron": "(openjdk|oracle-?j(dk|re)|^jre|^jdk|temurin|adoptium|corretto|zulu|graalvm|python[0-9.]*$|libpython|nodejs|^node$|^npm$|dotnet-runtime|aspnetcore-runtime|mono-runtime|^ruby|^perl|^php[0-9.]*$|erlang|golang-?[0-9]|^lua|libc6|glibc|musl|openssl|libssl)",
+      "EsperadoEnServidor": true },
+
+    { "Id": "HerramientaDesarrollo", "Nombre": "Herramienta de desarrollo", "CapaEA": "Tecnologia",
+      "Descripcion": "IDE, compilador, SDK, cabeceras de desarrollo o utilitario de construccion de software.",
+      "Patron": "(^gcc|^g\\+\\+|^clang|^llvm|^make$|cmake|automake|autoconf|libtool|^binutils|build-essential|.*-dev$|.*-devel$|.*-headers$|^git$|subversion|mercurial|^svn$|maven|gradle|^ant$|^sbt$|^npm$|yarn|composer|bundler|pip[0-9]?$|dotnet-sdk|^jdk-|visual-?studio-?code|^code$|jetbrains|intellij|pycharm|eclipse|netbeans|^vim-|emacs|^gdb$|valgrind|strace-|ltrace|postman|insomnia|^docker-compose)",
+      "EsperadoEnServidor": false },
+
+    { "Id": "AccesoRemotoTerceros", "Nombre": "Acceso remoto de terceros", "CapaEA": "Tecnologia",
+      "Descripcion": "Herramienta de control remoto no corporativa. Canal de acceso fuera del perimetro gestionado.",
+      "Patron": "(teamviewer|anydesk|ammyy|radmin|rustdesk|nomachine|x11vnc|tigervnc|tightvnc|realvnc|vnc4server|vino|krfb|remmina|logmein|gotomypc|supremo|splashtop|chrome-remote-desktop|ngrok|zerotier|tailscale)",
+      "EsperadoEnServidor": false },
+
+    { "Id": "AlmacenamientoNube", "Nombre": "Sincronizacion en nube", "CapaEA": "Datos",
+      "Descripcion": "Cliente de sincronizacion de archivos hacia almacenamiento externo.",
+      "Patron": "(dropbox|google-?drive|gdrive|onedrive|megasync|megacmd|box-?sync|insync|pcloud|nextcloud-?(desktop|client)|owncloud-?client|syncthing|resilio)",
+      "EsperadoEnServidor": false },
+
+    { "Id": "NavegadorWeb", "Nombre": "Navegador web", "CapaEA": "Aplicacion",
+      "Descripcion": "Navegador de internet o motor de navegacion embebido.",
+      "Patron": "(google-?chrome|chromium|firefox|^midori|opera|brave-?browser|vivaldi|epiphany|konqueror|^lynx$|^links2?$|^w3m$)",
+      "EsperadoEnServidor": false },
+
+    { "Id": "Ofimatica", "Nombre": "Ofimatica y productividad", "CapaEA": "Aplicacion",
+      "Descripcion": "Suite de productividad de usuario final.",
+      "Patron": "(libreoffice|openoffice|onlyoffice|wps-?office|thunderbird|evolution|^teams|zoom|skype|slack-?desktop|discord|telegram-?desktop|acroread|masterpdfeditor)",
+      "EsperadoEnServidor": false },
+
+    { "Id": "Multimedia", "Nombre": "Multimedia y entretenimiento", "CapaEA": "Aplicacion",
+      "Descripcion": "Reproductores, editores multimedia, captura de pantalla o software de entretenimiento.",
+      "Patron": "(^vlc|^mpv$|^mplayer|totem|rhythmbox|banshee|clementine|audacity|^gimp|inkscape|blender|kdenlive|obs-?studio|shotcut|spotify|steam|lutris|^wine|playonlinux|retroarch)",
+      "EsperadoEnServidor": false },
+
+    { "Id": "EntornoEscritorio", "Nombre": "Entorno de escritorio grafico", "CapaEA": "Tecnologia",
+      "Descripcion": "Servidor grafico, gestor de ventanas o entorno de escritorio completo. En un servidor amplia la superficie de ataque sin aportar a su funcion.",
+      "Patron": "(xorg|xserver-xorg|^wayland|gnome-?shell|gnome-session|^kde|plasma-?desktop|^xfce|^lxde|^lxqt|^mate-|cinnamon|^gdm3?$|^sddm$|^lightdm$|^xdm$)",
+      "EsperadoEnServidor": false },
+
+    { "Id": "ControladorFirmware", "Nombre": "Controlador / firmware", "CapaEA": "Infraestructura",
+      "Descripcion": "Modulo de kernel, firmware, utilitario de fabricante o herramienta de gestion de hardware.",
+      "Patron": "(^linux-(image|headers|modules|firmware)|^kernel($|-)|.*-firmware$|^firmware-|^nvidia-|^amdgpu|^intel-microcode|^amd64-microcode|^microcode_ctl|^mesa-|dell-?(command|openmanage|omsa)|srvadmin|^hp-?(health|ilo|smart|ssa)|^ipmitool|^freeipmi|^openipmi|idrac|^mft$|^smartmontools|^lm-sensors|open-?vm-?tools|vmware-?tools|hyperv-?(daemons|tools)|xe-guest-utilities|qemu-guest-agent|^virtio|cloud-init|^dracut|^initramfs)",
+      "EsperadoEnServidor": true },
+
+    { "Id": "HerramientaAdministracion", "Nombre": "Herramienta de administracion", "CapaEA": "Tecnologia",
+      "Descripcion": "Utilitario de administracion de sistemas, red o infraestructura.",
+      "Patron": "(^openssh|^sudo$|^screen$|^tmux$|^htop$|^iotop|^atop$|^sysstat|^net-tools|^iproute2|^bind9?-?(host|utils|dnsutils)|^dnsutils|^curl$|^wget$|^rsync$|^lsof$|^tcpdump|^traceroute|^mtr|^nmon|^ncdu$|^tree$|^jq$|^zip$|^unzip$|^p7zip|^tar$|^cockpit|^webmin|^ansible|^etckeeper|^logrotate|^cron|^at$|^lvm2$|^mdadm$|^parted$|^gdisk$|^xfsprogs|^e2fsprogs|^nfs-?(common|utils)|^samba|^cifs-utils|^smbclient|^winbind)",
+      "EsperadoEnServidor": true },
+
+    { "Id": "ComponenteSO", "Nombre": "Componente del sistema operativo", "CapaEA": "Tecnologia",
+      "Descripcion": "Biblioteca, base o componente propio de la distribucion.",
+      "Patron": "(^lib[a-z0-9]|^systemd|^init-system-helpers|^sysvinit|^openrc$|^util-linux|^coreutils$|^bash$|^dash$|^sh$|^grep$|^sed$|^gawk$|^findutils|^diffutils|^base-files|^base-passwd|^bsdutils|^debianutils|^dpkg$|^apt$|^rpm$|^yum$|^dnf$|^zypper$|^apk-tools|^ca-certificates|^tzdata$|^locales|^perl-base|^gpgv?$|^gnupg|^pam[-_]|^nss-|^glibc|^filesystem$|^setup$|^shadow-utils|^grub|^efibootmgr|^plymouth)",
+      "EsperadoEnServidor": true },
+
+    { "Id": "UtilitarioSistema", "Nombre": "Utilitario de sistema", "CapaEA": "Tecnologia",
+      "Descripcion": "Herramienta auxiliar de proposito general.",
+      "Patron": "(compress|archiv|clean|defrag|monitor|viewer|reader|convert|util|toolkit|-agent$|-tools$|-utils$|-common$)",
+      "EsperadoEnServidor": true }
+  ],
+
+  "_comment_rolpordefecto": "Rol asignado cuando ningun patron coincide.",
+  "RolPorDefecto": {
+    "Id": "SinClasificar",
+    "Nombre": "Sin clasificar",
+    "CapaEA": "No determinada",
+    "Descripcion": "El artefacto no coincide con ningun rol de la taxonomia. Requiere clasificacion manual por el arquitecto.",
+    "EsperadoEnServidor": null
+  },
+
+  "_comment_aplicaciones": [
+    "3. CATALOGO DE APLICACIONES DE NEGOCIO",
+    "",
+    "   Autoridad maxima sobre descripcion, propietario y criticidad. Lo que se",
+    "   declara aqui sobreescribe la clasificacion automatica.",
+    "",
+    "   Un artefacto de rol 'AplicacionNegocio' que NO figure en este catalogo",
+    "   se reporta como aplicacion no inventariada (brecha de linea base).",
+    "",
+    "   Deteccion: 'Patron' se evalua contra el nombre del paquete, el mantenedor",
+    "   Y las rutas de instalacion, unidades de servicio y binarios detectados."
+  ],
+  "Aplicaciones": [
+    {
+      "Id": "REPOFEL",
+      "Nombre": "REPOFEL - Repositorio de Factura Electronica en Linea",
+      "Patron": "repofel",
+      "Rol": "AplicacionNegocio",
+      "CapaEA": "Aplicacion",
+      "Descripcion": "POR VALIDAR: repositorio de documentos tributarios electronicos (FEL). Confirmar alcance, version y responsable con el area funcional antes de dar por buena esta descripcion.",
+      "Proposito": "Resguardo y consulta de documentos tributarios electronicos.",
+      "Propietario": "DEFINIR",
+      "ResponsableTecnico": "DEFINIR",
+      "Criticidad": "Alta",
+      "ClasificacionDatos": "Confidencial",
+      "Autorizado": true,
+      "RequiereRespaldo": true,
+      "Notas": "Entrada declarada, pendiente de verificacion en sitio. Ajustar Patron si el despliegue usa otro nombre de directorio, unidad systemd o paquete."
+    },
+    {
+      "Id": "SAP",
+      "Nombre": "SAP - Sistema de planificacion de recursos empresariales",
+      "Patron": "(^|[^a-z])sap([^a-z]|$)|saphostagent|sapstartsrv|saposcol|netweaver|hana|/usr/sap",
+      "Rol": "AplicacionNegocio",
+      "CapaEA": "Aplicacion",
+      "Descripcion": "POR VALIDAR: componentes SAP. El nombre del servidor (SRV-SAP) sugiere que este es su proposito principal; confirmar que modulos y componentes residen aqui.",
+      "Proposito": "Planificacion de recursos empresariales.",
+      "Propietario": "DEFINIR",
+      "ResponsableTecnico": "DEFINIR",
+      "Criticidad": "Alta",
+      "ClasificacionDatos": "Confidencial",
+      "Autorizado": true,
+      "RequiereRespaldo": true,
+      "Notas": "Entrada declarada, pendiente de verificacion en sitio. En Linux SAP suele desplegarse bajo /usr/sap y /sapmnt, fuera del gestor de paquetes: verificar con el colector L4-03."
+    }
+  ],
+
+  "_comment_conformidad": "4. REGLAS DE CONFORMIDAD DE LA LINEA BASE",
+  "Conformidad": {
+    "ExigirCatalogoCompleto": true,
+    "ExigirRutaInstalacion": true,
+    "ExigirPropietario": true,
+    "MaxPorcentajeSinClasificar": 25,
+    "Severidades": {
+      "RolNoEsperado": "High",
+      "AplicacionNoCatalogada": "Medium",
+      "SinClasificar": "Low",
+      "SinRutaInstalacion": "Low",
+      "SinPropietario": "Medium",
+      "AplicacionNoAutorizada": "High"
+    }
+  }
+}

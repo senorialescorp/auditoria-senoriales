@@ -1,8 +1,0 @@
-﻿"Gestor","Nombre","Version","Ambito","Ruta","Notas"
-"PowerShell Module","Microsoft.PowerShell.Operation.Validation","1.0.1","Maquina","C:\Program Files\WindowsPowerShell\Modules\Microsoft.PowerShell.Operation.Validation\1.0.1","Microsoft"
-"PowerShell Module","PackageManagement","1.0.0.1","Maquina","C:\Program Files\WindowsPowerShell\Modules\PackageManagement\1.0.0.1","Microsoft Corporation"
-"PowerShell Module","Pester","3.4.0","Maquina","C:\Program Files\WindowsPowerShell\Modules\Pester\3.4.0","Pester Team"
-"PowerShell Module","PowerShellGet","1.0.0.1","Maquina","C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\1.0.0.1","Microsoft Corporation"
-"PowerShell Module","PSReadline","2.0.0","Maquina","C:\Program Files\WindowsPowerShell\Modules\PSReadline\2.0.0","Microsoft Corporation"
-"PowerShell Module","SQLPS","15.0","Maquina","C:\Program Files (x86)\Microsoft SQL Server\150\Tools\PowerShell\Modules\SQLPS","Microsoft Corporation"
-"PSRepository","PSGallery","","Maquina","https://www.powershellgallery.com/api/v2","Politica: Untrusted"
